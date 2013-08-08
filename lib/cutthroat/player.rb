@@ -5,6 +5,7 @@ module Cutthroat
     attr_reader :location
 
     def initialize(name)
+      @location = 0
     end
 
     def move_to(location)

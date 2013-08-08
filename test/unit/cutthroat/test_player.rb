@@ -16,4 +16,8 @@ class TestPlayer < Test::Unit::TestCase
     @player.move_to(4)
     assert(@player.location == 4)
   end
+
+  def test_player_initial_location
+    assert(@player.location == 0, "new players should be on start")
+  end
 end
