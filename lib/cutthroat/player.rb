@@ -4,7 +4,7 @@ module Cutthroat
 
     attr_reader :location
 
-    def initialize(name)
+    def initialize()
       @location = 0
     end
 

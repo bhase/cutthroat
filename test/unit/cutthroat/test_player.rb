@@ -5,7 +5,7 @@ require 'cutthroat/player'
 class TestPlayer < Test::Unit::TestCase
 
   def setup
-    @player = Cutthroat::Player.new("dummy")
+    @player = Cutthroat::Player.new()
   end
 
   def test_new_player
