@@ -3,8 +3,17 @@ require 'test/unit'
 require 'cutthroat/player'
 
 class TestPlayer < Test::Unit::TestCase
+
+  def setup
+    @player = Cutthroat::Player.new("dummy")
+  end
+
   def test_new_player
-    player = Cutthroat::Player.new("dummy")
-    refute_nil(player)
+    refute_nil(@player)
+  end
+
+  def test_player_location
+    @player.move_to(4)
+    assert(@player.location == 4)
   end
 end
