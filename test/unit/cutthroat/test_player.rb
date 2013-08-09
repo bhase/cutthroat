@@ -39,4 +39,13 @@ class TestPlayer < Test::Unit::TestCase
     assert(@player.location == 12,
            "player moves forward to 12 when rolled 5, is at #{@player.location}")
   end
+
+  def test_player_turnaround
+    dices = StubDices.new
+    dices.sequence = [3, 5]
+    @player.move_to(38)
+    @player.play_turn(dices)
+    assert(@player.location == 6,
+           "player wraps forward to 6, is at #{@player.location}")
+  end
 end
