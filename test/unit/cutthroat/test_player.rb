@@ -30,4 +30,13 @@ class TestPlayer < Test::Unit::TestCase
     assert(dices.roll_called == 2,
            "player should roll two dices on turn, rolled #{dices.roll_called}")
   end
+
+  def test_player_moves_forward
+    dices = StubDices.new
+    dices.sequence = [3, 2]
+    @player.move_to(7)
+    @player.play_turn(dices)
+    assert(@player.location == 12,
+           "player moves forward to 12 when rolled 5, is at #{@player.location}")
+  end
 end

@@ -13,8 +13,8 @@ module Cutthroat
     end
 
     def play_turn(dices)
-      dices.roll
-      dices.roll
+      sum = dices.roll + dices.roll
+      move_to(sum + @location)
     end
   end
 end
