@@ -11,5 +11,10 @@ module Cutthroat
     def move_to(location)
       @location = location
     end
+
+    def play_turn(dices)
+      dices.roll
+      dices.roll
+    end
   end
 end
