@@ -10,15 +10,21 @@ LOCATION = Transform /^\d+$/ do |number|
   number.to_i
 end
 
+EYES = Transform /^\d+$/ do |number|
+  number.to_i
+end
+
 Given /^a player on location (#{LOCATION})$/ do |location|
   player.move_to(location)
   player.location.should == location
 end
 
-When /^the player rolls (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^the player rolls (#{EYES})$/ do |eyes|
+  dices = double()
+  dices.should_receive(:roll).twice.and_return((eyes/2.0).floor, (eyes/2.0).ceil)
+  @player.play_turn(dices)
 end
 
-Then /^the player shall end on location (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^the player shall end on location (#{LOCATION})$/ do |location|
+  @player.location.should == location
 end
