@@ -5,3 +5,8 @@ Feature: Player movement
 		Given a player on location 0
 		When the player rolls 7
 		Then the player shall end on location 7
+
+	Scenario: Turn around
+		Given a player on location 39
+		When the player rolls 6
+		Then the player shall end on location 5
