@@ -12,4 +12,10 @@ class TestGame < Test::Unit::TestCase
     refute_nil(@game)
   end
 
+  def test_add_player
+    player = Cutthroat::Player.new()
+    @game.add_player(player)
+    assert_equal(player, @game.players.first)
+  end
+
 end
