@@ -36,8 +36,12 @@ Then /^the player shall end on location (#{LOCATION})$/ do |location|
   player.location.should == location
 end
 
-Given /^two player named 'Horse' and 'Car' added to a game$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^two player named '(\w+)' and '(\w+)' added to a game$/ do |name1, name2|
+  player1 = Cutthroat::Player.new(name1)
+  player2 = Cutthroat::Player.new(name2)
+  game.add_player(player1)
+  game.add_player(player2)
+  game.players.length.should == 2
 end
 
 Then /^a game with 'Horse' and 'Car' should exist$/ do

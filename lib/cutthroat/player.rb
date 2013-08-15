@@ -4,7 +4,7 @@ module Cutthroat
 
     attr_reader :location
 
-    def initialize()
+    def initialize(name = "anonymous player")
       @location = 0
     end
 
