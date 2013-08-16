@@ -44,6 +44,11 @@ Given /^two player named '(\w+)' and '(\w+)' added to a game$/ do |name1, name2|
   game.players.length.should == 2
 end
 
+When /^I start a game(?: (\d+) times)?$/ do |arg1|
+  game.start
+  game.active.should == true
+end
+
 Then /^a game with 'Horse' and 'Car' should exist$/ do
   pending # express the regexp above with the code you wish you had
 end
@@ -65,10 +70,6 @@ Given /^eight player added to a game$/ do
 end
 
 Then /^I should receive a message 'too many player'$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I start a game(?: (\d+) times)?$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
