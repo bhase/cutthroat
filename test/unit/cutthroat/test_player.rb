@@ -48,4 +48,9 @@ class TestPlayer < Test::Unit::TestCase
     assert(@player.location == 6,
            "player wraps forward to 6, is at #{@player.location}")
   end
+
+  def test_name
+    player = Cutthroat::Player.new("test player")
+    assert_equal("test player", player.name)
+  end
 end

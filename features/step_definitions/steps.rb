@@ -49,8 +49,9 @@ When /^I start a game(?: (\d+) times)?$/ do |arg1|
   game.active.should == true
 end
 
-Then /^a game with 'Horse' and 'Car' should exist$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^a game with '(\w+)' and '(\w+)' should exist$/ do |name1, name2|
+  game.players.select {|player| player.name == name1 }.length.should == 1
+  game.players.select {|player| player.name == name2 }.length.should == 1
 end
 
 Given /^one player added to a game$/ do

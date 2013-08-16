@@ -3,9 +3,11 @@ module Cutthroat
   class Player
 
     attr_reader :location
+    attr_reader :name
 
     def initialize(name = "anonymous player")
       @location = 0
+      @name = name
     end
 
     def move_to(location)
