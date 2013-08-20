@@ -60,7 +60,7 @@ Given /^one player added to a game$/ do
 end
 
 When /^I try to start a game$/ do
-  pending
+  lambda { game.start }.should raise_error(Cutthroat::TooFewPlayerError)
 end
 
 Then /^I should receive a message 'too few player'$/ do

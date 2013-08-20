@@ -1,5 +1,8 @@
 
 module Cutthroat
+  class TooFewPlayerError < StandardError
+  end
+
   class Game
 
     attr_reader :players
@@ -15,6 +18,7 @@ module Cutthroat
     end
 
     def start
+      raise TooFewPlayerError unless @players.length > 1
       @active = true
     end
 
