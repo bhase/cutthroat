@@ -55,7 +55,12 @@ Then /^a game with '(\w+)' and '(\w+)' should exist$/ do |name1, name2|
 end
 
 Given /^one player added to a game$/ do
-  pending # express the regexp above with the code you wish you had
+  game.add_player(player)
+  game.players.length.should == 1
+end
+
+When /^I try to start a game$/ do
+  pending
 end
 
 Then /^I should receive a message 'too few player'$/ do

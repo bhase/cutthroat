@@ -9,7 +9,7 @@ Feature: Game players
 
 	Scenario: Too few player
 		Given one player added to a game
-		When I start a game
+		When I try to start a game
 		Then I should receive a message 'too few player'
 		And no game exists
 
