@@ -69,7 +69,7 @@ Then /^I should receive a message '(.+)'$/ do |message|
 end
 
 Then /^no game exists$/ do
-  pending # express the regexp above with the code you wish you had
+  game.active.should be false
 end
 
 Given /^eight player added to a game$/ do
