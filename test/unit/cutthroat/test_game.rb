@@ -25,6 +25,10 @@ class TestGame < Test::Unit::TestCase
     assert_equal(true, game.active, "game should be actvie after start")
   end
 
+  def test_start_empty_fails
+    assert_raises(Cutthroat::TooFewPlayerError) { @game.start }
+  end
+
 
   def add_two_player(game)
     game.add_player(Cutthroat::Player.new("abc"))

@@ -76,7 +76,7 @@ Given /^eight player added to a game$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^'Horse' and 'Car' both have been the starting player$/ do
+Then /^'(\w+)' and '(\w+)' both have been the starting player$/ do |name1, name2|
   pending # express the regexp above with the code you wish you had
 end
 
