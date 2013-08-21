@@ -60,11 +60,12 @@ Given /^one player added to a game$/ do
 end
 
 When /^I try to start a game$/ do
-  lambda { game.start }.should raise_error(Cutthroat::TooFewPlayerError)
+  lambda { game.start }.should raise_error(Cutthroat::TooFewPlayerError) { |error|
+    @last_error_message = error.message }
 end
 
-Then /^I should receive a message 'too few player'$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I should receive a message '(.+)'$/ do |message|
+  @last_error_message.should match(/#{message}/)
 end
 
 Then /^no game exists$/ do
@@ -72,10 +73,6 @@ Then /^no game exists$/ do
 end
 
 Given /^eight player added to a game$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should receive a message 'too many player'$/ do
   pending # express the regexp above with the code you wish you had
 end
 

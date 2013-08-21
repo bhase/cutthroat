@@ -18,7 +18,7 @@ module Cutthroat
     end
 
     def start
-      raise TooFewPlayerError unless @players.length > 1
+      raise TooFewPlayerError, "too few player: need at least two" unless @players.length > 1
       @active = true
     end
 
