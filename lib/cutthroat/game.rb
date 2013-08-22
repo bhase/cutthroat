@@ -19,6 +19,7 @@ module Cutthroat
 
     def start
       raise TooFewPlayerError, "too few player: need at least two" unless @players.length > 1
+      players.shuffle!
       @active = true
     end
 

@@ -8,6 +8,10 @@ module KnowsGame
   def game
     @game ||= Cutthroat::Game.new()
   end
+
+  def initial_players
+    @initial_players ||= Hash.new(0)
+  end
 end
 
 World(KnowsPlayer)
@@ -44,7 +48,7 @@ Given /^two player named '(\w+)' and '(\w+)' added to a game$/ do |name1, name2|
   game.players.length.should == 2
 end
 
-When /^I start a game(?: (\d+) times)?$/ do |arg1|
+When /^I start a game$/ do
   game.start
   game.active.should == true
 end
@@ -76,8 +80,16 @@ Given /^eight player added to a game$/ do
   pending # express the regexp above with the code you wish you had
 end
 
+When /^I start a game (\d+) times$/ do |count|
+  count.times do
+    game.start
+    initial_players[game.players[0].name] += 1
+  end
+end
+
 Then /^'(\w+)' and '(\w+)' both have been the starting player$/ do |name1, name2|
-  pending # express the regexp above with the code you wish you had
+  initial_players[name1].should_not eq(0), "#{name1} was not starting player!"
+  initial_players[name2].should_not eq(0), "#{name2} was not starting player!"
 end
 
 When /^I try to add another player$/ do
