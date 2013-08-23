@@ -14,7 +14,7 @@ Feature: Game players
 		And no game exists
 
 	Scenario: Too many player
-		Given eight player added to a game
+		Given 8 player added to a game
 		When I try to add another player
 		Then I should receive a message 'too many player'
 		And the game has eight player

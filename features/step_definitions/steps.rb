@@ -65,7 +65,8 @@ end
 
 When /^I try to start a game$/ do
   lambda { game.start }.should raise_error(Cutthroat::TooFewPlayerError) { |error|
-    @last_error_message = error.message }
+    @last_error_message = error.message
+  }
 end
 
 Then /^I should receive a message '(.+)'$/ do |message|
@@ -76,8 +77,11 @@ Then /^no game exists$/ do
   game.active.should be false
 end
 
-Given /^eight player added to a game$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^(\d+) player added to a game$/ do |number_of_players|
+  number_of_players.times do |n|
+    game.add_player(Cutthroat::Player.new("player#{n}"))
+  end
+  game.players.length.should eq(number_of_players)
 end
 
 When /^I start a game (\d+) times$/ do |count|
