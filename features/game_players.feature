@@ -17,7 +17,7 @@ Feature: Game players
 		Given 8 player added to a game
 		When I try to add another player
 		Then I should receive a message 'too many player'
-		And the game has eight player
+		And the game has 8 player
 
 	Scenario: Initial ordering
 		Given two player named 'Horse' and 'Car' added to a game

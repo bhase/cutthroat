@@ -1,6 +1,13 @@
 
 module Cutthroat
-  class TooFewPlayerError < StandardError
+
+  class CutthroatError < StandardError
+  end
+
+  class TooFewPlayerError < CutthroatError
+  end
+
+  class TooManyPlayerError < CutthroatError
   end
 
   class Game
@@ -14,6 +21,7 @@ module Cutthroat
     end
 
     def add_player(player)
+      raise TooManyPlayerError, "too many player, maximum is eight" unless @players.length < 8
       @players << player
     end
 

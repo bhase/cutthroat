@@ -97,9 +97,11 @@ Then /^'(\w+)' and '(\w+)' both have been the starting player$/ do |name1, name2
 end
 
 When /^I try to add another player$/ do
-  pending # express the regexp above with the code you wish you had
+  lambda { game.add_player(player) }.should raise_error(Cutthroat::TooManyPlayerError) { |error|
+    @last_error_message = error.message
+  }
 end
 
-Then /^the game has eight player$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^the game has (\d+) player$/ do |number_of_players|
+  game.players.length.should eq(number_of_players)
 end
