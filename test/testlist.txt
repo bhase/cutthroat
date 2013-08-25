@@ -5,9 +5,14 @@ Player
   - initial balance
 
 Game
-  - too few player
   - too many player
   - after start no new player
   - after start no removal of player
   - no double entry of the same player
 
+Locations
+  - attributes:
+    - category
+    - group
+    - name
+  - configuration in file
