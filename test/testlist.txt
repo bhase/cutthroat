@@ -15,4 +15,7 @@ Locations
     - category
     - group
     - name
-  - configuration in file
+    - rent for n houses, hotel (?)
+    - mortgage => no, 1/2 price
+    - price
+  - configuration in file (YAML/JSON)
