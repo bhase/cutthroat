@@ -105,3 +105,19 @@ end
 Then /^the game has (\d+) player$/ do |number_of_players|
   game.players.length.should eq(number_of_players)
 end
+
+Given /^a fresh started game$/ do
+  game.add_player(Cutthroat::Player.new("p1"))
+  game.add_player(Cutthroat::Player.new("p2"))
+  game.add_player(Cutthroat::Player.new("p3"))
+  game.start
+  game.active.should be true
+end
+
+When /^the game is cancelled after (\d+) rounds$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^all players shall have played the same number of turns$/ do
+  pending # express the regexp above with the code you wish you had
+end
