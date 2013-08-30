@@ -9,7 +9,7 @@ module Cutthroat
     def initialize(name = "anonymous player")
       @location = 0
       @name = name
-      @turns_played = 1
+      @turns_played = 0
     end
 
     def move_to(location)
@@ -19,6 +19,7 @@ module Cutthroat
     def play_turn(dices)
       sum = dices.roll + dices.roll
       move_to((sum + @location) % 40)
+      @turns_played += 1
     end
   end
 end
