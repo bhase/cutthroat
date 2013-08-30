@@ -12,6 +12,7 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_new_player
     refute_nil(@player)
+    assert(@player.turns_played == 0, "new player should have played 0 turns")
   end
 
   def test_player_location
