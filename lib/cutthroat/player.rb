@@ -4,10 +4,12 @@ module Cutthroat
 
     attr_reader :location
     attr_reader :name
+    attr_reader :turns_played
 
     def initialize(name = "anonymous player")
       @location = 0
       @name = name
+      @turns_played = 1
     end
 
     def move_to(location)

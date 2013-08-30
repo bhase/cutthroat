@@ -53,4 +53,12 @@ class TestPlayer < Test::Unit::TestCase
     player = Cutthroat::Player.new("test player")
     assert_equal("test player", player.name)
   end
+
+  def test_turns_played
+    dices = StubDices.new
+    dices.sequence = [3, 2]
+    @player.play_turn(dices)
+    assert(@player.turns_played == 1,
+           "player played #{@player.turns_played} turns")
+  end
 end
