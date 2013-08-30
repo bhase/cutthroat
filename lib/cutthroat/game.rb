@@ -15,9 +15,10 @@ module Cutthroat
     attr_reader :players
     attr_reader :active
 
-    def initialize
+    def initialize(dice = Cutthroat::Dice.new)
       @players = []
       @active = false
+      @dice = dice
     end
 
     def add_player(player)
@@ -29,6 +30,10 @@ module Cutthroat
       raise TooFewPlayerError, "too few player: need at least two" unless @players.length > 1
       players.shuffle!
       @active = true
+    end
+
+    def play_round
+      players.each {|p| p.play_turn(@dice) }
     end
 
     def cancel

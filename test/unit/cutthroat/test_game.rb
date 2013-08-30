@@ -1,6 +1,7 @@
 
 require 'test/unit'
 require 'cutthroat/game'
+require 'cutthroat/dice'
 
 class TestGame < Test::Unit::TestCase
 
@@ -34,6 +35,15 @@ class TestGame < Test::Unit::TestCase
 
   def test_start_empty_fails
     assert_raises(Cutthroat::TooFewPlayerError) { @game.start }
+  end
+
+  def test_play_round
+    game = add_two_player(Cutthroat::Game.new())
+    game.start
+    game.play_round
+    game.players.each { |p|
+      assert_equal(p.turns_played, 1, "the player played #{p.turns_played} turns instead of 1")
+    }
   end
 
   def add_two_player(game)
