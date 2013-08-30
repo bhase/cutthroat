@@ -31,5 +31,9 @@ module Cutthroat
       @active = true
     end
 
+    def cancel
+      @active = false
+    end
+
   end
 end
