@@ -4,11 +4,11 @@ Feature: Game Rounds
 	@draft
 	Scenario: Each player plays the same number of turns
 		Given a fresh started game
-		When 20 rounds are played
-		Then each player shall have played the same number of turns
+		When the game is cancelled after 20 rounds
+		Then all players shall have played the same number of turns
 
 	@draft
 	Scenario: Taking turns in order
 		Given a fresh started game
-		When 20 rounds are played
-		Then in each round the order is equal to the iniial order
+		When the game is cancelled after 20 rounds
+		Then in each round the player order has been equal to the iniial order
