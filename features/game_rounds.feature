@@ -1,7 +1,6 @@
 Feature: Game Rounds
 	As a game I execute a number of rounds so that I can complete a game.
 
-	@wip
 	Scenario: Each player plays the same number of turns
 		Given a fresh started game
 		When the game is cancelled after 20 rounds

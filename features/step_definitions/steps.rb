@@ -114,10 +114,15 @@ Given /^a fresh started game$/ do
   game.active.should be true
 end
 
-When /^the game is cancelled after (\d+) rounds$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^the game is cancelled after (\d+) rounds$/ do |rounds|
+  rounds.times do
+    game.play_round
+  end
+  game.cancel
 end
 
 Then /^all players shall have played the same number of turns$/ do
-  pending # express the regexp above with the code you wish you had
+  game.players.each do |player|
+    player.turns_played.should eq(game.players[0].turns_played)
+  end
 end
