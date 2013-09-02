@@ -6,7 +6,6 @@ Feature: Game Rounds
 		When the game is cancelled after 20 rounds
 		Then all players shall have played the same number of turns
 
-	@draft
 	Scenario: Taking turns in order
 		Given a fresh started game
 		When the game is cancelled after 20 rounds

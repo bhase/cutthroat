@@ -12,6 +12,10 @@ module KnowsGame
   def initial_players
     @initial_players ||= Hash.new(0)
   end
+
+  def player_list_at_round
+    @player_list_at_round ||= []
+  end
 end
 
 World(KnowsPlayer)
@@ -117,6 +121,7 @@ end
 When /^the game is cancelled after (\d+) rounds$/ do |rounds|
   rounds.times do
     game.play_round
+    player_list_at_round << game.players
   end
   game.cancel
 end
@@ -124,5 +129,11 @@ end
 Then /^all players shall have played the same number of turns$/ do
   game.players.each do |player|
     player.turns_played.should eq(game.players[0].turns_played)
+  end
+end
+
+Then /^in each round the player order has been equal to the iniial order$/ do
+  player_list_at_round.each do |players|
+    players.should eq player_list_at_round[0]
   end
 end
