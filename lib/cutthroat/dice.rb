@@ -1,8 +1,8 @@
 
 module Cutthroat
-  class Dice
+  class Dices
     def roll
-      3
+      [4, 3]
     end
   end
 end

@@ -26,15 +26,15 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_player_rolls_dices
     dices = StubDices.new
-    dices.sequence = [4, 2]
+    dices.sequence = [[4, 2]]
     @player.play_turn(dices)
-    assert(dices.roll_called == 2,
-           "player should roll two dices on turn, rolled #{dices.roll_called}")
+    assert(dices.roll_called == 1,
+           "player should roll dices on turn, rolled #{dices.roll_called}")
   end
 
   def test_player_moves_forward
     dices = StubDices.new
-    dices.sequence = [3, 2]
+    dices.sequence = [[3, 2]]
     @player.move_to(7)
     @player.play_turn(dices)
     assert(@player.location == 12,
@@ -43,7 +43,7 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_player_turnaround
     dices = StubDices.new
-    dices.sequence = [3, 5]
+    dices.sequence = [[3, 5]]
     @player.move_to(38)
     @player.play_turn(dices)
     assert(@player.location == 6,
@@ -57,7 +57,7 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_turns_played
     dices = StubDices.new
-    dices.sequence = [3, 2]
+    dices.sequence = [[3, 2]]
     @player.play_turn(dices)
     assert(@player.turns_played == 1,
            "player played #{@player.turns_played} turns")

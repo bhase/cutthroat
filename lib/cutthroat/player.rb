@@ -17,7 +17,7 @@ module Cutthroat
     end
 
     def play_turn(dices)
-      sum = dices.roll + dices.roll
+      sum = dices.roll.reduce(:+)
       move_to((sum + @location) % 40)
       @turns_played += 1
     end

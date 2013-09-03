@@ -5,7 +5,7 @@ end
 
 When /^the player rolls (#{EYES})$/ do |eyes|
   dices = double()
-  dices.should_receive(:roll).twice.and_return((eyes/2.0).floor, (eyes/2.0).ceil)
+  dices.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
   player.play_turn(dices)
 end
 
