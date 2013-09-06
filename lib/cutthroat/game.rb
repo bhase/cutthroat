@@ -10,6 +10,9 @@ module Cutthroat
   class TooManyPlayerError < CutthroatError
   end
 
+  class PlayerExistsError < CutthroatError
+  end
+
   class Game
 
     attr_reader :players
@@ -22,7 +25,10 @@ module Cutthroat
     end
 
     def add_player(player)
-      raise TooManyPlayerError, "too many player, maximum is eight" unless @players.length < 8
+      raise TooManyPlayerError, "too many player, maximum is eight" if
+        @players.length >= 8
+      raise PlayerExistsError, "a player named #{player.name} already exists" if
+        @players.any?{|p| p.name == player.name }
       @players << player
     end
 

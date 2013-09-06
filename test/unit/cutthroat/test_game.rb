@@ -19,6 +19,13 @@ class TestGame < Test::Unit::TestCase
     assert_equal(player, @game.players.first)
   end
 
+  def test_players_have_different_names
+    @game.add_player(Cutthroat::Player.new())
+    assert_raises(Cutthroat::PlayerExistsError) {
+      @game.add_player(Cutthroat::Player.new())
+    }
+  end
+
   def test_start_game
     game = add_two_player(Cutthroat::Game.new())
     assert_equal(false, game.active, "game not active by default")
