@@ -1,7 +1,7 @@
 
 require 'test/unit'
 require 'cutthroat/game'
-require 'cutthroat/dice'
+require 'cutthroat/dices'
 
 class TestGame < Test::Unit::TestCase
 

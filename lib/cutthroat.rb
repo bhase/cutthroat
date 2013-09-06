@@ -1,7 +1,7 @@
 require "cutthroat/version"
 require "cutthroat/player"
 require "cutthroat/game"
-require "cutthroat/dice"
+require "cutthroat/dices"
 
 module Cutthroat
   # Your code goes here...
