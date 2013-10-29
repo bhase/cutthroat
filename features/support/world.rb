@@ -21,5 +21,3 @@ end
 
 World(KnowsPlayer)
 World(KnowsGame)
-
-Test::Unit::AutoRunner.need_auto_run = false
