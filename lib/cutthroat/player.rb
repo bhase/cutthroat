@@ -18,6 +18,10 @@ module Cutthroat
       @location = location
     end
 
+    def receive(amount)
+      @balance += amount
+    end
+
     def play_turn(dices)
       sum = dices.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)

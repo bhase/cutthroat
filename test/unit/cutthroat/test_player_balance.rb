@@ -11,4 +11,9 @@ class TestPlayerBalance < Test::Unit::TestCase
     assert_equal(@player.balance, Cutthroat::SEED_CAPITAL)
   end
 
+  def test_player_receives
+    @player.receive(200)
+    assert_equal(Cutthroat::SEED_CAPITAL + 200, @player.balance)
+  end
+
 end
