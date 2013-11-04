@@ -5,11 +5,13 @@ module Cutthroat
     attr_reader :location
     attr_reader :name
     attr_reader :turns_played
+    attr_reader :balance
 
     def initialize(name = "anonymous player")
       @location = 0
       @name = name
       @turns_played = 0
+      @balance = 1500
     end
 
     def move_to(location)
