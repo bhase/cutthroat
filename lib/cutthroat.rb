@@ -4,5 +4,6 @@ require "cutthroat/game"
 require "cutthroat/dices"
 
 module Cutthroat
-  # Your code goes here...
+  SEED_CAPITAL = 1500
+  LOCATIONS = 40
 end

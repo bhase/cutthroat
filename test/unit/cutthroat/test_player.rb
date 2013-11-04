@@ -1,6 +1,5 @@
-
 require 'test/unit'
-require 'cutthroat/player'
+require 'cutthroat'
 
 require 'stub_dices'
 

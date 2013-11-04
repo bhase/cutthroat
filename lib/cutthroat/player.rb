@@ -11,7 +11,7 @@ module Cutthroat
       @location = 0
       @name = name
       @turns_played = 0
-      @balance = 1500
+      @balance = SEED_CAPITAL
     end
 
     def move_to(location)
@@ -20,7 +20,7 @@ module Cutthroat
 
     def play_turn(dices)
       sum = dices.roll.reduce(:+)
-      move_to((sum + @location) % 40)
+      move_to((sum + @location) % LOCATIONS)
       @turns_played += 1
     end
   end

@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'cutthroat/player'
+require 'cutthroat'
 
 class TestPlayerBalance < Test::Unit::TestCase
 
@@ -8,7 +8,7 @@ class TestPlayerBalance < Test::Unit::TestCase
   end
 
   def test_initial_balance
-    assert_equal(@player.balance, 1500)
+    assert_equal(@player.balance, Cutthroat::SEED_CAPITAL)
   end
 
 end
