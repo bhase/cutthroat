@@ -24,6 +24,7 @@ Feature: Player gets salary when landing on or passing Go
     When the player moves without touching 'Go'
     Then the balance of this player is unchanged
 
+  @draft
   Scenario: Pass Go twice
     Given a player
     When the player passes 'Go' twice during his turn
