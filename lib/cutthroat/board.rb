@@ -6,15 +6,15 @@ module Cutthroat
     DEFAULT_BOARD = <<ENDOFBOARD
 ---
 - !ruby/object:Cutthroat::Location
-    id: 0
+    position: 0
 - !ruby/object:Cutthroat::Location
-    id: 1
+    position: 1
 - !ruby/object:Cutthroat::Location
-    id: 2
+    position: 2
 - !ruby/object:Cutthroat::Location
-    id: 3
+    position: 3
 - !ruby/object:Cutthroat::Location
-    id: 4
+    position: 4
 ENDOFBOARD
 
     def initialize

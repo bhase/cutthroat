@@ -25,9 +25,9 @@ class TestBoard < Test::Unit::TestCase
     assert_equal(l1, l2)
   end
 
-  def test_location_id
+  def test_location_position
     location = @board.lookup(4)
-    assert_equal(4, location.id)
+    assert_equal(4, location.position)
   end
 
 end
