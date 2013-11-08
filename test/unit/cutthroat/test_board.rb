@@ -30,4 +30,8 @@ class TestBoard < Test::Unit::TestCase
     assert_equal(4, location.position)
   end
 
+  def test_location_name
+    assert_equal("Go", @board.lookup(0).name)
+  end
+
 end

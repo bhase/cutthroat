@@ -7,6 +7,7 @@ module Cutthroat
 ---
 - !ruby/object:Cutthroat::Location
     position: 0
+    name: Go
 - !ruby/object:Cutthroat::Location
     position: 1
 - !ruby/object:Cutthroat::Location
