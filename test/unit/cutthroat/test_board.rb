@@ -5,7 +5,7 @@ class TestBoard < Test::Unit::TestCase
 
   # location.name
   # location.id => Field number
-  # Cutthroat::Location.lookup(id) # => location
+  # board.lookup(id) # => location
   # 
   # Further properties to come
   # price
