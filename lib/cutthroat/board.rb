@@ -11,6 +11,7 @@ module Cutthroat
     type: !ruby/sym action
 - !ruby/object:Cutthroat::Location
     position: 1
+    name: Mediterranean Avenue
     type: !ruby/sym property
 - !ruby/object:Cutthroat::Location
     position: 2

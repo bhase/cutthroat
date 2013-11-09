@@ -42,6 +42,7 @@ class TestBoard < Test::Unit::TestCase
 
   def test_location_name
     assert_equal("Go", @board.lookup(0).name)
+    assert_equal("Mediterranean Avenue", @board.lookup(1).name)
   end
 
 end
