@@ -1,8 +1,6 @@
 require 'test/unit'
 require 'cutthroat'
 
-require 'stub_dices'
-
 class TestPlayer < Test::Unit::TestCase
 
   def setup
@@ -23,42 +21,9 @@ class TestPlayer < Test::Unit::TestCase
     assert(@player.location == 0, "new players should be on start")
   end
 
-  def test_player_rolls_dices
-    dices = StubDices.new
-    dices.sequence = [[4, 2]]
-    @player.play_turn(dices)
-    assert(dices.roll_called == 1,
-           "player should roll dices on turn, rolled #{dices.roll_called}")
-  end
-
-  def test_player_moves_forward
-    dices = StubDices.new
-    dices.sequence = [[3, 2]]
-    @player.move_to(7)
-    @player.play_turn(dices)
-    assert(@player.location == 12,
-           "player moves forward to 12 when rolled 5, is at #{@player.location}")
-  end
-
-  def test_player_turnaround
-    dices = StubDices.new
-    dices.sequence = [[3, 5]]
-    @player.move_to(38)
-    @player.play_turn(dices)
-    assert(@player.location == 6,
-           "player wraps forward to 6, is at #{@player.location}")
-  end
-
   def test_name
     player = Cutthroat::Player.new("test player")
     assert_equal("test player", player.name)
   end
 
-  def test_turns_played
-    dices = StubDices.new
-    dices.sequence = [[3, 2]]
-    @player.play_turn(dices)
-    assert(@player.turns_played == 1,
-           "player played #{@player.turns_played} turns")
-  end
 end
