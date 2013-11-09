@@ -36,8 +36,8 @@ class TestBoard < Test::Unit::TestCase
   end
 
   def test_location_type_property
-    ave = @board.lookup(1)
-    assert_equal(:property, ave.type)
+    avenue = @board.lookup(1)
+    assert_equal(:property, avenue.type)
   end
 
   def test_location_name
