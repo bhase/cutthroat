@@ -8,8 +8,10 @@ module Cutthroat
 - !ruby/object:Cutthroat::Location
     position: 0
     name: Go
+    type: !ruby/sym action
 - !ruby/object:Cutthroat::Location
     position: 1
+    type: !ruby/sym property
 - !ruby/object:Cutthroat::Location
     position: 2
 - !ruby/object:Cutthroat::Location

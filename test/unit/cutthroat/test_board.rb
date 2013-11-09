@@ -30,6 +30,16 @@ class TestBoard < Test::Unit::TestCase
     assert_equal(4, location.position)
   end
 
+  def test_location_type_action
+    go = @board.lookup(0)
+    assert_equal(:action, go.type)
+  end
+
+  def test_location_type_property
+    ave = @board.lookup(1)
+    assert_equal(:property, ave.type)
+  end
+
   def test_location_name
     assert_equal("Go", @board.lookup(0).name)
   end
