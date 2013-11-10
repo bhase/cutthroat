@@ -106,3 +106,19 @@ Then /^in each round the player order has been equal to the iniial order$/ do
     players.should eq player_list_at_round[0]
   end
 end
+
+Given(/^a player in a game$/) do
+  player2 = Cutthroat::Player.new("p2")
+  game.add_player(player)
+  game.add_player(player2)
+  game.start
+end
+
+When(/^the player lands on 'Go'$/) do
+  dices = double()
+  dices.should_receive(:roll).and_return([3,2])
+  player.move_to(35)
+  player.play_turn(dices)
+  player.location.should == 0
+end
+

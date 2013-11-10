@@ -1,8 +1,11 @@
 Feature: Player gets salary when landing on or passing Go
+  During a game when a player lands on Go or passes Go he or she shall
+  receive his/her salary ($200). It is possible to pass Go twice
+  during a turn, then for each pass the salary is received.
 
-  @draft
+  @wip
   Scenario: Landing on Go
-    Given a player
+    Given a player in a game
     When the player lands on 'Go'
     Then the balance of this player is increased by $200
 
