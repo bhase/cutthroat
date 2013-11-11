@@ -17,6 +17,12 @@ module KnowsGame
   def player_list_at_round
     @player_list_at_round ||= []
   end
+
+  def start_a_game
+    game.add_player(player)
+    game.add_player(Cutthroat::Player.new("p2"))
+    game.start
+  end
 end
 
 World(KnowsPlayer)

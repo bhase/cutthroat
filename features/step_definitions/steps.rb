@@ -80,10 +80,7 @@ Then /^the game has (#{NUMBER}) player$/ do |number_of_players|
 end
 
 Given /^a fresh started game$/ do
-  game.add_player(Cutthroat::Player.new("p1"))
-  game.add_player(Cutthroat::Player.new("p2"))
-  game.add_player(Cutthroat::Player.new("p3"))
-  game.start
+  start_a_game
   game.active.should be true
 end
 
@@ -108,10 +105,7 @@ Then /^in each round the player order has been equal to the iniial order$/ do
 end
 
 Given(/^a player in a game$/) do
-  player2 = Cutthroat::Player.new("p2")
-  game.add_player(player)
-  game.add_player(player2)
-  game.start
+  start_a_game
 end
 
 When(/^the player lands on 'Go'$/) do
