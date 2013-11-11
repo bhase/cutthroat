@@ -26,8 +26,8 @@ module Cutthroat
       @balance -= amount
     end
 
-    def play_turn(dices)
-      sum = dices.roll.reduce(:+)
+    def play_turn(dice)
+      sum = dice.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)
       if self.location == 0
         self.receive(200)
