@@ -4,9 +4,8 @@ Given /^a player on location (#{LOCATION})$/ do |location|
 end
 
 When /^the player rolls (#{EYES})$/ do |eyes|
-  dices = double()
-  dices.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
-  player.play_turn(dices)
+  dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
+  player.play_turn(dice)
 end
 
 Then /^the player shall end on location (#{LOCATION})$/ do |location|
@@ -109,11 +108,10 @@ Given(/^a player in a game$/) do
 end
 
 When(/^the player lands on 'Go'$/) do
-  dices = double()
-  dices.should_receive(:roll).and_return([3,2])
+  dice.should_receive(:roll).and_return([3,2])
   player.move_to(35)
   @initial_balance = player.balance
-  player.play_turn(dices)
+  player.play_turn(dice)
   player.location.should == 0
 end
 

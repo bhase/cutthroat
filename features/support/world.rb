@@ -23,6 +23,11 @@ module KnowsGame
     game.add_player(Cutthroat::Player.new("p2"))
     game.start
   end
+
+  def dice
+    @dice ||= double()
+  end
+
 end
 
 World(KnowsPlayer)
