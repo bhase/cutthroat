@@ -18,10 +18,10 @@ module Cutthroat
     attr_reader :players
     attr_reader :active
 
-    def initialize(dices = Cutthroat::Dices.new)
+    def initialize(dice = Cutthroat::Dice.new)
       @players = []
       @active = false
-      @dices = dices
+      @dice = dice
     end
 
     def add_player(player)
@@ -39,7 +39,7 @@ module Cutthroat
     end
 
     def play_round
-      players.each {|p| p.play_turn(@dices) }
+      players.each {|p| p.play_turn(@dice) }
     end
 
     def cancel
