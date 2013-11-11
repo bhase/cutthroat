@@ -1,5 +1,5 @@
 
-class StubDices
+class StubDice
 
   attr_accessor :roll_called
   attr_accessor :sequence

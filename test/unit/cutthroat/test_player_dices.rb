@@ -4,11 +4,11 @@ require 'cutthroat'
 
 require 'stub_dice'
 
-class TestPlayerDices < Test::Unit::TestCase
+class TestPlayerDice < Test::Unit::TestCase
 
   def setup
     @player = Cutthroat::Player.new()
-    @dice = StubDices.new
+    @dice = StubDice.new
     @dice.sequence = [[3, 2]]
   end
 
