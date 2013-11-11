@@ -118,7 +118,11 @@ When(/^the player lands on 'Go'$/) do
   dices = double()
   dices.should_receive(:roll).and_return([3,2])
   player.move_to(35)
+  @initial_balance = player.balance
   player.play_turn(dices)
   player.location.should == 0
 end
 
+Then(/^the balance of this player is increased by \$(\d+)$/) do |amount|
+  player.balance.should == @initial_balance + amount
+end

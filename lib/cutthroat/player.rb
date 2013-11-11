@@ -29,6 +29,9 @@ module Cutthroat
     def play_turn(dices)
       sum = dices.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)
+      if self.location == 0
+        self.receive(200)
+      end
       @turns_played += 1
     end
   end
