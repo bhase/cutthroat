@@ -1,7 +1,7 @@
 require "cutthroat/version"
 require "cutthroat/player"
 require "cutthroat/game"
-require "cutthroat/dices"
+require "cutthroat/dice"
 require "cutthroat/board"
 require "cutthroat/location"
 
