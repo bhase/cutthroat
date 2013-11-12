@@ -1,2 +1,2 @@
-default: --tags ~@draft --require features
-wip: --tags @wip --wip --require features
+default: --tags ~@draft --require features -c
+wip: --tags @wip --wip --require features -c
