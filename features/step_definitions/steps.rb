@@ -13,10 +13,7 @@ Then /^the player shall end on location (#{LOCATION})$/ do |location|
 end
 
 Given /^two player named '(#{NAME})' and '(#{NAME})' added to a game$/ do |name1, name2|
-  player1 = Cutthroat::Player.new(name1)
-  player2 = Cutthroat::Player.new(name2)
-  game.add_player(player1)
-  game.add_player(player2)
+  add_game_player(name1, name2)
   game.players.length.should == 2
 end
 

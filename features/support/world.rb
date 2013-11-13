@@ -34,6 +34,12 @@ module KnowsGame
     @dice ||= double()
   end
 
+  def add_game_player(*names)
+    names.each do |name|
+      game.add_player(Cutthroat::Player.new(name))
+    end
+  end
+
 end
 
 World(KnowsPlayer)
