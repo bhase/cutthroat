@@ -20,9 +20,8 @@ Feature: Player gets salary when landing on or passing Go
     When the player leaves Go
     Then the balance of this player is unchanged
 
-  @draft
   Scenario: Normal move
-    Given a player
+    Given a player in a game
     When the player moves without touching 'Go'
     Then the balance of this player is unchanged
 

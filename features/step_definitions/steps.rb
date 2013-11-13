@@ -118,3 +118,14 @@ end
 Then(/^the balance of this player is increased by \$(\d+)$/) do |amount|
   player.balance.should == @initial_balance + amount
 end
+
+When(/^the player moves without touching 'Go'$/) do
+  dice.should_receive(:roll).and_return([3,2])
+  player.move_to(17)
+  @initial_balance = player.balance
+  player.play_turn(dice)
+end
+
+Then(/^the balance of this player is unchanged$/) do
+  player.balance.should == @initial_balance
+end
