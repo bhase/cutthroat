@@ -14,7 +14,6 @@ Feature: Player gets salary when landing on or passing Go
     When the player passes 'Go'
     Then the balance of this player is increased by $200
 
-  @draft
   Scenario: Leaving Go
     Given a player on 'Go'
     When the player leaves Go

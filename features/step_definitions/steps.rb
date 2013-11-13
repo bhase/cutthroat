@@ -122,3 +122,14 @@ end
 Then(/^the balance of this player is unchanged$/) do
   player.balance.should == @initial_balance
 end
+
+Given(/^a player on 'Go'$/) do
+  start_a_game
+  player.move_to(0)
+end
+
+When(/^the player leaves Go$/) do
+  @initial_balance = player.balance
+  dice.should_receive(:roll).and_return([3,2])
+  player.play_turn(dice)
+end
