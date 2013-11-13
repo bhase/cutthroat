@@ -3,6 +3,12 @@ module KnowsPlayer
   def player
     @player ||= Cutthroat::Player.new()
   end
+
+  def play_turn_from(location)
+    player.move_to(location)
+    player.play_turn(dice)
+  end
+
 end
 
 module KnowsGame

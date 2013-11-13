@@ -22,7 +22,6 @@ end
 
 When /^I start a game$/ do
   game.start
-  game.active.should == true
 end
 
 Then /^a game with '(#{NAME})' and '(#{NAME})' should exist$/ do |name1, name2|
@@ -108,11 +107,9 @@ Given(/^a player in a game$/) do
 end
 
 When(/^the player lands on 'Go'$/) do
-  dice.should_receive(:roll).and_return([3,2])
-  player.move_to(35)
   @initial_balance = player.balance
-  player.play_turn(dice)
-  player.location.should == 0
+  dice.should_receive(:roll).and_return([3,2])
+  play_turn_from(35)
 end
 
 Then(/^the balance of this player is increased by \$(\d+)$/) do |amount|
@@ -120,10 +117,9 @@ Then(/^the balance of this player is increased by \$(\d+)$/) do |amount|
 end
 
 When(/^the player moves without touching 'Go'$/) do
-  dice.should_receive(:roll).and_return([3,2])
-  player.move_to(17)
   @initial_balance = player.balance
-  player.play_turn(dice)
+  dice.should_receive(:roll).and_return([3,2])
+  play_turn_from(17)
 end
 
 Then(/^the balance of this player is unchanged$/) do
