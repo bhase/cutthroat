@@ -2,8 +2,18 @@ require 'yaml'
 
 module Cutthroat
   class Board
-    
-    DEFAULT_BOARD = <<ENDOFBOARD
+    def initialize
+      @locations = YAML.parse(DEFAULT_BOARD).to_ruby
+    end
+
+    def lookup(number)
+      @locations[number]
+    end
+
+  end
+end
+
+Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 ---
 - !ruby/object:Cutthroat::Location
     position: 0
@@ -21,13 +31,3 @@ module Cutthroat
     position: 4
 ENDOFBOARD
 
-    def initialize
-      @locations = YAML.parse(DEFAULT_BOARD).to_ruby
-    end
-
-    def lookup(number)
-      @locations[number]
-    end
-
-  end
-end
