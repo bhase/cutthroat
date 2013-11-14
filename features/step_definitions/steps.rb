@@ -133,3 +133,9 @@ When(/^the player leaves Go$/) do
   dice.should_receive(:roll).and_return([3,2])
   player.play_turn(dice)
 end
+
+When(/^the player passes 'Go'$/) do
+  @initial_balance = player.balance
+  dice.should_receive(:roll).and_return([4,5])
+  play_turn_from(35)
+end

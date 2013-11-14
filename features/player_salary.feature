@@ -8,9 +8,8 @@ Feature: Player gets salary when landing on or passing Go
     When the player lands on 'Go'
     Then the balance of this player is increased by $200
 
-  @draft
   Scenario: Passing Go
-    Given a player
+    Given a player in a game
     When the player passes 'Go'
     Then the balance of this player is increased by $200
 
