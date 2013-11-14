@@ -29,10 +29,15 @@ module Cutthroat
     def play_turn(dice)
       sum = dice.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)
-      if self.location == 0 || (location - sum) < 0
-        self.receive(200)
+      if player_touched_go(sum)
+        receive(200)
       end
       @turns_played += 1
     end
+
+    def player_touched_go(eyes_rolled)
+      (location - eyes_rolled) < 0
+    end
+
   end
 end
