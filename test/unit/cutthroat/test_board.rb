@@ -19,10 +19,15 @@ class TestBoard < Test::Unit::TestCase
     @board = Cutthroat::Board.new
   end
   
-  def test_location_lookup
+  def test_location_lookup_singularity
     l1 = @board.lookup(0)
     l2 = @board.lookup(0)
     assert_equal(l1, l2)
+  end
+
+  def test_location_lookup_by_name
+    l1 = @board.lookup('Go')
+    assert_equal(0, l1.position)
   end
 
   def test_location_position

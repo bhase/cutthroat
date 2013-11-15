@@ -6,8 +6,8 @@ module Cutthroat
       @locations = YAML.parse(DEFAULT_BOARD).to_ruby
     end
 
-    def lookup(number)
-      @locations[number]
+    def lookup(location)
+      @locations.find {|l| l.position == location || l.name == location }
     end
 
   end
