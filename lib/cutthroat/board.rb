@@ -29,5 +29,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 3
 - !ruby/object:Cutthroat::Location
     position: 4
+- !ruby/object:Cutthroat::Location
+    position: 25
+    name: B&O RR
+    type: !ruby/sym property
 ENDOFBOARD
 
