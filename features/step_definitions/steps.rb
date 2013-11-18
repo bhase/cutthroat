@@ -1,8 +1,3 @@
-Given /^a player on location (#{LOCATION})$/ do |location|
-  player.move_to(location)
-  player.location.should == location
-end
-
 When /^the player rolls (#{EYES})$/ do |eyes|
   dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
   player.play_turn(dice)
@@ -123,7 +118,7 @@ Then(/^the balance of this player is unchanged$/) do
   player.balance.should == @initial_balance
 end
 
-Given(/^a player on (#{LOCATION})$/) do |location|
+Given(/^a player on (?:location )?(#{LOCATION})$/) do |location|
   start_a_game
   player.move_to(location)
 end
