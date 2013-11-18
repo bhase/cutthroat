@@ -40,6 +40,10 @@ module KnowsGame
     end
   end
 
+  def board
+    @board ||= Cutthroat::Board.new
+  end
+
 end
 
 World(KnowsPlayer)

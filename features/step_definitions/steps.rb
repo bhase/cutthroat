@@ -123,9 +123,9 @@ Then(/^the balance of this player is unchanged$/) do
   player.balance.should == @initial_balance
 end
 
-Given(/^a player on 'Go'$/) do
+Given(/^a player on (#{LOCATION})$/) do |location|
   start_a_game
-  player.move_to(0)
+  player.move_to(location)
 end
 
 When(/^the player leaves Go$/) do
