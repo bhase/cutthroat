@@ -3,7 +3,7 @@ When /^the player rolls (#{EYES})$/ do |eyes|
   player.play_turn(dice)
 end
 
-Then /^the player shall end on location (#{LOCATION})$/ do |location|
+Then /^the player shall end on (?:location )?(#{LOCATION})$/ do |location|
   player.location.should == location
 end
 
