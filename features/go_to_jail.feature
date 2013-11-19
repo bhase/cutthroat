@@ -9,7 +9,6 @@ Feature: Go To Jail
     Then the player shall end on 'Just Visiting'
     And the balance of this player is unchanged
 
-  @wip
   Scenario: Passing Go To Jail
     Given a player on 'B&O RR'
     When the player rolls enough to land on 'North Carolina Avenue'
