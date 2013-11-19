@@ -34,6 +34,10 @@ module KnowsGame
     @dice ||= double()
   end
 
+  def setup_dice_for(eyes)
+    dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
+  end
+
   def add_game_player(*names)
     names.each do |name|
       game.add_player(Cutthroat::Player.new(name))

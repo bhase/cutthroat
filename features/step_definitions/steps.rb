@@ -1,5 +1,5 @@
 When /^the player rolls (#{EYES})$/ do |eyes|
-  dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
+  setup_dice_for(eyes)
   player.play_turn(dice)
 end
 
@@ -138,6 +138,6 @@ end
 
 When(/^the player rolls enough to land on (#{LOCATION})$/) do |location|
   goal = location - player.location
-  dice.should_receive(:roll).and_return([(goal/2.0).floor, (goal/2.0).ceil])
+  setup_dice_for(goal)
   player.play_turn(dice)
 end

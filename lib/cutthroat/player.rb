@@ -30,7 +30,7 @@ module Cutthroat
       sum = dice.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)
       if player_touched_go(sum)
-        receive(200)
+        receive(SALARY)
       end
       @turns_played += 1
     end
