@@ -30,9 +30,18 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 4
 - !ruby/object:Cutthroat::Location
+    position: 10
+    name: Just Visiting
+- !ruby/object:Cutthroat::Location
+    position: 19
+    name: New York Avenue
+- !ruby/object:Cutthroat::Location
     position: 25
     name: B&O RR
     type: !ruby/sym property
+- !ruby/object:Cutthroat::Location
+    position: 30
+    name: Go To Jail
 - !ruby/object:Cutthroat::Location
     position: 32
     name: North Carolina Avenue

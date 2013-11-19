@@ -29,7 +29,9 @@ module Cutthroat
     def play_turn(dice)
       sum = dice.roll.reduce(:+)
       move_to((sum + @location) % LOCATIONS)
-      if player_touched_go(sum)
+      if (location == 30)
+        move_to(10)
+      elsif player_touched_go(sum)
         receive(SALARY)
       end
       @turns_played += 1
