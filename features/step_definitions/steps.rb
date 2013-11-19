@@ -120,6 +120,7 @@ end
 
 Given(/^a player on (?:location )?(#{LOCATION})$/) do |location|
   start_a_game
+  @initial_balance = player.balance
   player.move_to(location)
 end
 
@@ -133,4 +134,10 @@ When(/^the player passes 'Go'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([4,5])
   play_turn_from(35)
+end
+
+When(/^the player rolls enough to land on (#{LOCATION})$/) do |location|
+  goal = location - player.location
+  dice.should_receive(:roll).and_return([(goal/2.0).floor, (goal/2.0).ceil])
+  player.play_turn(dice)
 end

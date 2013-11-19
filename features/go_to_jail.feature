@@ -12,6 +12,6 @@ Feature: Go To Jail
   @wip
   Scenario: Passing Go To Jail
     Given a player on 'B&O RR'
-    When the player rolls enough to land on 'Short Line'
-    Then the player shall end on 'Short Line'
+    When the player rolls enough to land on 'North Carolina Avenue'
+    Then the player shall end on 'North Carolina Avenue'
     And the balance of this player is unchanged

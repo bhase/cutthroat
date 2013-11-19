@@ -33,5 +33,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 25
     name: B&O RR
     type: !ruby/sym property
+- !ruby/object:Cutthroat::Location
+    position: 32
+    name: North Carolina Avenue
 ENDOFBOARD
 
