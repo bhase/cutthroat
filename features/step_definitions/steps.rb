@@ -132,7 +132,7 @@ end
 
 When(/^the player passes 'Go'$/) do
   @initial_balance = player.balance
-  dice.should_receive(:roll).and_return([4,5])
+  dice.should_receive(:roll).and_return([3,5])
   play_turn_from(35)
 end
 
@@ -140,4 +140,19 @@ When(/^the player rolls enough to land on (#{LOCATION})$/) do |location|
   goal = location - player.location
   setup_dice_for(goal)
   player.play_turn(dice)
+end
+
+Given(/^a player with a total worth of \$(\d+)$/) do |amount|
+  start_a_game
+  set_worth_of_player_to(amount.to_i)
+end
+
+When(/^the player lands on 'Income Tax'$/) do
+  @initial_balance = player.balance
+  dice.should_receive(:roll).and_return([1,2])
+  play_turn_from(1)
+end
+
+Then(/^the balance of this player is decreased by \$(\d+)$/) do |amount|
+  player.balance.should == @initial_balance - amount
 end

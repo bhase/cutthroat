@@ -9,6 +9,11 @@ module KnowsPlayer
     player.play_turn(dice)
   end
 
+  def set_worth_of_player_to(amount)
+    delta = amount - player.total_worth
+    player.receive(delta)
+  end
+
 end
 
 module KnowsGame
