@@ -14,7 +14,6 @@ Feature: Income Tax
       |    $0  |   $0 |
       | $2000  | $200 |
 
-  @draft
   Scenario: Passing over Income Tax
     Given a player in a game
     When the player passes over 'Income Tax'

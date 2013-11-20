@@ -156,3 +156,9 @@ end
 Then(/^the balance of this player is decreased by \$(\d+)$/) do |amount|
   player.balance.should == @initial_balance - amount
 end
+
+When(/^the player passes over 'Income Tax'$/) do
+  @initial_balance = player.balance
+  dice.should_receive(:roll).and_return([1,2])
+  play_turn_from(3)
+end
