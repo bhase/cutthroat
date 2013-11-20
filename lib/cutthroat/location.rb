@@ -4,5 +4,13 @@ module Cutthroat
     attr_reader :position
     attr_reader :name
     attr_reader :type
+
+    def to_s
+      @name
+    end
+
+    def to_i
+      @position
+    end
   end
 end

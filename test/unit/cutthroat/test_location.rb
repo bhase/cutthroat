@@ -35,4 +35,13 @@ EOA
     assert_equal("Go", @go.name)
     assert_equal("Mediterranean Avenue", @avenue.name)
   end
+
+  def test_location_to_string
+    assert_match(/^Mediterranean Avenue$/, @avenue.to_s)
+  end
+
+  def test_location_to_number
+    assert_equal(1, @avenue.to_i)
+  end
+
 end
