@@ -29,6 +29,7 @@ module Cutthroat
         @players.length >= 8
       raise PlayerExistsError, "a player named #{player.name} already exists" if
         @players.any?{|p| p.name == player.name }
+      player.game = self
       @players << player
     end
 

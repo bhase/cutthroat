@@ -7,6 +7,8 @@ module Cutthroat
     attr_reader :turns_played
     attr_reader :balance
 
+    attr_accessor :game
+
     def initialize(name = "anonymous player")
       @location = 0
       @name = name
