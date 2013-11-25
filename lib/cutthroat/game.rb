@@ -49,5 +49,9 @@ module Cutthroat
       @active = false
     end
 
+    def find_location(l)
+      l
+    end
+
   end
 end
