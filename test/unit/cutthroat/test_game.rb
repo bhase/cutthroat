@@ -59,9 +59,14 @@ class TestGame < Test::Unit::TestCase
     }
   end
 
+  def test_game_connects_board
+    refute_nil(@game.board)
+  end
+
   def add_two_player(game)
     game.add_player(Cutthroat::Player.new("abc"))
     game.add_player(Cutthroat::Player.new("def"))
     game
   end
+
 end

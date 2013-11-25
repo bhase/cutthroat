@@ -17,11 +17,13 @@ module Cutthroat
 
     attr_reader :players
     attr_reader :active
+    attr_reader :board
 
     def initialize(dice = Cutthroat::Dice.new)
       @players = []
       @active = false
       @dice = dice
+      @board = Cutthroat::Board.new
     end
 
     def add_player(player)
