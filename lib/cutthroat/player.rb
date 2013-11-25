@@ -30,14 +30,14 @@ module Cutthroat
 
     def play_turn(dice)
       sum = dice.roll.reduce(:+)
-      move_to(game.find_location((sum + @location) % LOCATIONS))
-      if (location == 30)
-        move_to(10)
+      move_to(game.find_location((sum + location.to_i) % LOCATIONS))
+      if (location.to_i == 30)
+        move_to(game.find_location(10))
       else
         if player_touched_go(sum)
           receive(SALARY)
         end
-        if location == 4
+        if location.to_i == 4
           ten_percent = total_worth / 10
           charge(ten_percent < 200 ? ten_percent : 200 )
         end
@@ -46,7 +46,7 @@ module Cutthroat
     end
 
     def player_touched_go(eyes_rolled)
-      (location - eyes_rolled) < 0
+      (location.to_i - eyes_rolled) < 0
     end
 
     def total_worth

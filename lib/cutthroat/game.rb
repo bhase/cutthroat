@@ -50,7 +50,7 @@ module Cutthroat
     end
 
     def find_location(l)
-      l
+      board.lookup(l)
     end
 
   end

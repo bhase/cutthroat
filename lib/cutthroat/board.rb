@@ -30,6 +30,12 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 4
 - !ruby/object:Cutthroat::Location
+    position: 5
+    name: Reading Railroad
+- !ruby/object:Cutthroat::Location
+    position: 6
+    name: Oriental Avenue
+- !ruby/object:Cutthroat::Location
     position: 10
     name: Just Visiting
 - !ruby/object:Cutthroat::Location
@@ -45,5 +51,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 32
     name: North Carolina Avenue
+- !ruby/object:Cutthroat::Location
+    position: 35
+- !ruby/object:Cutthroat::Location
+    position: 39
+    name: Boardwalk
 ENDOFBOARD
 

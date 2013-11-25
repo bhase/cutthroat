@@ -1,6 +1,6 @@
 
-LOCATION = Transform /^(?:'([^']+)')|(?:\d+)$/ do |number|
-  board.lookup(number).position
+LOCATION = Transform /^'([^']+)'$/ do |number|
+  board.lookup(number)
 end
 
 EYES = Transform /^\d+$/ do |number|

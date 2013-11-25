@@ -3,8 +3,8 @@ When /^the player rolls (#{EYES})$/ do |eyes|
   player.play_turn(dice)
 end
 
-Then /^the player shall end on (?:location )?(#{LOCATION})$/ do |location|
-  player.location.should == location
+Then /^the player shall end on (#{LOCATION})$/ do |location|
+  player.location.should equal location
 end
 
 Given /^two player named '(#{NAME})' and '(#{NAME})' added to a game$/ do |name1, name2|
@@ -101,7 +101,7 @@ end
 When(/^the player lands on 'Go'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([3,2])
-  play_turn_from(35)
+  play_turn_from(board.lookup(35))
 end
 
 Then(/^the balance of this player is increased by \$(\d+)$/) do |amount|
@@ -111,14 +111,14 @@ end
 When(/^the player moves without touching 'Go'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([3,2])
-  play_turn_from(17)
+  play_turn_from(board.lookup(17))
 end
 
 Then(/^the balance of this player is unchanged$/) do
   player.balance.should == @initial_balance
 end
 
-Given(/^a player on (?:location )?(#{LOCATION})$/) do |location|
+Given /^a player on (#{LOCATION})$/ do |location|
   start_a_game
   @initial_balance = player.balance
   player.move_to(location)
@@ -133,11 +133,11 @@ end
 When(/^the player passes 'Go'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([3,5])
-  play_turn_from(35)
+  play_turn_from(board.lookup(35))
 end
 
 When(/^the player rolls enough to land on (#{LOCATION})$/) do |location|
-  goal = location - player.location
+  goal = location.to_i - player.location.to_i
   setup_dice_for(goal)
   player.play_turn(dice)
 end
@@ -150,7 +150,7 @@ end
 When(/^the player lands on 'Income Tax'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([1,2])
-  play_turn_from(1)
+  play_turn_from(board.lookup(1))
 end
 
 Then(/^the balance of this player is decreased by \$(\d+)$/) do |amount|
@@ -160,5 +160,5 @@ end
 When(/^the player passes over 'Income Tax'$/) do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([1,2])
-  play_turn_from(3)
+  play_turn_from(board.lookup(3))
 end

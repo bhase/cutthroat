@@ -50,7 +50,7 @@ module KnowsGame
   end
 
   def board
-    @board ||= Cutthroat::Board.new
+    game.board
   end
 
 end
