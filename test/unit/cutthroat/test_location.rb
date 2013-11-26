@@ -44,4 +44,9 @@ EOA
     assert_equal(1, @avenue.to_i)
   end
 
+  def test_location_responds_to_trigger_action
+    assert(@go.respond_to?(:trigger_action) == true,
+           "location does not respond to trigger_action")
+  end
+
 end

@@ -12,5 +12,9 @@ module Cutthroat
     def to_i
       @position
     end
+
+    def trigger_action
+    end
+
   end
 end
