@@ -10,7 +10,7 @@ module Cutthroat
     attr_accessor :game
 
     def initialize(name = "anonymous player")
-      @location = 0
+      @location = nil
       @name = name
       @turns_played = 0
       @balance = SEED_CAPITAL

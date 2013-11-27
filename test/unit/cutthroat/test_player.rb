@@ -18,7 +18,7 @@ class TestPlayer < Test::Unit::TestCase
   end
 
   def test_player_initial_location
-    assert(@player.location == 0, "new players should be on start")
+    assert(@player.location == nil, "new players should have no location")
   end
 
   def test_name
