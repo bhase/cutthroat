@@ -39,6 +39,12 @@ class TestGame < Test::Unit::TestCase
     assert_equal(true, game.active, "game should be actvie after start")
   end
 
+  def test_start_game_moves_player_to_go
+    game = add_two_player(Cutthroat::Game.new())
+    game.start
+    assert_equal(0, game.players[0].location.to_i)
+  end
+
   def test_cancel_game
     game = add_two_player(Cutthroat::Game.new())
     game.start
