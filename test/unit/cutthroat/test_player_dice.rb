@@ -46,7 +46,6 @@ class TestPlayerDice < Test::Unit::TestCase
     @player.game = mock
     location = mock
     location.expects(:trigger_action).with(@player)
-    location.expects(:to_i).at_least_once.returns(1)
     @player.game.expects(:find_location).returns(location)
     @player.play_turn(@dice)
   end

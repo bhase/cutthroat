@@ -11,12 +11,14 @@ module Cutthroat
 
     def initialize(name = "anonymous player")
       @location = nil
+      @previous_location = @location
       @name = name
       @turns_played = 0
       @balance = SEED_CAPITAL
     end
 
     def move_to(location)
+      @previous_location = @location
       @location = location
     end
 
@@ -32,22 +34,11 @@ module Cutthroat
       sum = dice.roll.reduce(:+)
       move_to(game.find_location((sum + location.to_i) % LOCATIONS))
       location.trigger_action(self)
-      if (location.to_i == 30)
-        move_to(game.find_location(10))
-      else
-        if player_touched_go(sum)
-          receive(SALARY)
-        end
-        if location.to_i == 4
-          ten_percent = total_worth / 10
-          charge(ten_percent < 200 ? ten_percent : 200 )
-        end
-      end
       @turns_played += 1
     end
 
-    def player_touched_go(eyes_rolled)
-      (location.to_i - eyes_rolled) < 0
+    def touched_go
+      (@previous_location.to_i > @location.to_i)
     end
 
     def total_worth
