@@ -31,6 +31,7 @@ module Cutthroat
     def play_turn(dice)
       sum = dice.roll.reduce(:+)
       move_to(game.find_location((sum + location.to_i) % LOCATIONS))
+      location.trigger_action(self)
       if (location.to_i == 30)
         move_to(game.find_location(10))
       else

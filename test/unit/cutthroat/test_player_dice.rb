@@ -9,8 +9,7 @@ class TestPlayerDice < Test::Unit::TestCase
 
   def setup
     @player = Cutthroat::Player.new()
-    @player.game = mock
-    @player.game.expects(:find_location).at_most(3).returns(12)
+    @player.game = Cutthroat::Game.new
     @dice = StubDice.new
     @dice.sequence = [[3, 2]]
   end
@@ -23,19 +22,17 @@ class TestPlayerDice < Test::Unit::TestCase
 
   def test_player_moves_forward
     @dice.sequence = [[3, 2]]
-    @player.move_to(7)
-    @player.game.expects(:find_location).returns(12)
+    @player.move_to(@player.game.find_location(7))
     @player.play_turn(@dice)
-    assert(@player.location == 12,
+    assert(@player.location.to_i == 12,
            "player moves forward to 12 when rolled 5, is at #{@player.location}")
   end
 
   def test_player_turnaround
     @dice.sequence = [[3, 5]]
     @player.move_to(38)
-    @player.game.expects(:find_location).returns(6)
     @player.play_turn(@dice)
-    assert(@player.location == 6,
+    assert(@player.location.to_i == 6,
            "player wraps forward to 6, is at #{@player.location}")
   end
 
@@ -46,6 +43,11 @@ class TestPlayerDice < Test::Unit::TestCase
   end
 
   def test_player_finds_location
+    @player.game = mock
+    location = mock
+    location.expects(:trigger_action).with(@player)
+    location.expects(:to_i).at_least_once.returns(1)
+    @player.game.expects(:find_location).returns(location)
     @player.play_turn(@dice)
   end
 end

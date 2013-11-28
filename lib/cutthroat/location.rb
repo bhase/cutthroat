@@ -13,7 +13,7 @@ module Cutthroat
       @position
     end
 
-    def trigger_action
+    def trigger_action(player)
     end
 
   end
