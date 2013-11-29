@@ -24,6 +24,9 @@ module Cutthroat
           ten_percent = player.total_worth / 10
           player.charge(ten_percent < 200 ? ten_percent : 200 )
         end
+        if position == 38
+          player.charge(75)
+        end
       end
     end
 

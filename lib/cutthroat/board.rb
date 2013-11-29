@@ -65,6 +65,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 37
 - !ruby/object:Cutthroat::Location
+    position: 38
+    name: Luxury Tax
+- !ruby/object:Cutthroat::Location
     position: 39
     name: Boardwalk
 ENDOFBOARD
