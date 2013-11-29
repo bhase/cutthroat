@@ -2,10 +2,14 @@ Then /^the player shall end on (#{LOCATION})$/ do |location|
   player.location.should equal location
 end
 
-When /^the player lands on 'Go'$/ do
+When /^the player lands on (#{LOCATION})$/ do |location|
   @initial_balance = player.balance
-  dice.should_receive(:roll).and_return([3,2])
-  play_turn_from(board.lookup(35))
+  dice.should_receive(:roll).and_return([1,2])
+  if (location.to_i < 3)
+    play_turn_from(board.lookup(40 - location.to_i - 3))
+  else
+    play_turn_from(board.lookup(location.to_i - 3))
+  end
 end
 
 Given /^a player on (#{LOCATION})$/ do |location|
@@ -30,12 +34,6 @@ When /^the player passes over 'Income Tax'$/ do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([1,2])
   play_turn_from(board.lookup(3))
-end
-
-When /^the player lands on 'Income Tax'$/ do
-  @initial_balance = player.balance
-  dice.should_receive(:roll).and_return([1,2])
-  play_turn_from(board.lookup(1))
 end
 
 When /^the player moves without touching 'Go'$/ do

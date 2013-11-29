@@ -29,6 +29,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 3
 - !ruby/object:Cutthroat::Location
     position: 4
+    name: Income Tax
 - !ruby/object:Cutthroat::Location
     position: 5
     name: Reading Railroad
@@ -61,6 +62,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: North Carolina Avenue
 - !ruby/object:Cutthroat::Location
     position: 35
+- !ruby/object:Cutthroat::Location
+    position: 37
 - !ruby/object:Cutthroat::Location
     position: 39
     name: Boardwalk
