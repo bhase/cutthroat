@@ -6,7 +6,6 @@ Feature: Luxury Tax
     When the player lands on 'Luxury Tax'
     Then the balance of this player is decreased by $75
 
-  @draft
   Scenario: Passing Luxury Tax
     Given a player in a game
     When the player passes 'Luxury Tax'

@@ -24,16 +24,14 @@ When /^the player leaves Go$/ do
   player.play_turn(dice)
 end
 
-When /^the player passes 'Go'$/ do
-  @initial_balance = player.balance
-  dice.should_receive(:roll).and_return([3,5])
-  play_turn_from(board.lookup(35))
-end
-
-When /^the player passes over 'Income Tax'$/ do
+When /^the player passes (?:over )?(#{LOCATION})$/ do |location|
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([1,2])
-  play_turn_from(board.lookup(3))
+  if (location.to_i < 3)
+    play_turn_from(board.lookup(40 - location.to_i - 2))
+  else
+    play_turn_from(board.lookup(location.to_i - 2))
+  end
 end
 
 When /^the player moves without touching 'Go'$/ do
