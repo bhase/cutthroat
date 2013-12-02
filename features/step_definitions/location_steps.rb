@@ -30,3 +30,7 @@ When /^the player moves without touching 'Go'$/ do
   play_turn_from(board.lookup(17))
 end
 
+Given /^(#{LOCATION}) is unowned$/ do |location|
+  location.owner = nil
+end
+

@@ -5,6 +5,8 @@ module Cutthroat
     attr_reader :name
     attr_reader :type
 
+    attr_accessor :owner
+
     def to_s
       @name
     end

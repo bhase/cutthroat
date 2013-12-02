@@ -1,18 +1,21 @@
 Feature: Buy Property
   As a player, I can buy unowned property when I land on it during a turn.
 
-  @draft
+  Background:
+    Given a player in a game
+
+  @wip
   Scenario: Buying unowned property
-    Given 'B&O RR' is unowned
-    And the player lands on 'B&O RR'
-    When the player decides to buy this property
+    Given 'Virginia Avenue' is unowned
+    When the player lands on 'Virginia Avenue'
+    And the player decides to buy this property
     Then the balance of this player is decreased by cost of property
-    And the player owns 'B&O RR'
+    And the player owns 'Virginia Avenue'
 
   @draft
   Scenario: Landing on self owned property
-    Given 'B&O RR' is owned by player
-    When the player lands on 'B&O RR'
+    Given 'Pennsylvania Avenue' is owned by player
+    When the player lands on 'Pennsylvania Avenue'
     Then the balance of this player is unchanged
 
   @draft
