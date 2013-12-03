@@ -63,6 +63,10 @@ module KnowsGame
     game.board
   end
 
+  def location
+    @location ||= player.location
+  end
+
 end
 
 World(KnowsPlayer)

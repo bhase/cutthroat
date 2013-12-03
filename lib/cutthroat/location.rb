@@ -4,6 +4,7 @@ module Cutthroat
     attr_reader :position
     attr_reader :name
     attr_reader :type
+    attr_reader :land_price
 
     attr_accessor :owner
 
@@ -30,6 +31,11 @@ module Cutthroat
           player.charge(75)
         end
       end
+    end
+
+    def record_rights(player)
+      player.charge(land_price)
+      self.owner = player
     end
 
   end

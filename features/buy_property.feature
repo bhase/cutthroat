@@ -4,7 +4,6 @@ Feature: Buy Property
   Background:
     Given a player in a game
 
-  @wip
   Scenario: Buying unowned property
     Given 'Virginia Avenue' is unowned
     When the player lands on 'Virginia Avenue'

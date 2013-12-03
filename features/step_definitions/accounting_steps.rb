@@ -14,3 +14,7 @@ end
 Then /^the balance of this player is decreased by \$(\d+)$/ do |amount|
   player.balance.should == @initial_balance - amount
 end
+
+Then /^the balance of this player is decreased by cost of property$/ do
+  player.balance.should == @initial_balance - location.land_price
+end

@@ -34,3 +34,11 @@ Given /^(#{LOCATION}) is unowned$/ do |location|
   location.owner = nil
 end
 
+When /^the player decides to buy this property$/ do
+  @initial_balance = player.balance
+  location.record_rights(player)
+end
+
+Then /^the player owns (#{LOCATION})$/ do |location|
+  location.owner.should be player
+end
