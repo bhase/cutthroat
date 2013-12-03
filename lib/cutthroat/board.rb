@@ -67,6 +67,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 32
     name: North Carolina Avenue
 - !ruby/object:Cutthroat::Location
+    position: 34
+    name: Pennsylvania Avenue
+- !ruby/object:Cutthroat::Location
     position: 35
 - !ruby/object:Cutthroat::Location
     position: 37

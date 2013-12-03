@@ -11,7 +11,6 @@ Feature: Buy Property
     Then the balance of this player is decreased by cost of property
     And the player owns 'Virginia Avenue'
 
-  @draft
   Scenario: Landing on self owned property
     Given 'Pennsylvania Avenue' is owned by player
     When the player lands on 'Pennsylvania Avenue'
