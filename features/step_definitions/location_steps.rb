@@ -34,6 +34,10 @@ Given /^(#{LOCATION}) is unowned$/ do |location|
   location.owner = nil
 end
 
+Then /^(#{LOCATION}) is still unowned$/ do |location|
+  location.owner.should be nil
+end
+
 Given /^(#{LOCATION}) is owned by player$/ do |location|
   location.owner = player
 end

@@ -16,7 +16,6 @@ Feature: Buy Property
     When the player lands on 'Pennsylvania Avenue'
     Then the balance of this player is unchanged
 
-  @draft
   Scenario: Passing unowned property
     Given 'B&O RR' is unowned
     When the player passes over 'B&O RR'
