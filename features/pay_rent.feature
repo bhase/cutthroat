@@ -4,7 +4,6 @@ Feature: Pay rent
   Background:
     Given two player named 'Albert' and 'Fred' added to a game
 
-  @wip
   Scenario: Landing on Railroad when one is owned
     Given Albert owns 'B&O RR'
     When Fred lands on 'B&O RR'

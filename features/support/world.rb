@@ -4,9 +4,9 @@ module KnowsPlayer
     @player ||= Cutthroat::Player.new()
   end
 
-  def play_turn_from(location)
-    player.move_to(location)
-    player.play_turn(dice)
+  def play_turn_from(location, p = player)
+    p.move_to(location)
+    p.play_turn(dice)
   end
 
   def set_worth_of_player_to(amount)
@@ -14,9 +14,9 @@ module KnowsPlayer
     player.receive(delta)
   end
 
-  def play_turn_and_land_on(location)
+  def play_turn_and_land_on(location, p = player)
     dice.should_receive(:roll).and_return([1,2])
-    play_turn_from(board.lookup((location.to_i - 3) % Cutthroat::LOCATIONS))
+    play_turn_from(board.lookup((location.to_i - 3) % Cutthroat::LOCATIONS), p)
   end
 
   def play_turn_and_pass_over(location)
@@ -29,6 +29,10 @@ end
 module KnowsGame
   def game
     @game ||= Cutthroat::Game.new()
+  end
+
+  def balance_of
+    @balance_of ||= {}
   end
 
   def initial_players
@@ -67,6 +71,9 @@ module KnowsGame
     @location ||= player.location
   end
 
+  def find_player_by_name(name)
+    game.players.find{ |p| p.name == name }
+  end
 end
 
 World(KnowsPlayer)

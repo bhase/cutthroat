@@ -18,3 +18,12 @@ end
 Then /^the balance of this player is decreased by cost of property$/ do
   player.balance.should == @initial_balance - location.land_price
 end
+
+Then /^(#{NAME}) pays \$(\d+) rent to (#{NAME})$/ do |charged_name, amount, advantaged_name|
+  charged_player = find_player_by_name(charged_name)
+  advantaged_player = find_player_by_name(advantaged_name)
+
+  charged_player.balance.should == balance_of[charged_name] - amount
+  advantaged_player.balance.should == balance_of[advantaged_name] + amount
+  pending # express the regexp above with the code you wish you had
+end

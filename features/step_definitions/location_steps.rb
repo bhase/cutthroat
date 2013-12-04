@@ -50,3 +50,15 @@ end
 Then /^the player owns (#{LOCATION})$/ do |location|
   location.owner.should be player
 end
+
+Given /^(#{NAME}) owns (#{LOCATION})$/ do |name, location|
+  player = find_player_by_name(name)
+  balance_of[name] = player.balance
+  location.owner = player
+end
+
+When /^(#{NAME}) lands on (#{LOCATION})$/ do |name, location|
+  player = find_player_by_name(name)
+  balance_of[name] = player.balance
+  play_turn_and_land_on(location, player)
+end

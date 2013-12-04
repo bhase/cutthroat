@@ -5,6 +5,7 @@ module Cutthroat
     attr_reader :name
     attr_reader :type
     attr_reader :land_price
+    attr_reader :rent
 
     attr_accessor :owner
 
@@ -29,6 +30,11 @@ module Cutthroat
         end
         if position == 38
           player.charge(75)
+        end
+
+        if (owner != nil && owner != player)
+          player.charge(rent)
+          owner.receive(rent)
         end
       end
     end
