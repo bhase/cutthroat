@@ -25,5 +25,4 @@ Then /^(#{NAME}) pays \$(\d+) rent to (#{NAME})$/ do |charged_name, amount, adva
 
   charged_player.balance.should == balance_of[charged_name] - amount
   advantaged_player.balance.should == balance_of[advantaged_name] + amount
-  pending # express the regexp above with the code you wish you had
 end
