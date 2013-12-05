@@ -10,6 +10,14 @@ module Cutthroat
       @locations.find {|l| l.position == location || l.name == location }
     end
 
+    def all_owned_by(player)
+      @locations.select {|l| l.owner == player }
+    end
+
+    def all_of_group(group)
+      @locations.select {|l| l.group == group }
+    end
+
   end
 end
 
@@ -23,10 +31,13 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 1
     name: Mediterranean Avenue
     type: !ruby/sym property
+    group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
     position: 2
 - !ruby/object:Cutthroat::Location
     position: 3
+    name: Baltic Avenue
+    group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
     position: 4
     name: Income Tax

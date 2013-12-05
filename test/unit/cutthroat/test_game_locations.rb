@@ -28,4 +28,10 @@ class TestGameLocations < Test::Unit::TestCase
     assert_equal([l1, l2], @game.find_locations_owned_by(@player))
   end
 
+  def test_find_locations_of_group
+    l1 = @game.find_location(1)
+    l2 = @game.find_location(3)
+    assert_equal([l1, l2], @game.find_locations_of_group(:street1))
+  end
+
 end

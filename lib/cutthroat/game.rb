@@ -58,5 +58,9 @@ module Cutthroat
       board.all_owned_by(player)
     end
 
+    def find_locations_of_group(group)
+      board.all_of_group(group)
+    end
+
   end
 end
