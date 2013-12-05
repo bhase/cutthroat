@@ -54,5 +54,9 @@ module Cutthroat
       board.lookup(l)
     end
 
+    def find_locations_owned_by(player)
+      board.all_owned_by(player)
+    end
+
   end
 end
