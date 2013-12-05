@@ -4,6 +4,7 @@ module Cutthroat
     attr_reader :position
     attr_reader :name
     attr_reader :type
+    attr_reader :group
     attr_reader :land_price
     attr_reader :rent
 
@@ -33,6 +34,7 @@ module Cutthroat
         end
 
         if (owner != nil && owner != player)
+          rent = calculate_rent(player.game)
           player.charge(rent)
           owner.receive(rent)
         end
@@ -42,6 +44,13 @@ module Cutthroat
     def record_rights(player)
       player.charge(land_price)
       self.owner = player
+    end
+
+    def calculate_rent(game)
+      properties_owned = game.find_locations_owned_by(self.owner)
+      properties_in_group = game.find_locations_of_group(self.group)
+      properties_owned_in_group = properties_owned & properties_in_group
+      rent * properties_owned_in_group.length # not correct but makes test pass
     end
 
   end

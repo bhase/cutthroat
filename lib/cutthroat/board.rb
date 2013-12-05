@@ -44,6 +44,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 5
     name: Reading Railroad
+    rent: 25
+    type: !ruby/sym property
+    group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 6
     name: Oriental Avenue
@@ -62,6 +65,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     land_price: 160
 - !ruby/object:Cutthroat::Location
     position: 15
+    name: Pennsylvania Railroad
+    rent: 25
+    type: !ruby/sym property
+    group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 19
     name: New York Avenue
@@ -72,8 +79,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 25
     name: B&O RR
-    type: !ruby/sym property
     rent: 25
+    type: !ruby/sym property
+    group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 30
     name: Go To Jail
@@ -85,6 +93,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Pennsylvania Avenue
 - !ruby/object:Cutthroat::Location
     position: 35
+    name: Short Line
+    rent: 25
+    type: !ruby/sym property
+    group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 37
 - !ruby/object:Cutthroat::Location

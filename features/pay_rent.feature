@@ -9,7 +9,6 @@ Feature: Pay rent
     When Fred lands on 'B&O RR'
     Then Fred pays $25 rent to Albert
 
-  @draft
   Scenario: Landing on Railroad when two are owned
     Given Albert owns 'B&O RR'
     And Albert owns 'Reading Railroad'
