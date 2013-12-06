@@ -15,22 +15,20 @@ Feature: Pay rent
     When Fred lands on 'B&O RR'
     Then Fred pays $50 rent to Albert
 
-  @draft
   Scenario: Landing on Railroad when three are owned
     Given Albert owns these properties
-      | 'B&O RR'                |
-      | 'Reading Railroad'      |
-      | 'Pennsylvania Railroad' |
+      | B&O RR                |
+      | Reading Railroad      |
+      | Pennsylvania Railroad |
     When Fred lands on 'B&O RR'
     Then Fred pays $100 rent to Albert
 
-  @draft
   Scenario: Landing on Railroad when all four are owned
     Given Albert owns these properties
-      | 'B&O RR'                |
-      | 'Reading Railroad'      |
-      | 'Pennsylvania Railroad' |
-      | 'Short Line'            |
+      | B&O RR                |
+      | Reading Railroad      |
+      | Pennsylvania Railroad |
+      | Short Line            |
     When Fred lands on 'B&O RR'
     Then Fred pays $200 rent to Albert
 

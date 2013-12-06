@@ -62,3 +62,12 @@ When /^(#{NAME}) lands on (#{LOCATION})$/ do |name, location|
   balance_of[name] = player.balance
   play_turn_and_land_on(location, player)
 end
+
+Given /^(#{NAME}) owns these properties$/ do |name, properties|
+  # properties is a Cucumber::Ast::Table
+  player = find_player_by_name(name)
+  balance_of[name] = player.balance
+  properties.raw.each do |property|
+    board.lookup(property[0]).owner = player
+  end
+end

@@ -50,7 +50,7 @@ module Cutthroat
       properties_owned = game.find_locations_owned_by(self.owner)
       properties_in_group = game.find_locations_of_group(self.group)
       properties_owned_in_group = properties_owned & properties_in_group
-      rent * properties_owned_in_group.length # not correct but makes test pass
+      rent * (2 ** (properties_owned_in_group.length - 1))
     end
 
   end
