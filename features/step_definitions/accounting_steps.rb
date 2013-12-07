@@ -26,3 +26,12 @@ Then /^(#{NAME}) pays \$(\d+) rent to (#{NAME})$/ do |charged_name, amount, adva
   charged_player.balance.should == balance_of[charged_name] - amount
   advantaged_player.balance.should == balance_of[advantaged_name] + amount
 end
+
+Then /^(#{NAME}) rolls dice and pays (#{NUMBER})x dice rent to (#{NAME})$/ do |sender, times, receiver|
+  eyes = dice.roll.inject(:+) # works with stubbed dice
+  charged_player = find_player_by_name(sender)
+  advantaged_player = find_player_by_name(receiver)
+
+  charged_player.balance.should == balance_of[sender] - (times * eyes)
+  advantaged_player.balance.should == balance_of[receiver] + (times * eyes)
+end

@@ -28,7 +28,7 @@ end
 
 module KnowsGame
   def game
-    @game ||= Cutthroat::Game.new()
+    @game ||= Cutthroat::Game.new(dice)
   end
 
   def balance_of
@@ -50,7 +50,7 @@ module KnowsGame
   end
 
   def dice
-    @dice ||= double()
+    @dice ||= double(:roll => [2, 3])
   end
 
   def setup_dice_for(eyes)

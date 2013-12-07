@@ -59,6 +59,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 11
 - !ruby/object:Cutthroat::Location
     position: 12
+    name: Electric Company
+    group: !ruby/sym utility
 - !ruby/object:Cutthroat::Location
     position: 14
     name: Virginia Avenue
@@ -69,6 +71,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     rent: 25
     type: !ruby/sym property
     group: !ruby/sym railroad
+- !ruby/object:Cutthroat::Location
+    position: 18
+    name: Water Works
+    group: !ruby/sym utility
 - !ruby/object:Cutthroat::Location
     position: 19
     name: New York Avenue

@@ -47,10 +47,19 @@ module Cutthroat
     end
 
     def calculate_rent(game)
-      properties_owned = game.find_locations_owned_by(self.owner)
-      properties_in_group = game.find_locations_of_group(self.group)
-      properties_owned_in_group = properties_owned & properties_in_group
-      rent * (2 ** (properties_owned_in_group.length - 1))
+      properties_in_group = game.find_locations_of_group(group)
+      if (group == :utility)
+        eyes = game.dice.roll.inject(:+)
+        if properties_in_group.none?{|p| p.owner.nil?}
+          eyes * 10
+        else
+          eyes * 4
+        end
+      else
+        properties_owned = game.find_locations_owned_by(self.owner)
+        properties_owned_in_group = properties_owned & properties_in_group
+        rent * (2 ** (properties_owned_in_group.length - 1))
+      end
     end
 
   end

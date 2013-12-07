@@ -18,6 +18,7 @@ module Cutthroat
     attr_reader :players
     attr_reader :active
     attr_reader :board
+    attr_reader :dice
 
     def initialize(dice = Cutthroat::Dice.new)
       @players = []
