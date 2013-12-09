@@ -34,7 +34,7 @@ module Cutthroat
         end
 
         if (owner != nil && owner != player)
-          rent = calculate_rent(player.game)
+          rent = calculate_rent(player)
           player.charge(rent)
           owner.receive(rent)
         end
@@ -46,10 +46,11 @@ module Cutthroat
       self.owner = player
     end
 
-    def calculate_rent(game)
+    def calculate_rent(player)
+      game = player.game
       properties_in_group = game.find_locations_of_group(group)
       if (group == :utility)
-        eyes = game.dice.roll.inject(:+)
+        eyes = player.last_throw.inject(:+)
         if properties_in_group.none?{|p| p.owner.nil?}
           eyes * 10
         else

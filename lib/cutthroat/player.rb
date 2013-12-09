@@ -6,6 +6,7 @@ module Cutthroat
     attr_reader :name
     attr_reader :turns_played
     attr_reader :balance
+    attr_reader :last_throw
 
     attr_accessor :game
 
@@ -31,7 +32,8 @@ module Cutthroat
     end
 
     def play_turn(dice)
-      sum = dice.roll.reduce(:+)
+      @last_throw = dice.roll
+      sum = last_throw.reduce(:+)
       move_to(game.find_location((sum + location.to_i) % LOCATIONS))
       location.trigger_action(self)
       @turns_played += 1
