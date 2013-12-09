@@ -35,3 +35,12 @@ Then /^(#{NAME}) pays (#{NUMBER})x current dice rent to (#{NAME})$/ do |sender, 
   charged_player.balance.should == balance_of[sender] - (times * eyes)
   advantaged_player.balance.should == balance_of[receiver] + (times * eyes)
 end
+
+Then /^(#{NAME}) pays the stated rent to (#{NAME})$/ do |charged_name, advantaged_name|
+  charged_player = find_player_by_name(charged_name)
+  advantaged_player = find_player_by_name(advantaged_name)
+  rent = charged_player.location.rent
+
+  charged_player.balance.should == balance_of[charged_name] - rent
+  advantaged_player.balance.should == balance_of[advantaged_name] + rent
+end

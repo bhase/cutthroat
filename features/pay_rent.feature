@@ -44,7 +44,6 @@ Feature: Pay rent
     When Fred lands on 'Water Works'
     Then Fred pays 10x current dice rent to Albert
 
-  @draft
   Scenario: Landing on real estate
     Given Albert owns 'Oriental Avenue'
     When Fred lands on 'Oriental Avenue'

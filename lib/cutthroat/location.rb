@@ -56,10 +56,12 @@ module Cutthroat
         else
           eyes * 4
         end
-      else
+      elsif (group == :railroad)
         properties_owned = game.find_locations_owned_by(self.owner)
         properties_owned_in_group = properties_owned & properties_in_group
         rent * (2 ** (properties_owned_in_group.length - 1))
+      else
+        rent
       end
     end
 
