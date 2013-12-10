@@ -30,7 +30,7 @@ module Cutthroat
           player.charge(ten_percent < 200 ? ten_percent : 200 )
         end
         if position == 38
-          player.charge(75)
+          player.charge(LUXURY_TAX)
         end
 
         if (owner != nil && owner != player)

@@ -9,4 +9,5 @@ module Cutthroat
   SEED_CAPITAL = 1500
   LOCATIONS = 40
   SALARY = 200
+  LUXURY_TAX = 75
 end
