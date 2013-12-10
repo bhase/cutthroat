@@ -30,6 +30,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 1
     name: Mediterranean Avenue
+    rent: 2
     type: !ruby/sym property
     group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
@@ -55,6 +56,14 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     type: !ruby/sym property
 - !ruby/object:Cutthroat::Location
     position: 7
+- !ruby/object:Cutthroat::Location
+    position: 8
+    name: Vermont Avenue
+    group: !ruby/sym street2
+- !ruby/object:Cutthroat::Location
+    position: 9
+    name: Connecticut Avenue
+    group: !ruby/sym street2
 - !ruby/object:Cutthroat::Location
     position: 10
     name: Just Visiting
@@ -107,12 +116,21 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
+    position: 36
+- !ruby/object:Cutthroat::Location
     position: 37
+    name: Park Place
+    rent: 35
+    type: !ruby/sym property
+    group: !ruby/sym street8
 - !ruby/object:Cutthroat::Location
     position: 38
     name: Luxury Tax
 - !ruby/object:Cutthroat::Location
     position: 39
     name: Boardwalk
+    rent: 50
+    type: !ruby/sym property
+    group: !ruby/sym street8
 ENDOFBOARD
 

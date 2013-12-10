@@ -36,10 +36,11 @@ Then /^(#{NAME}) pays (#{NUMBER})x current dice rent to (#{NAME})$/ do |sender, 
   advantaged_player.balance.should == balance_of[receiver] + (times * eyes)
 end
 
-Then /^(#{NAME}) pays the stated rent to (#{NAME})$/ do |charged_name, advantaged_name|
+Then /^(#{NAME}) pays (twice )?the stated rent to (#{NAME})$/ do |charged_name, twice, advantaged_name|
   charged_player = find_player_by_name(charged_name)
   advantaged_player = find_player_by_name(advantaged_name)
   rent = charged_player.location.rent
+  rent *= 2 unless twice.nil?
 
   charged_player.balance.should == balance_of[charged_name] - rent
   advantaged_player.balance.should == balance_of[advantaged_name] + rent

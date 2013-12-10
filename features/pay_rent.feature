@@ -49,9 +49,8 @@ Feature: Pay rent
     When Fred lands on 'Oriental Avenue'
     Then Fred pays the stated rent to Albert
 
-  @draft
   Scenario: Landing on real estate when all in group owned
-    Given Albert owns 'Mediterranean Avenue'
-    And Albert owns 'Baltic Avenue'
-    When Fred lands on 'Mediterranean Avenue'
+    Given Albert owns 'Park Place'
+    And Albert owns 'Boardwalk'
+    When Fred lands on 'Park Place'
     Then Fred pays twice the stated rent to Albert
