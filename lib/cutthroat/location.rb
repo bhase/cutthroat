@@ -19,18 +19,11 @@ module Cutthroat
     end
 
     def trigger_action(player)
-      if (position == 30)
-        player.move_to(player.game.find_location(10))
+      if !@action.nil?
+        send @action, player
       else
         if player.touched_go
           player.receive(SALARY)
-        end
-        if position == 4
-          ten_percent = player.total_worth / 10
-          player.charge(ten_percent < 200 ? ten_percent : 200 )
-        end
-        if position == 38
-          player.charge(LUXURY_TAX)
         end
 
         if (owner != nil && owner != player)
@@ -45,6 +38,8 @@ module Cutthroat
       player.charge(land_price)
       self.owner = player
     end
+
+    private
 
     def calculate_rent(player)
       game = player.game
@@ -69,6 +64,23 @@ module Cutthroat
           end
         end
       end
+    end
+
+    def put_in_jail(player)
+      player.move_to(player.game.find_location(10))
+    end
+
+    def income_tax(player)
+      ten_percent = player.total_worth / 10
+      player.charge(ten_percent < MAX_INCOME_TAX ? ten_percent : MAX_INCOME_TAX)
+    end
+
+    def luxury_tax(player)
+      player.charge(LUXURY_TAX)
+    end
+
+    def receive_salary(player)
+      player.receive(SALARY)
     end
 
   end

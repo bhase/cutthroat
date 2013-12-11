@@ -10,4 +10,5 @@ module Cutthroat
   LOCATIONS = 40
   SALARY = 200
   LUXURY_TAX = 75
+  MAX_INCOME_TAX = 200
 end

@@ -27,6 +27,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 0
     name: Go
     type: !ruby/sym action
+    action: receive_salary
 - !ruby/object:Cutthroat::Location
     position: 1
     name: Mediterranean Avenue
@@ -42,6 +43,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 4
     name: Income Tax
+    action: income_tax
 - !ruby/object:Cutthroat::Location
     position: 5
     name: Reading Railroad
@@ -103,6 +105,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 30
     name: Go To Jail
+    action: put_in_jail
 - !ruby/object:Cutthroat::Location
     position: 32
     name: North Carolina Avenue
@@ -126,6 +129,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 38
     name: Luxury Tax
+    action: luxury_tax
 - !ruby/object:Cutthroat::Location
     position: 39
     name: Boardwalk
