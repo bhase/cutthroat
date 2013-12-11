@@ -3,7 +3,6 @@ module Cutthroat
   class Location
     attr_reader :position
     attr_reader :name
-    attr_reader :type
     attr_reader :group
     attr_reader :land_price
     attr_reader :rent
