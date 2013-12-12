@@ -3,10 +3,10 @@ Feature: Player movement
 
 	Scenario: Standard move
 		Given a player on 'Go'
-		When the player rolls 6
-		Then the player shall end on 'Oriental Avenue'
+		When the player rolls 3
+		Then the player shall end on 'Baltic Avenue'
 
 	Scenario: Turn around
 		Given a player on 'Boardwalk'
-		When the player rolls 6
-		Then the player shall end on 'Reading Railroad'
+		When the player rolls 7
+		Then the player shall end on 'Oriental Avenue'
