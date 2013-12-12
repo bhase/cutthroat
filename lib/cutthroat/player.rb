@@ -32,10 +32,13 @@ module Cutthroat
     end
 
     def play_turn(dice)
-      @last_throw = dice.roll
-      sum = last_throw.reduce(:+)
-      move_to(game.find_location((sum + location.to_i) % LOCATIONS))
-      location.trigger_action(self)
+      loop do
+        @last_throw = dice.roll
+        sum = last_throw.reduce(:+)
+        move_to(game.find_location((sum + location.to_i) % LOCATIONS))
+        location.trigger_action(self)
+        break if @last_throw[0] != @last_throw[1]
+      end
       @turns_played += 1
     end
 
