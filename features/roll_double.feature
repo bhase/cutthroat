@@ -9,7 +9,6 @@ Feature: Roll Double
       | [1, 3] |
     Then the player shall end on 'Just Visiting'
 
-  @draft
   Scenario: Roll Double Twice
     Given a player on 'Go'
     When the player rolls the following sequence

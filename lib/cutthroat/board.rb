@@ -97,6 +97,11 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 22
 - !ruby/object:Cutthroat::Location
+    position: 24
+    name: Illinois Avenue
+    rent: 20
+    group: !ruby/sym street5
+- !ruby/object:Cutthroat::Location
     position: 25
     name: B&O RR
     rent: 25
@@ -106,6 +111,11 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 30
     name: Go To Jail
     action: put_in_jail
+- !ruby/object:Cutthroat::Location
+    position: 31
+    name: Pacific Avenue
+    rent: 26
+    group: !ruby/sym street7
 - !ruby/object:Cutthroat::Location
     position: 32
     name: North Carolina Avenue
