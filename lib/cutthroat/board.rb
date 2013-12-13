@@ -92,7 +92,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 18
     name: Tennessee Avenue
 - !ruby/object:Cutthroat::Location
-    position: 18
+    position: 28
     name: Water Works
     group: !ruby/sym utility
 - !ruby/object:Cutthroat::Location
