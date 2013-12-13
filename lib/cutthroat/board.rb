@@ -86,6 +86,12 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
+    position: 16
+    name: St. James Place
+- !ruby/object:Cutthroat::Location
+    position: 18
+    name: Tennessee Avenue
+- !ruby/object:Cutthroat::Location
     position: 18
     name: Water Works
     group: !ruby/sym utility
@@ -94,6 +100,9 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: New York Avenue
 - !ruby/object:Cutthroat::Location
     position: 20
+- !ruby/object:Cutthroat::Location
+    position: 21
+    name: Kentucky Avenue
 - !ruby/object:Cutthroat::Location
     position: 22
 - !ruby/object:Cutthroat::Location
