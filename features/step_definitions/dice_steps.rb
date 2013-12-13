@@ -15,6 +15,6 @@ When /^the player rolls the following sequence$/ do |sequence|
   sequence.raw.each do |s|
     roll_sequence << eval(s[0])
   end
-  dice.should_receive(:roll).and_return(*roll_sequence)
+  dice.should_receive(:roll).at_most(3).times.and_return(*roll_sequence)
   player.play_turn(dice)
 end

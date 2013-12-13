@@ -2,6 +2,11 @@ Then /^the player shall end on (#{LOCATION})$/ do |location|
   player.location.should equal location
 end
 
+Then /^the player shall end in jail$/ do
+  player.location.should equal game.find_location(10)
+  # TODO check if player is in jail and did not just land here
+end
+
 When /^the player lands on (#{LOCATION})$/ do |location|
   @initial_balance = player.balance
   play_turn_and_land_on(location)

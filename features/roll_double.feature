@@ -17,8 +17,7 @@ Feature: Roll Double
       | [3, 4] |
     Then the player shall end on 'Pacific Avenue'
 
-  @draft
-  Scenario: Roll Double thrice
+  Scenario: Roll Double Thrice - Go To Jail
     Given a player on 'Go'
     When the player rolls the following sequence
       | [4, 4] |
