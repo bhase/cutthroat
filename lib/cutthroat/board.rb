@@ -76,6 +76,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Electric Company
     group: !ruby/sym utility
 - !ruby/object:Cutthroat::Location
+    position: 13
+    name: States Avenue
+    group: !ruby/sym street3
+- !ruby/object:Cutthroat::Location
     position: 14
     name: Virginia Avenue
     land_price: 160
