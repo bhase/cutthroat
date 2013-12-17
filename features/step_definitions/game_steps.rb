@@ -27,10 +27,6 @@ When /^I try to start a game$/ do
   }
 end
 
-Then /^I should receive a message '(.+)'$/ do |message|
-  @last_error_message.should match(/#{message}/)
-end
-
 Then /^no game exists$/ do
   game.active.should be false
 end
