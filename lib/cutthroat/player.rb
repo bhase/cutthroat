@@ -57,5 +57,9 @@ module Cutthroat
       @balance
     end
 
+    def mortgage(location)
+      location.mortgage(self)
+    end
+
   end
 end

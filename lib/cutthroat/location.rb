@@ -9,6 +9,7 @@ module Cutthroat
     attr_reader :rent
 
     attr_accessor :owner
+    attr_reader :is_mortgaged
 
     def to_s
       @name
@@ -37,6 +38,11 @@ module Cutthroat
     def record_rights(player)
       player.charge(land_price)
       self.owner = player
+    end
+
+    def mortgage(player)
+      player.receive(land_price * 90 / 100)
+      @is_mortgaged = true
     end
 
     private

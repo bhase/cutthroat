@@ -45,3 +45,8 @@ Then /^(#{NAME}) pays (twice )?the stated rent to (#{NAME})$/ do |charged_name, 
   charged_player.balance.should == balance_of[charged_name] - rent
   advantaged_player.balance.should == balance_of[advantaged_name] + rent
 end
+
+Then /^the balance of (#{NAME}) is increased by (\d+)% of price of (#{LOCATION})$/ do |name, percentage, location|
+  player = find_player_by_name(name)
+  player.balance.should == balance_of[name] + location.land_price * percentage / 100
+end

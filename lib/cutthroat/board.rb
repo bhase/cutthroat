@@ -54,6 +54,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 6
     name: Oriental Avenue
     rent: 6
+    land_price: 100
     group: !ruby/sym street2
     type: !ruby/sym property
 - !ruby/object:Cutthroat::Location

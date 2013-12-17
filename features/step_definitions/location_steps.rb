@@ -76,3 +76,12 @@ Given /^(#{NAME}) owns these properties$/ do |name, properties|
     board.lookup(property[0]).owner = player
   end
 end
+
+When /^(#{NAME}) mortgages (#{LOCATION})$/ do |name, location|
+  player = find_player_by_name(name)
+  player.mortgage(location)
+end
+
+Then /^(#{LOCATION}) shall be mortgaged$/ do |location|
+  location.is_mortgaged.should eq true
+end
