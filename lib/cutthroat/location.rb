@@ -41,7 +41,7 @@ module Cutthroat
     end
 
     def mortgage(player)
-      player.receive(land_price * 90 / 100)
+      player.receive(land_price * MORTGAGE_RATE / 100)
       @is_mortgaged = true
     end
 
