@@ -48,6 +48,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 5
     name: Reading Railroad
     rent: 25
+    land_price: 200
     type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location

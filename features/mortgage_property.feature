@@ -10,7 +10,7 @@ Feature: Mortgage Property
     Then the balance of Fred is increased by 90% of price of 'Oriental Avenue'
     And 'Oriental Avenue' shall be mortgaged
 
-  @draft
+  @wip
   Scenario: Try to Mortgage Already Mortgaged Property
     Given Albert owns 'Reading Railroad'
     And 'Reading Railroad' is already mortgaged

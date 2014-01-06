@@ -85,3 +85,8 @@ end
 Then /^(#{LOCATION}) shall be mortgaged$/ do |location|
   location.is_mortgaged.should eq true
 end
+
+Given /^(#{LOCATION}) is already mortgaged$/ do |location|
+  location.mortgage(location.owner)
+  location.is_mortgaged.should eq true
+end
