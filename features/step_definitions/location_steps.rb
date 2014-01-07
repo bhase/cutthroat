@@ -90,3 +90,10 @@ Given /^(#{LOCATION}) is already mortgaged$/ do |location|
   location.mortgage(location.owner)
   location.is_mortgaged.should eq true
 end
+
+When /^(#{NAME}) tries to mortgage (#{LOCATION})$/ do |name, location|
+  player = find_player_by_name(name)
+  lambda { location.mortgage(player) }.should raise_error(Cutthroat::AlreadyMortgaged) { |error|
+    @last_error_message = error.message
+  }
+end

@@ -1,5 +1,10 @@
+require "cutthroat/error"
 
 module Cutthroat
+
+  class AlreadyMortgaged < CutthroatError
+  end
+
   class Location
     attr_reader :position
     attr_reader :name
@@ -41,6 +46,7 @@ module Cutthroat
     end
 
     def mortgage(player)
+      raise AlreadyMortgaged, "#{self} is already mortgaged" if @is_mortgaged == true
       player.receive(land_price * MORTGAGE_RATE / 100)
       @is_mortgaged = true
     end
