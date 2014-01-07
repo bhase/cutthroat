@@ -1,8 +1,6 @@
+require "cutthroat/error"
 
 module Cutthroat
-
-  class CutthroatError < StandardError
-  end
 
   class TooFewPlayerError < CutthroatError
   end
