@@ -50,3 +50,8 @@ Then /^the balance of (#{NAME}) is increased by (\d+)% of price of (#{LOCATION})
   player = find_player_by_name(name)
   player.balance.should == balance_of[name] + location.land_price * percentage / 100
 end
+
+Then /^the balance of (#{NAME}) is unchanged$/ do |name|
+  player = find_player_by_name(name)
+  player.balance.should == balance_of[name]
+end
