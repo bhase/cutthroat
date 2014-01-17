@@ -2,7 +2,13 @@ require "cutthroat/error"
 
 module Cutthroat
 
-  class AlreadyMortgaged < CutthroatError
+  class MortgageError < CutthroatError
+  end
+
+  class AlreadyMortgaged < MortgageError
+  end
+
+  class NotOwner < MortgageError
   end
 
   class Location
@@ -47,6 +53,7 @@ module Cutthroat
 
     def mortgage(player)
       raise AlreadyMortgaged, "#{self} is already mortgaged" if @is_mortgaged == true
+      raise NotOwner, "#{self} is not your property" if @owner == nil
       player.receive(land_price * MORTGAGE_RATE / 100)
       @is_mortgaged = true
     end

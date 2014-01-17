@@ -97,6 +97,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 18
     name: Tennessee Avenue
+    land_price: 180
 - !ruby/object:Cutthroat::Location
     position: 28
     name: Water Works

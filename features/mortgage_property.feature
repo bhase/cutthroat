@@ -17,7 +17,6 @@ Feature: Mortgage Property
     Then Albert should receive a message 'already mortgaged'
     And the balance of Albert is unchanged
 
-  @draft
   Scenario: Try to Mortgage Unowned Property
     Given 'Tennessee Avenue' is unowned
     When Fred tries to mortgage 'Tennessee Avenue'
