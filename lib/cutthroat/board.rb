@@ -81,6 +81,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 13
     name: States Avenue
     group: !ruby/sym street3
+    land_price: 140
 - !ruby/object:Cutthroat::Location
     position: 14
     name: Virginia Avenue

@@ -23,7 +23,6 @@ Feature: Mortgage Property
     Then Fred should receive a message 'not your property'
     And the balance of Fred is unchanged
 
-  @draft
   Scenario: Try to Mortgage Foreign Property
     Given Fred owns 'States Avenue'
     When Albert tries to mortgage 'States Avenue'
