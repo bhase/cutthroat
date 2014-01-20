@@ -151,6 +151,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 37
     name: Park Place
     rent: 35
+    land_price: 350
     type: !ruby/sym property
     group: !ruby/sym street8
 - !ruby/object:Cutthroat::Location
