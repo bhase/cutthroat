@@ -4,7 +4,6 @@ Feature: Payback Mortgage
   Background:
     Given two player named 'John' and 'Jane' added to a game
 
-  @wip
   Scenario: Payback Mortgage
     Given Jane owns 'Park Place'
     And 'Park Place' is mortgaged

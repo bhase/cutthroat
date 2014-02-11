@@ -58,6 +58,11 @@ module Cutthroat
       @is_mortgaged = true
     end
 
+    def cancel_mortgage(player)
+      player.charge(land_price)
+      @is_mortgaged = false
+    end
+
     private
 
     def calculate_rent(player)

@@ -98,3 +98,13 @@ When /^(#{NAME}) tries to mortgage (#{LOCATION})$/ do |name, location|
     @last_error_message = error.message
   }
 end
+
+When /^(#{NAME}) repays the mortgage for (#{LOCATION})$/ do |name, location|
+  player = find_player_by_name(name)
+  balance_of[name] = player.balance
+  location.cancel_mortgage(player)
+end
+
+Then /^(#{LOCATION}) is no longer mortgaged$/ do |location|
+  location.is_mortgaged.should eq false
+end
