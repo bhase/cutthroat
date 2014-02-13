@@ -11,7 +11,6 @@ Feature: Payback Mortgage
     Then 'Park Place' is no longer mortgaged
     And the balance of Jane is decreased by price of 'Park Place'
 
-  @draft
   Scenario: Unmortgaged Property
     Given John owns 'Ventnor Avenue'
     When John tries to repay the mortgage for 'Ventnor Avenue'

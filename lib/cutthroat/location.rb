@@ -11,6 +11,9 @@ module Cutthroat
   class NotOwner < MortgageError
   end
 
+  class NotMortgaged < MortgageError
+  end
+
   class Location
     attr_reader :position
     attr_reader :name
@@ -59,6 +62,7 @@ module Cutthroat
     end
 
     def cancel_mortgage(player)
+      raise NotMortgaged, "#{self} is not mortgaged" if @is_mortgaged != true
       player.charge(land_price)
       @is_mortgaged = false
     end

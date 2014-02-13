@@ -127,6 +127,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 27
     name: Ventnor Avenue
+    land_price: 260
     rent: 22
     type: !ruby/sym property
     group: !ruby/sym street6
