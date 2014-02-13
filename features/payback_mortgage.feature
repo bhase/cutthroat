@@ -21,8 +21,7 @@ Feature: Payback Mortgage
     When John tries to repay the mortgage for 'Ventnor Avenue'
     Then he should receive a message 'not your property'
 
-  @draft
   Scenario: Foreign Property
-    Given 'Ventnor Avenue' is owned by John
+    Given John owns 'Ventnor Avenue'
     When Jane tries to repay the mortgage for 'Ventnor Avenue'
     Then she should receive a message 'not your property'
