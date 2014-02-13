@@ -125,6 +125,12 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
+    position: 27
+    name: Ventnor Avenue
+    rent: 22
+    type: !ruby/sym property
+    group: !ruby/sym street6
+- !ruby/object:Cutthroat::Location
     position: 30
     name: Go To Jail
     action: put_in_jail
