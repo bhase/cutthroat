@@ -62,6 +62,7 @@ module Cutthroat
     end
 
     def cancel_mortgage(player)
+      raise NotOwner, "#{self} is not your property" if @owner != player
       raise NotMortgaged, "#{self} is not mortgaged" if @is_mortgaged != true
       player.charge(land_price)
       @is_mortgaged = false

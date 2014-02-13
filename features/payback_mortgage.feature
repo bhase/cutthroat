@@ -16,11 +16,10 @@ Feature: Payback Mortgage
     When John tries to repay the mortgage for 'Ventnor Avenue'
     Then he should receive a message 'not mortgaged'
 
-  @draft
   Scenario: Unowned Property
     Given 'Ventnor Avenue' is unowned
-    When John player tries to repay the mortgage for 'Ventnor Avenue'
-    Then he receive a message 'not your property'
+    When John tries to repay the mortgage for 'Ventnor Avenue'
+    Then he should receive a message 'not your property'
 
   @draft
   Scenario: Foreign Property
