@@ -7,6 +7,7 @@ module Cutthroat
     attr_reader :turns_played
     attr_reader :balance
     attr_reader :last_throw
+    attr_reader :in_jail
 
     attr_accessor :game
 
@@ -59,6 +60,11 @@ module Cutthroat
 
     def mortgage(location)
       location.mortgage(self)
+    end
+
+    def arrest_at(location)
+      move_to(location)
+      @in_jail = true
     end
 
   end

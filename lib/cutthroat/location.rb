@@ -35,6 +35,7 @@ module Cutthroat
 
     def trigger_action(player)
       if !@action.nil?
+        # properties do not have action
         send @action, player
       else
         if player.touched_go
@@ -96,7 +97,7 @@ module Cutthroat
     end
 
     def put_in_jail(player)
-      player.move_to(player.game.find_location(10))
+      player.arrest_at(player.game.find_location(10))
     end
 
     def income_tax(player)
