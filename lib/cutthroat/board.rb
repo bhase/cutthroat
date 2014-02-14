@@ -26,13 +26,11 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 0
     name: Go
-    type: !ruby/sym action
     action: receive_salary
 - !ruby/object:Cutthroat::Location
     position: 1
     name: Mediterranean Avenue
     rent: 2
-    type: !ruby/sym property
     group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
     position: 2
@@ -49,7 +47,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Reading Railroad
     rent: 25
     land_price: 200
-    type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 6
@@ -57,7 +54,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     rent: 6
     land_price: 100
     group: !ruby/sym street2
-    type: !ruby/sym property
 - !ruby/object:Cutthroat::Location
     position: 7
 - !ruby/object:Cutthroat::Location
@@ -90,7 +86,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 15
     name: Pennsylvania Railroad
     rent: 25
-    type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 16
@@ -122,14 +117,12 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 25
     name: B&O RR
     rent: 25
-    type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 27
     name: Ventnor Avenue
     land_price: 260
     rent: 22
-    type: !ruby/sym property
     group: !ruby/sym street6
 - !ruby/object:Cutthroat::Location
     position: 30
@@ -150,7 +143,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 35
     name: Short Line
     rent: 25
-    type: !ruby/sym property
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
     position: 36
@@ -159,7 +151,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Park Place
     rent: 35
     land_price: 350
-    type: !ruby/sym property
     group: !ruby/sym street8
 - !ruby/object:Cutthroat::Location
     position: 38
@@ -169,7 +160,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 39
     name: Boardwalk
     rent: 50
-    type: !ruby/sym property
     group: !ruby/sym street8
 ENDOFBOARD
 
