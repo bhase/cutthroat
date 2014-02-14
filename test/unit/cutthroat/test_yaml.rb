@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'cutthroat'
 
-class TestLocation < Test::Unit::TestCase
+class TestYaml < Test::Unit::TestCase
 
   GO = <<EOG
 ---
