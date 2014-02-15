@@ -26,7 +26,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 0
     name: Go
-    action: receive_salary
 - !ruby/object:Cutthroat::Location
     position: 1
     name: Mediterranean Avenue
@@ -34,6 +33,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
     position: 2
+    name: Community Chest
 - !ruby/object:Cutthroat::Location
     position: 3
     name: Baltic Avenue
@@ -56,6 +56,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: !ruby/sym street2
 - !ruby/object:Cutthroat::Location
     position: 7
+    name: Chance
+    action: chance
 - !ruby/object:Cutthroat::Location
     position: 8
     name: Vermont Avenue

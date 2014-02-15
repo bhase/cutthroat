@@ -23,8 +23,7 @@ Feature: Player gets salary when landing on or passing Go
     When the player moves without touching 'Go'
     Then the balance of this player is unchanged
 
-  @draft
   Scenario: Pass Go twice
-    Given a player
+    Given a player in a game
     When the player passes 'Go' twice during his turn
     Then the balance of this player is increased by $400

@@ -35,18 +35,17 @@ module Cutthroat
 
     def trigger_action(player)
       if !@action.nil?
-        # properties do not have action
         send @action, player
-      else
-        if player.touched_go
-          player.receive(SALARY)
-        end
+      end
 
-        if (owner != nil && owner != player)
-          rent = calculate_rent(player)
-          player.charge(rent)
-          owner.receive(rent)
-        end
+      if player.touched_go and not player.in_jail
+        player.receive(SALARY)
+      end
+
+      if (owner != nil && owner != player)
+        rent = calculate_rent(player)
+        player.charge(rent)
+        owner.receive(rent)
       end
     end
 
@@ -111,6 +110,13 @@ module Cutthroat
 
     def receive_salary(player)
       player.receive(SALARY)
+    end
+
+    def chance(player)
+      # TODO implement chance cards
+      location = player.game.find_location(0)
+      player.move_to(location)
+      location.trigger_action(player)
     end
 
   end

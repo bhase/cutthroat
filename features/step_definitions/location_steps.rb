@@ -119,3 +119,10 @@ When /^(#{NAME}) tries to repay the mortgage for (#{LOCATION})$/ do |name, locat
     @last_error_message = error.message
   }
 end
+
+When /^the player passes 'Go' twice during his turn$/ do
+  @initial_balance = player.balance
+  dice.should_receive(:roll).and_return([3,5])
+  play_turn_from(board.lookup(39)) # land on chance
+  # TODO need to prepare chance later
+end
