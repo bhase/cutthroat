@@ -108,10 +108,6 @@ module Cutthroat
       player.charge(LUXURY_TAX)
     end
 
-    def receive_salary(player)
-      player.receive(SALARY)
-    end
-
     def chance(player)
       # TODO implement chance cards
       location = player.game.find_location(0)
