@@ -57,7 +57,8 @@ Then /^the balance of (#{NAME}) is unchanged$/ do |name|
   player.balance.should == balance_of[name]
 end
 
-Then /^the balance of (#{NAME}) is decreased by price of (#{LOCATION})$/ do |name, location|
+Then /^the balance of (#{NAME}) is decreased by discharge of mortgage of (#{LOCATION})$/ do |name, location|
   player = find_player_by_name(name)
-  player.balance.should == balance_of[name] - location.land_price 
+  player.balance.should == balance_of[name] -
+    (location.land_price * (Cutthroat::MORTGAGE_RATE + Cutthroat::MORTGAGE_DUTY) / 100)
 end

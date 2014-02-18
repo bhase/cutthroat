@@ -12,4 +12,5 @@ module Cutthroat
   LUXURY_TAX = 75
   MAX_INCOME_TAX = 200
   MORTGAGE_RATE = 90 # percent of land price
+  MORTGAGE_DUTY = 10 # additional to rate
 end
