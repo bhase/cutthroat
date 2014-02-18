@@ -35,8 +35,13 @@ class TestBoard < Test::Unit::TestCase
     assert_equal(4, location.position)
   end
 
-  def test_lookup_jail
+  def test_find_jail
     location = @board.find_jail
     assert_equal(10, location.position)
+  end
+
+  def test_find_go
+    location = @board.find_go
+    assert_equal(0, location.position)
   end
 end

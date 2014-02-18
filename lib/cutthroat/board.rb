@@ -14,6 +14,10 @@ module Cutthroat
       @locations.find {|l| l.type.nil? == false && l.type.to_sym == :jail}
     end
 
+    def find_go
+      @locations.find {|l| l.type.nil? == false && l.type.to_sym == :go}
+    end
+
     def all_owned_by(player)
       @locations.select {|l| l.owner == player }
     end
@@ -30,6 +34,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 0
     name: Go
+    type: go
 - !ruby/object:Cutthroat::Location
     position: 1
     name: Mediterranean Avenue
