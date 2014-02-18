@@ -37,7 +37,7 @@ module Cutthroat
     def start
       raise TooFewPlayerError, "too few player: need at least two" unless @players.length > 1
       players.shuffle!
-      players.each { |p| p.move_to(board.lookup(0)) }
+      players.each { |p| p.move_to(board.find_go) }
       @active = true
     end
 

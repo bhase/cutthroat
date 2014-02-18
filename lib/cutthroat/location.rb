@@ -110,7 +110,7 @@ module Cutthroat
 
     def chance(player)
       # TODO implement chance cards
-      location = player.game.find_location(0)
+      location = player.game.board.find_go
       player.move_to(location)
       location.trigger_action(player)
     end
