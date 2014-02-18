@@ -3,7 +3,7 @@ Then /^the player shall end on (#{LOCATION})$/ do |location|
 end
 
 Then /^the player shall end in jail$/ do
-  player.location.should equal game.find_location(10)
+  player.location.should equal board.find_jail
 end
 
 Then /^the player is in jail\.$/ do
@@ -24,7 +24,7 @@ end
 When /^the player leaves Go$/ do
   @initial_balance = player.balance
   dice.should_receive(:roll).and_return([3,2])
-  play_turn_from(board.lookup(0))
+  play_turn_from(board.find_go)
 end
 
 When /^the player passes (?:over )?(#{LOCATION})$/ do |location|
