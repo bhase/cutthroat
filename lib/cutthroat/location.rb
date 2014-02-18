@@ -96,7 +96,7 @@ module Cutthroat
     end
 
     def put_in_jail(player)
-      player.arrest_at(player.game.find_location(10))
+      player.arrest_at(player.game.board.find_jail)
     end
 
     def income_tax(player)

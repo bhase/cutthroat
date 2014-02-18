@@ -45,7 +45,7 @@ module Cutthroat
       end
       @turns_played += 1
       if (double_count >= 3)
-        move_to(game.find_location(10))
+        move_to(game.board.find_jail)
       end
     end
 
