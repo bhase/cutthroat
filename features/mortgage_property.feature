@@ -7,7 +7,7 @@ Feature: Mortgage Property
   Scenario: Mortgage Property
     Given Fred owns 'Oriental Avenue'
     When Fred mortgages 'Oriental Avenue'
-    Then the balance of Fred is increased by 90% of price of 'Oriental Avenue'
+    Then the balance of Fred is increased by mortgage rate of 'Oriental Avenue'
     And 'Oriental Avenue' shall be mortgaged
 
   Scenario: Try to Mortgage Already Mortgaged Property

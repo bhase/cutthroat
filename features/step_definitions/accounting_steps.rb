@@ -46,9 +46,10 @@ Then /^(#{NAME}) pays (twice )?the stated rent to (#{NAME})$/ do |charged_name, 
   advantaged_player.balance.should == balance_of[advantaged_name] + rent
 end
 
-Then /^the balance of (#{NAME}) is increased by (\d+)% of price of (#{LOCATION})$/ do |name, percentage, location|
+Then /^the balance of (#{NAME}) is increased by mortgage rate of (#{LOCATION})$/ do |name, location|
   player = find_player_by_name(name)
-  player.balance.should == balance_of[name] + location.land_price * percentage / 100
+  player.balance.should == balance_of[name] +
+    location.land_price * Cutthroat::MORTGAGE_RATE / 100
 end
 
 Then /^the balance of (#{NAME}) is unchanged$/ do |name|
