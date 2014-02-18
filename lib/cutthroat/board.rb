@@ -10,6 +10,10 @@ module Cutthroat
       @locations.find {|l| l.position == location || l.name == location }
     end
 
+    def find_jail
+      @locations.find {|l| l.type.nil? == false && l.type.to_sym == :jail}
+    end
+
     def all_owned_by(player)
       @locations.select {|l| l.owner == player }
     end
@@ -69,6 +73,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 10
     name: Just Visiting
+    type: jail
 - !ruby/object:Cutthroat::Location
     position: 11
 - !ruby/object:Cutthroat::Location

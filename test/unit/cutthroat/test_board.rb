@@ -26,12 +26,17 @@ class TestBoard < Test::Unit::TestCase
   end
 
   def test_lookup_by_name
-    l1 = @board.lookup('Go')
-    assert_equal(0, l1.position)
+    location = @board.lookup('Go')
+    assert_equal(0, location.position)
   end
 
   def test_lookup_by_position
     location = @board.lookup(4)
     assert_equal(4, location.position)
+  end
+
+  def test_lookup_jail
+    location = @board.find_jail
+    assert_equal(10, location.position)
   end
 end
