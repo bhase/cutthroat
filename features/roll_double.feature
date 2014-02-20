@@ -5,23 +5,26 @@ Feature: Roll Double
   Scenario: Roll Double
     Given a player on 'Go'
     When the player rolls the following sequence
-      | [3, 3] |
-      | [1, 3] |
+      | Eyes rolled | Turn played? |
+      | [3, 3]      | yes          |
+      | [1, 3]      | yes          |
     Then the player shall end on 'Just Visiting'
 
   Scenario: Roll Double Twice
     Given a player on 'Go'
     When the player rolls the following sequence
-      | [6, 6] |
-      | [6, 6] |
-      | [3, 4] |
+      | Eyes rolled | Turn played? |
+      | [6, 6]      | yes          |
+      | [6, 6]      | yes          |
+      | [3, 4]      | yes          |
     Then the player shall end on 'Pacific Avenue'
 
   Scenario: Roll Double Thrice - Go To Jail
     Given a player on 'Go'
     When the player rolls the following sequence
-      | [4, 4] |
-      | [3, 3] |
-      | [1, 1] |
+      | Eyes rolled | Turn played? |
+      | [4, 4]      | yes          |
+      | [3, 3]      | yes          |
+      | [1, 1]      | no           |
     Then the player shall end in jail
 

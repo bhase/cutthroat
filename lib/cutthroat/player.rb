@@ -35,13 +35,13 @@ module Cutthroat
     def play_turn(dice)
       double_count = 0
       loop do
-        break if double_count >= 3
         @last_throw = dice.roll
+        double_count += 1 if @last_throw[0] == @last_throw[1]
+        break if double_count >= 3
         sum = last_throw.reduce(:+)
         move_to(game.find_location((sum + location.to_i) % LOCATIONS))
         location.trigger_action(self)
         break if @last_throw[0] != @last_throw[1]
-        double_count += 1
       end
       @turns_played += 1
       if (double_count >= 3)
