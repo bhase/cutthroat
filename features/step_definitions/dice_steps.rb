@@ -13,10 +13,11 @@ When /^the player rolls the following sequence$/ do |sequence|
   # sequence is a Cucumber::Ast::Table
   roll_sequence = []
   sum = 0
-  sequence.rows.each do |s|
-    roll = eval(s[0])
+  sequence = sequence.map_headers("Eyes rolled" => :cast, "Turn played?" => :played)
+  sequence.hashes.each do |s|
+    roll = eval(s[:cast])
     sum += roll.inject(:+)
-    if s[1] == "no"
+    if s[:played] == "no"
       location = board.lookup(player.location.to_i + sum)
       location.instance_variable_set(:@action, "explode")
       class << location
