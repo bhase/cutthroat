@@ -18,13 +18,7 @@ When /^the player rolls the following sequence$/ do |sequence|
     roll = eval(s[:cast])
     sum += roll.inject(:+)
     if s[:played] == "no"
-      location = board.lookup(player.location.to_i + sum)
-      location.instance_variable_set(:@action, "explode")
-      class << location
-        def explode(player)
-          raise "ERROR: #{player.name} should not have come here!"
-        end
-      end
+      fail_if_pos_reached(player.location.to_i + sum)
     end
     roll_sequence << roll
   end

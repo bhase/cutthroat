@@ -74,6 +74,20 @@ module KnowsGame
   def find_player_by_name(name)
     game.players.find{ |p| p.name == name }
   end
+
+  def fail_if_pos_reached(n)
+    location = board.lookup n
+    location.instance_variable_set(:@action, "explode")
+    add_explode_method_to(location)
+  end
+
+  def add_explode_method_to(location)
+    class << location
+      def explode(player)
+        fail "ERROR: #{player.name} should not have come here!"
+      end
+    end
+  end
 end
 
 World(KnowsPlayer)
