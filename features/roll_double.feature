@@ -27,4 +27,15 @@ Feature: Roll Double
       | [3, 3]      | yes          |
       | [1, 1]      | no           |
     Then the player shall end in jail
+    And the balance of this player is unchanged
+
+  Scenario: Roll Double Thrice Passing Go
+    Given a player on 'Ventnor Avenue'
+    When the player rolls the following sequence
+      | Eyes rolled | Turn played? |
+      | [4, 4]      | yes          |
+      | [3, 3]      | yes          |
+      | [1, 1]      | no           |
+    Then the player shall end in jail
+    And the balance of this player is increased by $200
 
