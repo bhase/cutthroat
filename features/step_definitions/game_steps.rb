@@ -23,7 +23,7 @@ end
 
 When /^I try to start a game$/ do
   lambda { game.start }.should raise_error(Cutthroat::TooFewPlayerError) { |error|
-    @last_error_message = error.message
+    save_last_message error.message
   }
 end
 
@@ -47,7 +47,7 @@ end
 
 When /^I try to add another player$/ do
   lambda { game.add_player(player) }.should raise_error(Cutthroat::TooManyPlayerError) { |error|
-    @last_error_message = error.message
+    save_last_message error.message
   }
 end
 

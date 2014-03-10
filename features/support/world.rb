@@ -27,6 +27,15 @@ module KnowsPlayer
 end
 
 module KnowsGame
+
+  def last_error_message
+    @message
+  end
+
+  def save_last_message(message)
+    @message = message
+  end
+
   def game
     @game ||= Cutthroat::Game.new(dice)
   end

@@ -98,7 +98,7 @@ When /^(#{NAME}) tries to mortgage (#{LOCATION})$/ do |name, location|
   player = find_player_by_name(name)
   balance_of[name] = player.balance
   lambda { location.mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
-    @last_error_message = error.message
+    save_last_message error.message
   }
 end
 
@@ -116,7 +116,7 @@ When /^(#{NAME}) tries to repay the mortgage for (#{LOCATION})$/ do |name, locat
   player = find_player_by_name(name)
   balance_of[name] = player.balance
   lambda { location.cancel_mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
-    @last_error_message = error.message
+    save_last_message error.message
   }
 end
 
