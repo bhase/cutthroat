@@ -11,29 +11,29 @@ Then /^the player is in jail\.$/ do
 end
 
 When /^the player lands on (#{LOCATION})$/ do |location|
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   play_turn_and_land_on(location)
 end
 
 Given /^a player on (#{LOCATION})$/ do |location|
   start_a_game
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   player.move_to(location)
 end
 
 When /^the player leaves Go$/ do
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   dice.should_receive(:roll).and_return([3,2])
   play_turn_from(board.find_go)
 end
 
 When /^the player passes (?:over )?(#{LOCATION})$/ do |location|
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   play_turn_and_pass_over(location)
 end
 
 When /^the player moves without touching 'Go'$/ do
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   dice.should_receive(:roll).and_return([3,2])
   play_turn_from(board.lookup(17))
 end
@@ -51,7 +51,7 @@ Given /^(#{LOCATION}) is owned by player$/ do |location|
 end
 
 When /^the player decides to buy this property$/ do
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   location.record_rights(player)
 end
 
@@ -121,7 +121,7 @@ When /^(#{NAME}) tries to repay the mortgage for (#{LOCATION})$/ do |name, locat
 end
 
 When /^the player passes 'Go' twice during his turn$/ do
-  @initial_balance = player.balance
+  balance_of[player] = player.balance
   dice.should_receive(:roll).and_return([3,5])
   play_turn_from(board.lookup(39)) # land on chance
   # TODO need to prepare chance later

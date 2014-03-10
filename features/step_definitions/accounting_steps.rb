@@ -1,9 +1,9 @@
 Then /^the balance of this player is increased by \$(\d+)$/ do |amount|
-  player.balance.should == @initial_balance + amount
+  player.balance.should == balance_of[player] + amount
 end
 
 Then /^the balance of this player is unchanged$/ do
-  player.balance.should == @initial_balance
+  player.balance.should == balance_of[player]
 end
 
 Given /^a player with a total worth of \$(\d+)$/ do |amount|
@@ -12,11 +12,11 @@ Given /^a player with a total worth of \$(\d+)$/ do |amount|
 end
 
 Then /^the balance of this player is decreased by \$(\d+)$/ do |amount|
-  player.balance.should == @initial_balance - amount
+  player.balance.should == balance_of[player] - amount
 end
 
 Then /^the balance of this player is decreased by cost of property$/ do
-  player.balance.should == @initial_balance - location.land_price
+  player.balance.should == balance_of[player] - location.land_price
 end
 
 Then /^(#{NAME}) pays \$(\d+) rent to (#{NAME})$/ do |charged_name, amount, advantaged_name|
