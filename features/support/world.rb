@@ -52,7 +52,7 @@ module KnowsGame
     @player_list_at_round ||= []
   end
 
-  def start_a_game
+  def start_game_with_two_player
     game.add_player(player)
     game.add_player(Cutthroat::Player.new("p2"))
     game.start

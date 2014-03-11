@@ -4,7 +4,7 @@ Given /^two player named '(#{NAME})' and '(#{NAME})' added to a game$/ do |name1
 end
 
 Given /^a player in a game$/ do
-  start_a_game
+  start_game_with_two_player
 end
 
 When /^I start a game$/ do
@@ -56,7 +56,7 @@ Then /^the game has (#{NUMBER}) player$/ do |number_of_players|
 end
 
 Given /^a fresh started game$/ do
-  start_a_game
+  start_game_with_two_player
   game.active.should be true
 end
 

@@ -7,7 +7,7 @@ Then /^the balance of this player is unchanged$/ do
 end
 
 Given /^a player with a total worth of \$(\d+)$/ do |amount|
-  start_a_game
+  start_game_with_two_player
   set_worth_of_player_to(amount.to_i)
 end
 

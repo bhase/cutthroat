@@ -16,7 +16,7 @@ When /^the player lands on (#{LOCATION})$/ do |location|
 end
 
 Given /^a player on (#{LOCATION})$/ do |location|
-  start_a_game
+  start_game_with_two_player
   balance_of[player] = player.balance
   player.move_to(location)
 end
