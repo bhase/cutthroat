@@ -2,14 +2,6 @@ Then /^the player shall end on (#{LOCATION})$/ do |location|
   player.location.should equal location
 end
 
-Then /^the player shall end in jail$/ do
-  player.location.should equal board.find_jail
-end
-
-Then /^the player is in jail\.$/ do
-  player.in_jail.should == true
-end
-
 When /^the player lands on (#{LOCATION})$/ do |location|
   balance_of[player] = player.balance
   play_turn_and_land_on(location)
@@ -38,86 +30,10 @@ When /^the player moves without touching 'Go'$/ do
   play_turn_from(board.lookup(17))
 end
 
-Given /^(#{LOCATION}) is unowned$/ do |location|
-  location.owner = nil
-end
-
-Then /^(#{LOCATION}) is still unowned$/ do |location|
-  location.owner.should be nil
-end
-
-Given /^(#{LOCATION}) is owned by player$/ do |location|
-  location.owner = player
-end
-
-When /^the player decides to buy this property$/ do
-  balance_of[player] = player.balance
-  location.record_rights(player)
-end
-
-Then /^the player owns (#{LOCATION})$/ do |location|
-  location.owner.should be player
-end
-
-Given /^(#{NAME}) owns (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  location.owner = player
-end
-
 When /^(#{NAME}) lands on (#{LOCATION})$/ do |name, location|
   player = find_player_by_name(name)
   balance_of[name] = player.balance
   play_turn_and_land_on(location, player)
-end
-
-Given /^(#{NAME}) owns these properties$/ do |name, properties|
-  # properties is a Cucumber::Ast::Table
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  properties.raw.each do |property|
-    board.lookup(property[0]).owner = player
-  end
-end
-
-When /^(#{NAME}) mortgages (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  player.mortgage(location)
-end
-
-Then /^(#{LOCATION}) shall be mortgaged$/ do |location|
-  location.is_mortgaged.should eq true
-end
-
-Given /^(#{LOCATION}) is (?:already )?mortgaged$/ do |location|
-  location.mortgage(location.owner)
-  location.is_mortgaged.should eq true
-end
-
-When /^(#{NAME}) tries to mortgage (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  lambda { location.mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
-    save_last_message error.message
-  }
-end
-
-When /^(#{NAME}) repays the mortgage for (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  location.cancel_mortgage(player)
-end
-
-Then /^(#{LOCATION}) is no longer mortgaged$/ do |location|
-  location.is_mortgaged.should eq false
-end
-
-When /^(#{NAME}) tries to repay the mortgage for (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  lambda { location.cancel_mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
-    save_last_message error.message
-  }
 end
 
 When /^the player passes 'Go' twice during his turn$/ do
