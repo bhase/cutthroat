@@ -19,18 +19,16 @@ Then /^the player owns (#{LOCATION})$/ do |location|
   location.owner.should be player
 end
 
-Given /^(#{NAME}) owns (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  location.owner = player
+Given /^(#{PLAYER}) owns (#{LOCATION})$/ do |name, location|
+  balance_of[name] = name.balance
+  location.owner = name
 end
 
-Given /^(#{NAME}) owns these properties$/ do |name, properties|
+Given /^(#{PLAYER}) owns these properties$/ do |name, properties|
   # properties is a Cucumber::Ast::Table
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
+  balance_of[name] = name.balance
   properties.raw.each do |property|
-    board.lookup(property[0]).owner = player
+    board.lookup(property[0]).owner = name
   end
 end
 

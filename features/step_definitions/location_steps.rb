@@ -30,10 +30,9 @@ When /^the player moves without touching 'Go'$/ do
   play_turn_from(board.lookup(17))
 end
 
-When /^(#{NAME}) lands on (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
-  play_turn_and_land_on(location, player)
+When /^(#{PLAYER}) lands on (#{LOCATION})$/ do |name, location|
+  balance_of[name] = name.balance
+  play_turn_and_land_on(location, name)
 end
 
 When /^the player passes 'Go' twice during his turn$/ do

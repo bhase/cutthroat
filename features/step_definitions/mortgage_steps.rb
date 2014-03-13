@@ -1,6 +1,5 @@
 
-When /^(#{NAME}) mortgages (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
+When /^(#{PLAYER}) mortgages (#{LOCATION})$/ do |player, location|
   player.mortgage(location)
 end
 
@@ -13,17 +12,15 @@ Given /^(#{LOCATION}) is (?:already )?mortgaged$/ do |location|
   location.is_mortgaged.should eq true
 end
 
-When /^(#{NAME}) tries to mortgage (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
+When /^(#{PLAYER}) tries to mortgage (#{LOCATION})$/ do |player, location|
+  balance_of[player] = player.balance
   lambda { location.mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
     save_last_message error.message
   }
 end
 
-When /^(#{NAME}) repays the mortgage for (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
+When /^(#{PLAYER}) repays the mortgage for (#{LOCATION})$/ do |player, location|
+  balance_of[player] = player.balance
   location.cancel_mortgage(player)
 end
 
@@ -31,9 +28,8 @@ Then /^(#{LOCATION}) is no longer mortgaged$/ do |location|
   location.is_mortgaged.should eq false
 end
 
-When /^(#{NAME}) tries to repay the mortgage for (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  balance_of[name] = player.balance
+When /^(#{PLAYER}) tries to repay the mortgage for (#{LOCATION})$/ do |player, location|
+  balance_of[player] = player.balance
   lambda { location.cancel_mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
     save_last_message error.message
   }

@@ -1,4 +1,4 @@
-Given /^two player named '(#{NAME})' and '(#{NAME})' added to a game$/ do |name1, name2|
+Given /^two player named (#{NAME}) and (#{NAME}) added to a game$/ do |name1, name2|
   add_game_player(name1, name2)
   game.players.length.should == 2
 end
@@ -11,7 +11,7 @@ When /^I start a game$/ do
   game.start
 end
 
-Then /^a game with '(#{NAME})' and '(#{NAME})' should exist$/ do |name1, name2|
+Then /^a game with (#{NAME}) and (#{NAME}) should exist$/ do |name1, name2|
   game.players.select {|player| player.name == name1 }.length.should == 1
   game.players.select {|player| player.name == name2 }.length.should == 1
 end

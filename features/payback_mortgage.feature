@@ -2,7 +2,7 @@ Feature: Payback Mortgage
   As a player, I can pay back the mortgage on a property.
 
   Background:
-    Given two player named 'John' and 'Jane' added to a game
+    Given two player named "John" and "Jane" added to a game
 
   Scenario: Payback Mortgage
     Given Jane owns 'Park Place'

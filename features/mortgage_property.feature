@@ -2,7 +2,7 @@ Feature: Mortgage Property
   As a player I can mortgage property during my turn
 
   Background:
-    Given two player named 'Albert' and 'Fred' added to a game
+    Given two player named "Albert" and "Fred" added to a game
 
   Scenario: Mortgage Property
     Given Fred owns 'Oriental Avenue'

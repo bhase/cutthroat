@@ -10,7 +10,7 @@ Then /^in each round the player order has been equal to the iniial order$/ do
   end
 end
 
-Then /^'(#{NAME})' and '(#{NAME})' both have been the starting player$/ do |name1, name2|
+Then /^(#{NAME}) and (#{NAME}) both have been the starting player$/ do |name1, name2|
   initial_players[name1].should_not eq(0), "#{name1} was not starting player!"
   initial_players[name2].should_not eq(0), "#{name2} was not starting player!"
 end

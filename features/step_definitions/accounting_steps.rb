@@ -19,46 +19,36 @@ Then /^the balance of this player is decreased by cost of property$/ do
   player.balance.should == balance_of[player] - location.land_price
 end
 
-Then /^(#{NAME}) pays \$(\d+) rent to (#{NAME})$/ do |charged_name, amount, advantaged_name|
-  charged_player = find_player_by_name(charged_name)
-  advantaged_player = find_player_by_name(advantaged_name)
-
-  charged_player.balance.should == balance_of[charged_name] - amount
-  advantaged_player.balance.should == balance_of[advantaged_name] + amount
+Then /^(#{PLAYER}) pays \$(\d+) rent to (#{PLAYER})$/ do |charged_player, amount, advantaged_player|
+  charged_player.balance.should == balance_of[charged_player] - amount
+  advantaged_player.balance.should == balance_of[advantaged_player] + amount
 end
 
-Then /^(#{NAME}) pays (#{NUMBER})x current dice rent to (#{NAME})$/ do |sender, times, receiver|
-  charged_player = find_player_by_name(sender)
-  advantaged_player = find_player_by_name(receiver)
+Then /^(#{PLAYER}) pays (#{NUMBER})x current dice rent to (#{PLAYER})$/ do |charged_player, times, advantaged_player|
   eyes = charged_player.last_throw.inject(:+)
 
-  charged_player.balance.should == balance_of[sender] - (times * eyes)
-  advantaged_player.balance.should == balance_of[receiver] + (times * eyes)
+  charged_player.balance.should == balance_of[charged_player] - (times * eyes)
+  advantaged_player.balance.should == balance_of[advantaged_player] + (times * eyes)
 end
 
-Then /^(#{NAME}) pays (twice )?the stated rent to (#{NAME})$/ do |charged_name, twice, advantaged_name|
-  charged_player = find_player_by_name(charged_name)
-  advantaged_player = find_player_by_name(advantaged_name)
+Then /^(#{PLAYER}) pays (twice )?the stated rent to (#{PLAYER})$/ do |charged_player, twice, advantaged_player|
   rent = charged_player.location.rent
   rent *= 2 unless twice.nil?
 
-  charged_player.balance.should == balance_of[charged_name] - rent
-  advantaged_player.balance.should == balance_of[advantaged_name] + rent
+  charged_player.balance.should == balance_of[charged_player] - rent
+  advantaged_player.balance.should == balance_of[advantaged_player] + rent
 end
 
-Then /^the balance of (#{NAME}) is increased by mortgage rate of (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  player.balance.should == balance_of[name] +
+Then /^the balance of (#{PLAYER}) is increased by mortgage rate of (#{LOCATION})$/ do |player, location|
+  player.balance.should == balance_of[player] +
     location.land_price * Cutthroat::MORTGAGE_RATE / 100
 end
 
-Then /^the balance of (#{NAME}) is unchanged$/ do |name|
-  player = find_player_by_name(name)
-  player.balance.should == balance_of[name]
+Then /^the balance of (#{PLAYER}) is unchanged$/ do |player|
+  player.balance.should == balance_of[player]
 end
 
-Then /^the balance of (#{NAME}) is decreased by discharge of mortgage of (#{LOCATION})$/ do |name, location|
-  player = find_player_by_name(name)
-  player.balance.should == balance_of[name] -
+Then /^the balance of (#{PLAYER}) is decreased by discharge of mortgage of (#{LOCATION})$/ do |player, location|
+  player.balance.should == balance_of[player] -
     (location.land_price * (Cutthroat::MORTGAGE_RATE + Cutthroat::MORTGAGE_DUTY) / 100)
 end

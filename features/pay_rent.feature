@@ -2,7 +2,7 @@ Feature: Pay rent
   As a player, I pay rent when I land on a property that is owned by another player.
 
   Background:
-    Given two player named 'Albert' and 'Fred' added to a game
+    Given two player named "Albert" and "Fred" added to a game
 
   Scenario: Landing on Railroad when one is owned
     Given Albert owns 'B&O RR'
