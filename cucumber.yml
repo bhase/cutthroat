@@ -1,2 +1,3 @@
 default: --tags ~@draft --require features
 wip: --tags @wip --wip --require features
+guard: --tags ~@draft --require features --strict --format progress
