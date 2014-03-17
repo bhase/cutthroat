@@ -39,6 +39,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 1
     name: Mediterranean Avenue
     rent: 2
+    land_price: 60
     group: !ruby/sym street1
 - !ruby/object:Cutthroat::Location
     position: 2

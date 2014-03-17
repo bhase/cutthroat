@@ -16,15 +16,15 @@ class TestGameLocations < Test::Unit::TestCase
 
   def test_find_locations_owned_by_one_owned
     location = @game.find_location(5)
-    location.owner =  @player
+    location.record_rights(@player)
     assert_equal([location], @game.find_locations_owned_by(@player))
   end
 
   def test_find_locations_owned_by_two_owned
     l1 = @game.find_location(1)
-    l1.owner = @player
+    l1.record_rights(@player)
     l2 = @game.find_location(14)
-    l2.owner = @player
+    l2.record_rights(@player)
     assert_equal([l1, l2], @game.find_locations_owned_by(@player))
   end
 

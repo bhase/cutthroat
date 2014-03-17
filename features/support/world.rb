@@ -28,6 +28,12 @@ end
 
 module KnowsGame
 
+  class ::Cutthroat::Location
+    def set_owner(player)
+      @owner = player
+    end
+  end
+
   def last_error_message
     @message
   end
