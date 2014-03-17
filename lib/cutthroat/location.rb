@@ -42,7 +42,7 @@ module Cutthroat
         player.receive(SALARY)
       end
 
-      if (owner != nil && owner != player)
+      if (owner != nil && owner != player && is_mortgaged != true)
         rent = calculate_rent(player)
         player.charge(rent)
         owner.receive(rent)

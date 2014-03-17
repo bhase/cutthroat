@@ -1,5 +1,6 @@
 Feature: Pay rent
-  As a player, I pay rent when I land on a property that is owned by another player.
+  As a player, I pay rent when I land on a property that is owned by another
+  player - as long as the property is not mortgaged.
 
   Background:
     Given two player named "Albert" and "Fred" added to a game
@@ -54,3 +55,9 @@ Feature: Pay rent
     And Albert owns 'Boardwalk'
     When Fred lands on 'Park Place'
     Then Fred pays twice the stated rent to Albert
+
+  Scenario: Landing on real estate
+    Given Albert owns 'Oriental Avenue'
+    And 'Oriental Avenue' is mortgaged
+    When Fred lands on 'Oriental Avenue'
+    Then the balance of Fred is unchanged
