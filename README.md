@@ -4,6 +4,9 @@ This is work in progress towards a highly configurable Monopoly rule set
 usable for implementation of different game versions. It should be
 supplemented with a user interface and an AI module...
 
+It is mainly an experiment in BDD and working with cucumber where the single
+steps are guided by http://schuchert.wikispaces.com/MonopolyPrintable?f=print.
+
 ## Installation
 
 Add this line to your application's Gemfile:
