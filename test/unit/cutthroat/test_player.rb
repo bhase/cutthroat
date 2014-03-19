@@ -21,7 +21,7 @@ class TestPlayer < Test::Unit::TestCase
     assert(@player.location == nil, "new players should have no location")
   end
 
-  def test_name
+  def test_init_takes_name
     player = Cutthroat::Player.new("test player")
     assert_equal("test player", player.name)
   end
