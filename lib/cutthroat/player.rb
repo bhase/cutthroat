@@ -69,9 +69,17 @@ module Cutthroat
       @in_jail = true
     end
 
+    def register_callouts(user_callouts)
+      @callout = user_callouts
+    end
+
     def buy_property?(property)
-      # user callout here
-      false
+      if @callout.nil?
+        # TODO - currently do nothing not to break everything
+        false
+      else
+        @callout.buy_property?(property)
+      end
     end
 
   end

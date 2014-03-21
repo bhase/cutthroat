@@ -26,4 +26,11 @@ class TestPlayer < Test::Unit::TestCase
     assert_equal("test player", player.name)
   end
 
+  def test_buy_decision_from_user
+    user_callout = mock
+    user_callout.expects(:buy_property?)
+    @player.register_callouts(user_callout)
+    @player.buy_property?(nil)
+  end
+
 end
