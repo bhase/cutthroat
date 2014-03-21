@@ -35,6 +35,7 @@ module Cutthroat
     def play_turn(dice)
       double_count = 0
       loop do
+        # user callout here - user can take action or not
         @last_throw = dice.roll
         double_count += 1 if @last_throw[0] == @last_throw[1]
         break if double_count >= 3
@@ -43,6 +44,7 @@ module Cutthroat
         location.trigger_action(self)
         break if @last_throw[0] != @last_throw[1]
       end
+      # and user callout here
       @turns_played += 1
       if (double_count >= 3)
         move_to(game.board.find_jail)
@@ -65,6 +67,11 @@ module Cutthroat
     def arrest_at(location)
       move_to(location)
       @in_jail = true
+    end
+
+    def buy_property?(property)
+      # user callout here
+      false
     end
 
   end
