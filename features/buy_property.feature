@@ -6,8 +6,7 @@ Feature: Buy Property
 
   Scenario: Buying unowned property
     Given 'Virginia Avenue' is unowned
-    When the player lands on 'Virginia Avenue'
-    And the player decides to buy this property
+    When the player lands on 'Virginia Avenue' and decides to buy
     Then the balance of this player is decreased by cost of property
     And the player owns 'Virginia Avenue'
 

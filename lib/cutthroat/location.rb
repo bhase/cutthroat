@@ -43,7 +43,9 @@ module Cutthroat
       end
 
       if owner.nil?
-        player.buy_property?(self)
+        if player.buy_property?(self)
+          record_rights(player)
+        end
       elsif (owner != player && is_mortgaged != true)
         rent = calculate_rent(player)
         player.charge(rent)

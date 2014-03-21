@@ -10,9 +10,10 @@ Given /^(#{LOCATION}) is owned by player$/ do |location|
   location.set_owner player
 end
 
-When /^the player decides to buy this property$/ do
+When /^the player lands on (#{LOCATION}) and decides to buy$/ do |location|
   balance_of[player] = player.balance
-  location.record_rights(player)
+  player.register_callouts(double(:buy_property? => true))
+  play_turn_and_land_on(location)
 end
 
 Then /^the player owns (#{LOCATION})$/ do |location|
