@@ -16,12 +16,12 @@ module KnowsPlayer
 
   def play_turn_and_land_on(location, p = player)
     dice.should_receive(:roll).and_return([1,2])
-    play_turn_from(board.lookup((location.to_i - 3) % Cutthroat::LOCATIONS), p)
+    play_turn_from(board.lookup((location.to_i - 3) % board.locations), p)
   end
 
   def play_turn_and_pass_over(location)
     dice.should_receive(:roll).and_return([1,2])
-    play_turn_from(board.lookup((location.to_i - 2) % Cutthroat::LOCATIONS))
+    play_turn_from(board.lookup((location.to_i - 2) % board.locations))
   end
 
 end

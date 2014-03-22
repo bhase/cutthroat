@@ -40,7 +40,7 @@ module Cutthroat
         double_count += 1 if @last_throw[0] == @last_throw[1]
         break if double_count >= 3
         sum = last_throw.reduce(:+)
-        move_to(game.find_location((sum + location.to_i) % LOCATIONS))
+        move_to(game.find_location((sum + location.to_i) % game.board.locations))
         location.trigger_action(self)
         break if @last_throw[0] != @last_throw[1]
       end

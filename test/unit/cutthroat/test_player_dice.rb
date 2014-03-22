@@ -43,7 +43,6 @@ class TestPlayerDice < Test::Unit::TestCase
   end
 
   def test_player_finds_location
-    @player.game = mock
     location = mock
     location.expects(:trigger_action).with(@player)
     @player.game.expects(:find_location).returns(location)
