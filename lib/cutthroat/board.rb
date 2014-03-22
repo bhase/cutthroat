@@ -108,10 +108,6 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Tennessee Avenue
     land_price: 180
 - !ruby/object:Cutthroat::Location
-    position: 28
-    name: Water Works
-    group: !ruby/sym utility
-- !ruby/object:Cutthroat::Location
     position: 19
     name: New York Avenue
 - !ruby/object:Cutthroat::Location
@@ -137,6 +133,10 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     land_price: 260
     rent: 22
     group: !ruby/sym street6
+- !ruby/object:Cutthroat::Location
+    position: 28
+    name: Water Works
+    group: !ruby/sym utility
 - !ruby/object:Cutthroat::Location
     position: 30
     name: Go To Jail
