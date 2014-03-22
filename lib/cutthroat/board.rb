@@ -6,6 +6,10 @@ module Cutthroat
       @locations = YAML.parse(DEFAULT_BOARD).to_ruby
     end
 
+    def locations
+      @locations.length
+    end
+
     def lookup(location)
       @locations.find {|l| l.position == location || l.name == location }
     end
@@ -104,6 +108,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 16
     name: St. James Place
 - !ruby/object:Cutthroat::Location
+    position: 17
+- !ruby/object:Cutthroat::Location
     position: 18
     name: Tennessee Avenue
     land_price: 180
@@ -118,6 +124,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 22
 - !ruby/object:Cutthroat::Location
+    position: 23
+- !ruby/object:Cutthroat::Location
     position: 24
     name: Illinois Avenue
     rent: 20
@@ -128,6 +136,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     rent: 25
     group: !ruby/sym railroad
 - !ruby/object:Cutthroat::Location
+    position: 26
+- !ruby/object:Cutthroat::Location
     position: 27
     name: Ventnor Avenue
     land_price: 260
@@ -137,6 +147,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     position: 28
     name: Water Works
     group: !ruby/sym utility
+- !ruby/object:Cutthroat::Location
+    position: 29
 - !ruby/object:Cutthroat::Location
     position: 30
     name: Go To Jail
@@ -149,6 +161,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 - !ruby/object:Cutthroat::Location
     position: 32
     name: North Carolina Avenue
+- !ruby/object:Cutthroat::Location
+    position: 33
 - !ruby/object:Cutthroat::Location
     position: 34
     name: Pennsylvania Avenue

@@ -44,4 +44,9 @@ class TestBoard < Test::Unit::TestCase
     location = @board.find_go
     assert_equal(0, location.position)
   end
+
+  def test_locations
+    # built-in default board has 40 locations
+    assert_equal(40, @board.locations)
+  end
 end
