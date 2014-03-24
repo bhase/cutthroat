@@ -53,11 +53,6 @@ module Cutthroat
       end
     end
 
-    def record_rights(player)
-      player.charge(land_price)
-      @owner = player
-    end
-
     def mortgage(player)
       raise AlreadyMortgaged, "#{self} is already mortgaged" if @is_mortgaged == true
       raise NotOwner, "#{self} is not your property" if @owner != player
@@ -117,6 +112,12 @@ module Cutthroat
       location = player.game.board.find_go
       player.move_to(location)
       location.trigger_action(player)
+    end
+
+    private
+    def record_rights(player)
+      player.charge(land_price)
+      @owner = player
     end
 
   end
