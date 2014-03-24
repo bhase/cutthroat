@@ -1,4 +1,4 @@
-When /^the player rolls (#{EYES})$/ do |eyes|
+When /^the player rolls (#{NUMBER})$/ do |eyes|
   setup_dice_for(eyes)
   player.play_turn(dice)
 end
