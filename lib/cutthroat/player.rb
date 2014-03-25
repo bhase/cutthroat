@@ -82,5 +82,9 @@ module Cutthroat
       end
     end
 
+    def leave_jail_with?
+      @callout.leave_jail_with?
+    end
+
   end
 end

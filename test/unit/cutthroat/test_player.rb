@@ -33,4 +33,11 @@ class TestPlayer < Test::Unit::TestCase
     @player.buy_property?(nil)
   end
 
+  def test_jail_exit_from_user
+    user_callout = mock
+    user_callout.expects(:leave_jail_with?)
+    @player.register_callouts(user_callout)
+    @player.leave_jail_with?
+  end
+
 end
