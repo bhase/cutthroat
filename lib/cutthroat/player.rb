@@ -83,7 +83,12 @@ module Cutthroat
     end
 
     def leave_jail_with?
-      @callout.leave_jail_with?
+      if @callout.nil?
+        # TODO - currently do nothing not to break everything
+        :roll_dice
+      else
+        @callout.leave_jail_with?
+      end
     end
 
   end

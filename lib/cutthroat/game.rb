@@ -42,7 +42,13 @@ module Cutthroat
     end
 
     def play_round
-      players.each {|p| p.play_turn(@dice) }
+      players.each {|p|
+        if p.in_jail == true
+          p.leave_jail_with?
+        else
+          p.play_turn(@dice)
+        end
+      }
     end
 
     def cancel
