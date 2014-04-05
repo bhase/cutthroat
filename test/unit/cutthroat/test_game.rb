@@ -79,8 +79,8 @@ class TestGame < Test::Unit::TestCase
   end
 
   def add_two_player(game)
-    game.add_player(Cutthroat::Player.new("abc"))
-    game.add_player(Cutthroat::Player.new("def"))
+    game.add_player(default_player("abc"))
+    game.add_player(default_player("def"))
     game
   end
 

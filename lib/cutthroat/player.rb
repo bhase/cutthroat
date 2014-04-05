@@ -71,23 +71,14 @@ module Cutthroat
 
     def register_callouts(user_callouts)
       @callout = user_callouts
+      self
     end
 
-    def buy_property?(property)
-      if @callout.nil?
-        # TODO - currently do nothing not to break everything
-        false
+    def method_missing(sym, *args)
+      if @callout.respond_to?(sym)
+        @callout.send(sym, args)
       else
-        @callout.buy_property?(property)
-      end
-    end
-
-    def leave_jail_with?
-      if @callout.nil?
-        # TODO - currently do nothing not to break everything
-        :roll_dice
-      else
-        @callout.leave_jail_with?
+        super
       end
     end
 

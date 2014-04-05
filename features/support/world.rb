@@ -1,7 +1,13 @@
 
 module KnowsPlayer
+  def new_player(name = "anonymous player")
+    p = Cutthroat::Player.new(name)
+    s = double(:buy_property? => false, :leave_jail_with? => :roll_dice)
+    p.register_callouts(s)
+  end
+
   def player
-    @player ||= Cutthroat::Player.new()
+    @player ||= new_player
   end
 
   def play_turn_from(location, p = player)
@@ -60,7 +66,7 @@ module KnowsGame
 
   def start_game_with_two_player
     game.add_player(player)
-    game.add_player(Cutthroat::Player.new("p2"))
+    game.add_player(new_player("p2"))
     game.start
   end
 

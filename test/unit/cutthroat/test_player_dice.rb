@@ -2,13 +2,14 @@
 require 'test/unit'
 require 'mocha/setup'
 require 'cutthroat'
+require 'test_helper'
 
 require 'stub_dice'
 
 class TestPlayerDice < Test::Unit::TestCase
 
   def setup
-    @player = Cutthroat::Player.new()
+    @player = default_player
     @player.game = Cutthroat::Game.new
     @dice = StubDice.new
     @dice.sequence = [[3, 2]]
