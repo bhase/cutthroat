@@ -15,4 +15,19 @@ class TestLocation < Test::Unit::TestCase
     loc.trigger_action(@player)
   end
 
+  def test_location_respects_player_decision
+    loc = Cutthroat::Location.new
+    loc.trigger_action(@player)
+    assert_equal(nil, loc.owner)
+  end
+
+  def test_location_respects_player_decision_to_buy
+    @player.unstub(:'buy_property?')
+    @player.expects(:'buy_property?').returns(true).at_least_once
+    loc = Cutthroat::Location.new
+    loc.instance_variable_set("@land_price", 10)
+    loc.trigger_action(@player)
+    assert_equal(@player, loc.owner)
+  end
+
 end
