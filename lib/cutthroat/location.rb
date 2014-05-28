@@ -114,7 +114,6 @@ module Cutthroat
       location.trigger_action(player)
     end
 
-    private
     def record_rights(player)
       player.charge(land_price)
       @owner = player
