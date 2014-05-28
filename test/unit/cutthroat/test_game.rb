@@ -69,15 +69,6 @@ class TestGame < Test::Unit::TestCase
     refute_nil(@game.board)
   end
 
-  def test_game_asks_arrested_player
-    @game.add_player(Cutthroat::Player.new)
-    @game.players[0].arrest_at(@game.board.find_jail)
-    user_callouts = mock
-    user_callouts.expects(:leave_jail_with?)
-    @game.players[0].register_callouts(user_callouts)
-    @game.play_round
-  end
-
   def add_two_player(game)
     game.add_player(default_player("abc"))
     game.add_player(default_player("def"))
