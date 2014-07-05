@@ -47,7 +47,7 @@ module Cutthroat
       # and user callout here
       @turns_played += 1
       if (double_count >= 3)
-        move_to(game.board.find_jail)
+        self.arrest_at(game.board.find_jail)
       end
     end
 
