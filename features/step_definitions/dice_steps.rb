@@ -1,12 +1,12 @@
 When /^the player rolls (#{NUMBER})$/ do |eyes|
   setup_dice_for(eyes)
-  player.play_turn(dice)
+  game.play_turn(player)
 end
 
 When /^the player rolls enough to land on (#{LOCATION})$/ do |location|
   goal = location.to_i - player.location.to_i
   setup_dice_for(goal)
-  player.play_turn(dice)
+  game.play_turn(player)
 end
 
 When /^the player rolls the following sequence$/ do |sequence|
@@ -23,5 +23,5 @@ When /^the player rolls the following sequence$/ do |sequence|
     roll_sequence << roll
   end
   dice.should_receive(:roll).at_most(3).times.and_return(*roll_sequence)
-  player.play_turn(dice)
+  game.play_turn(player)
 end

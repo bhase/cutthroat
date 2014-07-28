@@ -1,6 +1,6 @@
 Feature: Roll Double
   As a player, when I roll double, my turn continues
-  and I land on new locations.
+  and I land on a new location.
 
   Scenario: Roll Double
     Given a player on 'Go'

@@ -46,7 +46,7 @@ module Cutthroat
         if p.in_jail == true
           p.leave_jail_with?
         else
-          p.play_turn(@dice)
+          play_turn(p)
         end
       }
     end
@@ -65,6 +65,25 @@ module Cutthroat
 
     def find_locations_of_group(group)
       board.all_of_group(group)
+    end
+
+    def play_turn(player)
+      double_count = 0
+      loop do
+        # user callout here - user can take action or not
+        player.last_throw = dice.roll
+        double_count += 1 if player.last_throw[0] == player.last_throw[1]
+        break if double_count >= 3
+        sum = player.last_throw.reduce(:+)
+        player.move_to(find_location((sum + player.location.to_i) % board.locations))
+        player.location.trigger_action(player)
+        break if player.last_throw[0] != player.last_throw[1]
+      end
+      # and user callout here
+      player.turns_played += 1
+      if (double_count >= 3)
+        player.arrest_at(board.find_jail)
+      end
     end
 
   end

@@ -12,7 +12,7 @@ module KnowsPlayer
 
   def play_turn_from(location, p = player)
     p.move_to(location)
-    p.play_turn(dice)
+    game.play_turn(p)
   end
 
   def set_worth_of_player_to(amount)
@@ -76,11 +76,12 @@ module KnowsGame
 
   def setup_dice_for(eyes)
     dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
+    game.instance_variable_set(:@dice, dice)
   end
 
   def add_game_player(*names)
     names.each do |name|
-      game.add_player(Cutthroat::Player.new(name))
+      game.add_player(new_player(name))
     end
   end
 

@@ -4,9 +4,9 @@ module Cutthroat
 
     attr_reader :location
     attr_reader :name
-    attr_reader :turns_played
+    attr_accessor :turns_played
     attr_reader :balance
-    attr_reader :last_throw
+    attr_accessor :last_throw
     attr_reader :in_jail
 
     attr_accessor :game
@@ -30,25 +30,6 @@ module Cutthroat
 
     def charge(amount)
       @balance -= amount
-    end
-
-    def play_turn(dice)
-      double_count = 0
-      loop do
-        # user callout here - user can take action or not
-        @last_throw = dice.roll
-        double_count += 1 if @last_throw[0] == @last_throw[1]
-        break if double_count >= 3
-        sum = last_throw.reduce(:+)
-        move_to(game.find_location((sum + location.to_i) % game.board.locations))
-        location.trigger_action(self)
-        break if @last_throw[0] != @last_throw[1]
-      end
-      # and user callout here
-      @turns_played += 1
-      if (double_count >= 3)
-        self.arrest_at(game.board.find_jail)
-      end
     end
 
     def touched_go
