@@ -4,6 +4,7 @@ module Cutthroat
   class Board
     def initialize
       @locations = YAML.parse(DEFAULT_BOARD).to_ruby
+      @locations.each { |l| l.board = self }
     end
 
     def locations

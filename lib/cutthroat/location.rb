@@ -25,6 +25,8 @@ module Cutthroat
     attr_reader :owner
     attr_reader :is_mortgaged
 
+    attr_accessor :board
+
     def to_s
       @name
     end
@@ -70,8 +72,7 @@ module Cutthroat
     private
 
     def calculate_rent(player)
-      game = player.game
-      properties_in_group = game.find_locations_of_group(group)
+      properties_in_group = board.all_of_group(group)
       if (group == :utility)
         eyes = player.last_throw.inject(:+)
         if properties_in_group.none?{|p| p.owner.nil?}
@@ -80,7 +81,7 @@ module Cutthroat
           eyes * 4
         end
       else
-        properties_owned = game.find_locations_owned_by(self.owner)
+        properties_owned = board.all_owned_by(self.owner)
         properties_owned_in_group = properties_owned & properties_in_group
         if (group == :railroad)
           rent * (2 ** (properties_owned_in_group.length - 1))
@@ -95,7 +96,7 @@ module Cutthroat
     end
 
     def put_in_jail(player)
-      player.arrest_at(player.game.board.find_jail)
+      player.arrest_at(board.find_jail)
     end
 
     def income_tax(player)
@@ -109,7 +110,7 @@ module Cutthroat
 
     def chance(player)
       # TODO implement chance cards
-      location = player.game.board.find_go
+      location = board.find_go
       player.move_to(location)
       location.trigger_action(player)
     end

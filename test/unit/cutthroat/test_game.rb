@@ -19,12 +19,6 @@ class TestGame < Test::Unit::TestCase
     assert_equal(player, @game.players.first)
   end
 
-  def test_add_player_sets_game
-    player = Cutthroat::Player.new
-    @game.add_player(player)
-    assert_equal(@game, player.game)
-  end
-
   def test_players_have_different_names
     @game.add_player(Cutthroat::Player.new())
     assert_raises(Cutthroat::PlayerExistsError) {

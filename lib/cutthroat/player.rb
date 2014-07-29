@@ -9,8 +9,6 @@ module Cutthroat
     attr_accessor :last_throw
     attr_reader :in_jail
 
-    attr_accessor :game
-
     def initialize(name = "anonymous player")
       @location = nil
       @previous_location = @location

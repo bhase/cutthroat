@@ -11,7 +11,6 @@ class TestPlayerDice < Test::Unit::TestCase
   def setup
     @game = Cutthroat::Game.new
     @player = default_player
-    @player.game = @game
     @dice = StubDice.new
     @dice.sequence = [[3, 2]]
     @game.instance_variable_set(:@dice, @dice)
@@ -25,7 +24,7 @@ class TestPlayerDice < Test::Unit::TestCase
 
   def test_player_moves_forward
     @dice.sequence = [[3, 2]]
-    @player.move_to(@player.game.find_location(7))
+    @player.move_to(@game.find_location(7))
     @game.play_turn(@player)
     assert(@player.location.to_i == 12,
            "player moves forward to 12 when rolled 5, is at #{@player.location}")
@@ -48,7 +47,7 @@ class TestPlayerDice < Test::Unit::TestCase
   def test_player_finds_location
     location = mock
     location.expects(:trigger_action).with(@player)
-    @player.game.expects(:find_location).returns(location)
+    @game.expects(:find_location).returns(location)
     @game.play_turn(@player)
   end
 end
