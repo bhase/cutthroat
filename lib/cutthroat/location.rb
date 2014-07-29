@@ -73,25 +73,14 @@ module Cutthroat
 
     def calculate_rent(player)
       properties_in_group = board.all_of_group(group)
-      if (group == :utility)
-        eyes = player.last_throw.inject(:+)
-        if properties_in_group.none?{|p| p.owner.nil?}
-          eyes * 10
-        else
-          eyes * 4
-        end
+      properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
+      case group
+      when :utility
+        rent_for_utility(player.last_throw.inject(:+), properties_in_group)
+      when :railroad
+        rent_for_railroad(properties_owned_in_group)
       else
-        properties_owned = board.all_owned_by(self.owner)
-        properties_owned_in_group = properties_owned & properties_in_group
-        if (group == :railroad)
-          rent * (2 ** (properties_owned_in_group.length - 1))
-        else
-          if properties_owned_in_group == properties_in_group
-            rent * 2
-          else
-            rent
-          end
-        end
+        rent_for_property(properties_owned_in_group, properties_in_group)
       end
     end
 
@@ -118,6 +107,26 @@ module Cutthroat
     def record_rights(player)
       player.charge(land_price)
       @owner = player
+    end
+
+    def rent_for_utility(eyes, properties_in_group)
+        if properties_in_group.none? { |p| p.owner.nil? }
+          eyes * 10
+        else
+          eyes * 4
+        end
+    end
+
+    def rent_for_railroad(properties_owned_in_group)
+        rent * (2 ** (properties_owned_in_group.length - 1))
+    end
+
+    def rent_for_property(properties_owned_in_group, properties_in_group)
+        if properties_owned_in_group == properties_in_group
+          rent * 2
+        else
+          rent
+        end
     end
 
   end
