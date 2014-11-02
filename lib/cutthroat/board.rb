@@ -3,7 +3,15 @@ require 'yaml'
 module Cutthroat
   class Board
     def initialize
-      @locations = YAML.parse(DEFAULT_BOARD).to_ruby
+      input = YAML.parse(DEFAULT_BOARD).to_ruby
+      @locations = []
+      input.each {|pos, value|
+        if (value.nil?)
+          @locations[pos] = Location.new(pos)
+        else
+          @locations[pos] = Location.new(pos, value)
+        end
+      }
       @locations.each { |l| l.board = self }
     end
 
@@ -36,158 +44,118 @@ end
 
 Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 ---
-- !ruby/object:Cutthroat::Location
-    position: 0
+0:
     name: Go
     type: go
-- !ruby/object:Cutthroat::Location
-    position: 1
+1:
     name: Mediterranean Avenue
     rent: 2
     land_price: 60
-    group: !ruby/sym street1
-- !ruby/object:Cutthroat::Location
-    position: 2
+    group: street1
+2:
     name: Community Chest
-- !ruby/object:Cutthroat::Location
-    position: 3
+3:
     name: Baltic Avenue
-    group: !ruby/sym street1
-- !ruby/object:Cutthroat::Location
-    position: 4
+    group: street1
+4:
     name: Income Tax
     action: income_tax
-- !ruby/object:Cutthroat::Location
-    position: 5
+5:
     name: Reading Railroad
     rent: 25
     land_price: 200
-    group: !ruby/sym railroad
-- !ruby/object:Cutthroat::Location
-    position: 6
+    group: railroad
+6:
     name: Oriental Avenue
     rent: 6
     land_price: 100
-    group: !ruby/sym street2
-- !ruby/object:Cutthroat::Location
-    position: 7
+    group: street2
+7:
     name: Chance
     action: chance
-- !ruby/object:Cutthroat::Location
-    position: 8
+8:
     name: Vermont Avenue
-    group: !ruby/sym street2
-- !ruby/object:Cutthroat::Location
-    position: 9
+    group: street2
+9:
     name: Connecticut Avenue
-    group: !ruby/sym street2
-- !ruby/object:Cutthroat::Location
-    position: 10
+    group: street2
+10:
     name: Just Visiting
     type: jail
-- !ruby/object:Cutthroat::Location
-    position: 11
-- !ruby/object:Cutthroat::Location
-    position: 12
+11:
+12:
     name: Electric Company
-    group: !ruby/sym utility
-- !ruby/object:Cutthroat::Location
-    position: 13
+    group: utility
+13:
     name: States Avenue
-    group: !ruby/sym street3
+    group: street3
     land_price: 140
-- !ruby/object:Cutthroat::Location
-    position: 14
+14:
     name: Virginia Avenue
     land_price: 160
-- !ruby/object:Cutthroat::Location
-    position: 15
+15:
     name: Pennsylvania Railroad
     rent: 25
-    group: !ruby/sym railroad
-- !ruby/object:Cutthroat::Location
-    position: 16
+    group: railroad
+16:
     name: St. James Place
-- !ruby/object:Cutthroat::Location
-    position: 17
-- !ruby/object:Cutthroat::Location
-    position: 18
+17:
+18:
     name: Tennessee Avenue
     land_price: 180
-- !ruby/object:Cutthroat::Location
-    position: 19
+19:
     name: New York Avenue
-- !ruby/object:Cutthroat::Location
-    position: 20
-- !ruby/object:Cutthroat::Location
-    position: 21
+20:
+21:
     name: Kentucky Avenue
-- !ruby/object:Cutthroat::Location
-    position: 22
-- !ruby/object:Cutthroat::Location
-    position: 23
-- !ruby/object:Cutthroat::Location
-    position: 24
+22:
+23:
+24:
     name: Illinois Avenue
     rent: 20
-    group: !ruby/sym street5
-- !ruby/object:Cutthroat::Location
-    position: 25
+    group: street5
+25:
     name: B&O RR
     rent: 25
-    group: !ruby/sym railroad
-- !ruby/object:Cutthroat::Location
-    position: 26
-- !ruby/object:Cutthroat::Location
-    position: 27
+    group: railroad
+26:
+27:
     name: Ventnor Avenue
     land_price: 260
     rent: 22
-    group: !ruby/sym street6
-- !ruby/object:Cutthroat::Location
-    position: 28
+    group: street6
+28:
     name: Water Works
-    group: !ruby/sym utility
-- !ruby/object:Cutthroat::Location
-    position: 29
-- !ruby/object:Cutthroat::Location
-    position: 30
+    group: utility
+29:
+30:
     name: Go To Jail
     action: put_in_jail
-- !ruby/object:Cutthroat::Location
-    position: 31
+31:
     name: Pacific Avenue
     rent: 26
-    group: !ruby/sym street7
-- !ruby/object:Cutthroat::Location
-    position: 32
+    group: street7
+32:
     name: North Carolina Avenue
-- !ruby/object:Cutthroat::Location
-    position: 33
-- !ruby/object:Cutthroat::Location
-    position: 34
+33:
+34:
     name: Pennsylvania Avenue
-- !ruby/object:Cutthroat::Location
-    position: 35
+35:
     name: Short Line
     rent: 25
-    group: !ruby/sym railroad
-- !ruby/object:Cutthroat::Location
-    position: 36
-- !ruby/object:Cutthroat::Location
-    position: 37
+    group: railroad
+36:
+37:
     name: Park Place
     rent: 35
     land_price: 350
-    group: !ruby/sym street8
-- !ruby/object:Cutthroat::Location
-    position: 38
+    group: street8
+38:
     name: Luxury Tax
     action: luxury_tax
-- !ruby/object:Cutthroat::Location
-    position: 39
+39:
     name: Boardwalk
     rent: 50
-    group: !ruby/sym street8
+    group: street8
 ENDOFBOARD
 

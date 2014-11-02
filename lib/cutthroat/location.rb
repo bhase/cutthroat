@@ -27,6 +27,16 @@ module Cutthroat
 
     attr_accessor :board
 
+    def initialize(pos = 0, attributes = {} )
+      @position = pos
+      @name = attributes["name"]
+      @type = attributes["type"].to_sym unless attributes["type"].nil?
+      @group = attributes["group"].to_sym unless attributes["group"].nil?
+      @land_price = attributes["land_price"]
+      @rent = attributes["rent"]
+      @action = attributes["action"].to_sym unless attributes["action"].nil?
+    end
+
     def to_s
       @name
     end
