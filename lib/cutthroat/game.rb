@@ -42,11 +42,10 @@ module Cutthroat
 
     def play_round
       players.each {|p|
-        if p.in_jail == true
-          p.leave_jail_with?
-        else
-          play_turn(p)
-        end
+        # user callout here - user can take action or not
+        # TODO leave_jail in pre_hook
+        play_turn(p)
+        # and user callout here: post_hook
       }
     end
 
@@ -67,9 +66,10 @@ module Cutthroat
     end
 
     def play_turn(player)
+      # TODO when switching to pre_hook for jail
+      # handle special case roll dice to leave jail here
       double_count = 0
       loop do
-        # user callout here - user can take action or not
         player.last_throw = dice.roll
         double_count += 1 if player.last_throw[0] == player.last_throw[1]
         break if double_count >= 3
@@ -78,11 +78,10 @@ module Cutthroat
         player.location.trigger_action(player)
         break if player.last_throw[0] != player.last_throw[1]
       end
-      # and user callout here
-      player.turns_played += 1
       if (double_count >= 3)
         player.arrest_at(board.find_jail)
       end
+      player.turns_played += 1
     end
 
   end

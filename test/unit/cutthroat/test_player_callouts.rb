@@ -15,8 +15,8 @@ class TestPlayerCallouts < Test::Unit::TestCase
     @player.buy_property?(nil)
   end
 
-  def test_jail_exit_from_user
-    @user_callout.expects(:leave_jail_with?)
-    @player.leave_jail_with?
+  def test_pre_hook
+    @user_callout.expects(:pre_hook)
+    @player.pre_hook
   end
 end
