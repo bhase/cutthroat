@@ -2,15 +2,33 @@ require "cutthroat/error"
 
 module Cutthroat
 
+  ##
+  # This exception is reported when someone tries to start a game but there
+  # are not enough player registered at the moment.
+  #
   class TooFewPlayerError < CutthroatError
   end
 
+  ##
+  # This exception is reported when someone tries to register another player
+  # while the maximum number of player is reached.
+  #
   class TooManyPlayerError < CutthroatError
   end
 
+
+  ##
+  # This exception is reported when someone tries to register a player while
+  # another player with the same name already exists in this game.
+  #
   class PlayerExistsError < CutthroatError
   end
 
+  ##
+  # = The Game class.
+  #
+  # Handles game logic and player management.
+  #
   class Game
 
     attr_reader :players
@@ -42,10 +60,9 @@ module Cutthroat
 
     def play_round
       players.each {|p|
-        # user callout here - user can take action or not
-        # TODO leave_jail in pre_hook
+        pre_hook(p)
         play_turn(p)
-        # and user callout here: post_hook
+        post_hook(p)
       }
     end
 
@@ -84,5 +101,15 @@ module Cutthroat
       player.turns_played += 1
     end
 
+    def pre_hook(player)
+      # TODO leave_jail
+      loop do
+        action = player.pre_hook
+        break if action == :roll_dice
+      end
+    end
+
+    def post_hook(player)
+    end
   end
 end

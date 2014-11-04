@@ -59,6 +59,15 @@ class TestGame < Test::Unit::TestCase
     }
   end
 
+  def test_play_round_pre_hook_called_until_roll_dice
+    callouts = mock
+    callouts.stubs(:buy_property?).returns(false)
+    callouts.expects(:pre_hook).times(3).returns(:unknown, nil, :roll_dice)
+    @game.add_player(Cutthroat::Player.new)
+    @game.players[0].register_callouts(callouts)
+    @game.play_round
+  end
+
   def test_game_connects_board
     refute_nil(@game.board)
   end

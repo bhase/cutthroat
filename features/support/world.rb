@@ -2,7 +2,7 @@
 module KnowsPlayer
   def new_player(name = "anonymous player")
     p = Cutthroat::Player.new(name)
-    s = double(:buy_property? => false)
+    s = double(:buy_property? => false, :pre_hook => :roll_dice)
     p.register_callouts(s)
   end
 
