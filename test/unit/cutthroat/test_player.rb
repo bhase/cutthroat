@@ -25,4 +25,12 @@ class TestPlayer < Test::Unit::TestCase
     player = Cutthroat::Player.new("test player")
     assert_equal("test player", player.name)
   end
+
+  def test_missing_method_does_not_swallow_event
+    # method_missing in Player should use super, but this not that easy
+    # to test - at least I do not know how. So at least we test for an
+    # exception (which is also raised by calling super)
+    assert_raises() { @player.definitive_not_existing_method_xlkhgalskhd }
+  end
+
 end
