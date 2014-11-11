@@ -49,7 +49,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     type: go
 1:
     name: Mediterranean Avenue
-    rent: 2
+    rent: [2, 10, 30, 90, 160, 250]
     land_price: 60
     group: street1
 2:
@@ -67,7 +67,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: railroad
 6:
     name: Oriental Avenue
-    rent: 6
+    rent: [6, 30, 90, 270, 400, 550]
     land_price: 100
     group: street2
 7:
@@ -112,7 +112,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 23:
 24:
     name: Illinois Avenue
-    rent: 20
+    rent: [20, 100, 300, 750, 925, 1100]
     group: street5
 25:
     name: B&O RR
@@ -122,7 +122,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 27:
     name: Ventnor Avenue
     land_price: 260
-    rent: 22
+    rent: [22, 110, 330, 800, 975, 1150]
     group: street6
 28:
     name: Water Works
@@ -133,7 +133,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     action: put_in_jail
 31:
     name: Pacific Avenue
-    rent: 26
+    rent: [26, 130, 390, 900, 1100, 1275]
     group: street7
 32:
     name: North Carolina Avenue
@@ -147,7 +147,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 36:
 37:
     name: Park Place
-    rent: 35
+    rent: [35, 175, 500, 1100, 1300, 1500]
     land_price: 350
     group: street8
 38:
@@ -155,7 +155,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     action: luxury_tax
 39:
     name: Boardwalk
-    rent: 50
+    rent: [50, 200, 600, 1400, 1700, 2000]
     group: street8
 ENDOFBOARD
 

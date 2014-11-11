@@ -120,23 +120,24 @@ module Cutthroat
     end
 
     def rent_for_utility(eyes, properties_in_group)
-        if properties_in_group.none? { |p| p.owner.nil? }
-          eyes * 10
-        else
-          eyes * 4
-        end
+      if properties_in_group.none? { |p| p.owner.nil? }
+        eyes * 10
+      else
+        eyes * 4
+      end
     end
 
     def rent_for_railroad(properties_owned_in_group)
-        rent * (2 ** (properties_owned_in_group.length - 1))
+      rent * (2 ** (properties_owned_in_group.length - 1))
     end
 
     def rent_for_property(properties_owned_in_group, properties_in_group)
-        if properties_owned_in_group == properties_in_group
-          rent * 2
-        else
-          rent
-        end
+      # TODO take houses and hotel into account
+      if properties_owned_in_group == properties_in_group
+        rent[0] * 2
+      else
+        rent[0]
+      end
     end
 
   end
