@@ -61,7 +61,10 @@ module Cutthroat
     def play_round
       players.each {|p|
         pre_hook(p)
-        play_turn(p) # TODO distinct between jail and not in jail
+        if p.in_jail == true
+        else
+          play_turn(p)
+        end
         post_hook(p)
       }
     end

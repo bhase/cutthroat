@@ -24,3 +24,12 @@ Then /^the player is no longer in Jail and moves on$/ do
   player.in_jail.should == false
   player.location.should_not equal board.find_jail
 end
+
+Then /^the player is still in Jail and does not move$/ do
+  player.location.should equal board.find_jail
+  player.in_jail.should == true
+end
+
+When /^the player rolls dice to leave jail and does not roll double$/ do
+  game.play_round
+end

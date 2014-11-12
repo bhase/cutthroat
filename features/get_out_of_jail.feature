@@ -14,3 +14,14 @@ Feature: Get out of Jail
     When the player pays the Jail fee at begin of his turn
     And the player rolls double
     Then the player moves and rolls again
+
+  Scenario: Roll dice, no double
+    Given a player in Jail
+    When the player rolls dice to leave jail and does not roll double
+    Then the player is still in Jail and does not move
+
+  @draft
+  Scenario: Roll dice, double
+    Given a player in Jail
+    When the player rolls dice to leave Jail and rolls double
+    Then the player is no longer in Jail and moves on
