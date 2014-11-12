@@ -7,7 +7,7 @@ module Cutthroat
     attr_accessor :turns_played
     attr_reader :balance
     attr_accessor :last_throw
-    attr_reader :in_jail
+    attr_accessor :in_jail
 
     def initialize(name = "anonymous player")
       @location = nil

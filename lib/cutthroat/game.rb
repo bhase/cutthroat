@@ -61,7 +61,7 @@ module Cutthroat
     def play_round
       players.each {|p|
         pre_hook(p)
-        play_turn(p)
+        play_turn(p) # TODO distinct between jail and not in jail
         post_hook(p)
       }
     end
@@ -83,8 +83,6 @@ module Cutthroat
     end
 
     def play_turn(player)
-      # TODO when switching to pre_hook for jail
-      # handle special case roll dice to leave jail here
       double_count = 0
       loop do
         player.last_throw = dice.roll
@@ -101,14 +99,32 @@ module Cutthroat
       player.turns_played += 1
     end
 
+    # Actions that can be done in pre_hook
+    # - buy house, hotel
+    # - sell house, hotol, property
+    # - mortgage, un-mortgae
+    # - trade
+    # - leave jail with payment or card
+    # - roll dice (ends pre_hook)
     def pre_hook(player)
-      # TODO leave_jail
       loop do
         action = player.pre_hook
-        break if action == :roll_dice
+        case action
+        when :roll_dice
+          break
+        when :pay_jail_fee
+          player.charge(Cutthroat::JAIL_FEE)
+          player.in_jail = false
+        end
       end
     end
 
+    # Actions that can be done in post_hook
+    # - buy house, hotel
+    # - sell house, hotel, property
+    # - mortgage, un-mortgage
+    # - trade
+    # - end turn
     def post_hook(player)
     end
   end
