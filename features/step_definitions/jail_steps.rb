@@ -33,3 +33,8 @@ end
 When /^the player rolls dice to leave jail and does not roll double$/ do
   game.play_round
 end
+
+When /^the player rolls dice to leave Jail and rolls double$/ do
+  dice.should_receive(:roll).and_return([3, 3])
+  game.play_round
+end

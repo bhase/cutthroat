@@ -39,7 +39,7 @@ class TestPlayerDice < Test::Unit::TestCase
   end
 
   def test_turns_played
-    @game.play_turn(@player)
+    @game.post_hook(@player)
     assert(@player.turns_played == 1,
            "player played #{@player.turns_played} turns")
   end

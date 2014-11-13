@@ -20,7 +20,6 @@ Feature: Get out of Jail
     When the player rolls dice to leave jail and does not roll double
     Then the player is still in Jail and does not move
 
-  @draft
   Scenario: Roll dice, double
     Given a player in Jail
     When the player rolls dice to leave Jail and rolls double

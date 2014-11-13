@@ -62,6 +62,7 @@ module Cutthroat
       players.each {|p|
         pre_hook(p)
         if p.in_jail == true
+          jail_turn(p)
         else
           play_turn(p)
         end
@@ -91,15 +92,26 @@ module Cutthroat
         player.last_throw = dice.roll
         double_count += 1 if player.last_throw[0] == player.last_throw[1]
         break if double_count >= 3
-        sum = player.last_throw.reduce(:+)
-        player.move_to(find_location((sum + player.location.to_i) % board.locations))
-        player.location.trigger_action(player)
+        move(player)
         break if player.last_throw[0] != player.last_throw[1]
       end
       if (double_count >= 3)
         player.arrest_at(board.find_jail)
       end
-      player.turns_played += 1
+    end
+
+    def jail_turn(player)
+      player.last_throw = dice.roll
+      if (player.last_throw[0] == player.last_throw[1])
+        player.in_jail = false
+        move(player)
+      end
+    end
+
+    def move(player)
+      sum = player.last_throw.reduce(:+)
+      player.move_to(find_location((sum + player.location.to_i) % board.locations))
+      player.location.trigger_action(player)
     end
 
     # Actions that can be done in pre_hook
@@ -129,6 +141,7 @@ module Cutthroat
     # - trade
     # - end turn
     def post_hook(player)
+      player.turns_played += 1
     end
   end
 end
