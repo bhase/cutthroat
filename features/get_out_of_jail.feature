@@ -1,6 +1,9 @@
 Feature: Get out of Jail
   As a player, when I am in Jail at the beginning of my turn I can
-  pay a fee to take a normal turn.
+  - pay a fee to take a normal turn
+  - try to roll a double
+  - play a get out of Jail card
+  to get out of Jail
 
   Scenario: Pay Fee
     Given a player in Jail
@@ -24,3 +27,9 @@ Feature: Get out of Jail
     Given a player in Jail
     When the player rolls dice to leave Jail and rolls double
     Then the player is no longer in Jail and moves on
+
+  Scenario: Roll dice, no double for three times
+    Given a player in Jail
+    When the player rolls dice and does not roll double for three turns
+    Then the player has to pay the Jail fee
+    And moves with the eyes of the last throw

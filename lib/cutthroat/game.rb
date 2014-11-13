@@ -105,7 +105,15 @@ module Cutthroat
       if (player.last_throw[0] == player.last_throw[1])
         player.in_jail = false
         move(player)
+      elsif third_turn_in_jail(player)
+        player.charge(Cutthroat::JAIL_FEE)
+        player.in_jail = false
+        move(player)
       end
+    end
+
+    def third_turn_in_jail(player)
+      (player.turns_played - player.in_jail_since) >= 2
     end
 
     def move(player)

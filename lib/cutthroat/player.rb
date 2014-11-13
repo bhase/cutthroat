@@ -8,6 +8,7 @@ module Cutthroat
     attr_reader :balance
     attr_accessor :last_throw
     attr_accessor :in_jail
+    attr_accessor :in_jail_since
 
     def initialize(name = "anonymous player")
       @location = nil
@@ -46,6 +47,7 @@ module Cutthroat
     def arrest_at(location)
       move_to(location)
       @in_jail = true
+      @in_jail_since = @turns_played
     end
 
     def register_callouts(user_callouts)
