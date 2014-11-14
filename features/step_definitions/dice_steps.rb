@@ -25,3 +25,12 @@ When /^the player rolls the following sequence$/ do |sequence|
   dice.should_receive(:roll).at_most(3).times.and_return(*roll_sequence)
   game.play_turn(player)
 end
+
+When /^the player rolls double$/ do
+  dice.should_receive(:roll).twice.and_return([3, 3], [1, 3])
+end
+
+Then /^the player moves and rolls again$/ do
+  game.play_round
+  player.location.should equal game.find_location(board.find_jail.to_i + 10)
+end

@@ -17,6 +17,9 @@ When /^the player pays the Jail fee at begin of his turn$/ do
   callout = double(:buy_property? => false)
   expect(callout).to receive(:pre_hook).and_return(:pay_jail_fee, :roll_dice)
   player.register_callouts(callout)
+end
+
+When /^rolls dice to continue his turn$/ do
   game.play_round
 end
 

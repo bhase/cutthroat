@@ -106,6 +106,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 19:
     name: New York Avenue
 20:
+    name: Free Parking
 21:
     name: Kentucky Avenue
 22:
