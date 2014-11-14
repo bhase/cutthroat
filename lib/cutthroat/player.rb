@@ -9,6 +9,7 @@ module Cutthroat
     attr_accessor :last_throw
     attr_accessor :in_jail
     attr_accessor :in_jail_since
+    attr_accessor :game
 
     def initialize(name = "anonymous player")
       @location = nil
@@ -36,9 +37,20 @@ module Cutthroat
     end
 
     def total_worth
-      # currently only balance is taken into account
-      @balance
+      # TODO currently only balance is taken into account
+      # total worth consists of
+      # - printed prices of owned properties
+      # - buy prices of houses and hotels
+      # - cash
+      locations = @game.find_locations_owned_by(self)
+      @balance + locations.inject(0){|sum, l| sum + l.land_price }
     end
+
+    # TODO worth
+    # this will be used to calculate bankruptcy
+    # difference to total_woth:
+    # - houses and hotels get half price
+    # - properties get mortgage value if not mortgaged
 
     def mortgage(location)
       location.mortgage(self)
