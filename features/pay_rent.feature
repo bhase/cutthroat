@@ -61,3 +61,9 @@ Feature: Pay rent
     And 'Oriental Avenue' is mortgaged
     When Fred lands on 'Oriental Avenue'
     Then the balance of Fred is unchanged
+
+  Scenario: Landing on real estate with house built
+    Given Albert owns all properties in the group of 'Vermont Avenue'
+    And Albert has built a house on 'Vermont Avenue'
+    When Fred lands on 'Vermont Avenue'
+    Then Fred pays the stated rent to Albert

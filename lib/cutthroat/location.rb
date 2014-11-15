@@ -21,6 +21,7 @@ module Cutthroat
     attr_reader :group
     attr_reader :land_price
     attr_reader :rent
+    attr_reader :buildings
 
     attr_reader :owner
     attr_reader :is_mortgaged
@@ -35,6 +36,7 @@ module Cutthroat
       @land_price = attributes["land_price"]
       @rent = attributes["rent"]
       @action = attributes["action"].to_sym unless attributes["action"].nil?
+      @buildings = 0
     end
 
     def to_s
@@ -133,7 +135,9 @@ module Cutthroat
 
     def rent_for_property(properties_owned_in_group, properties_in_group)
       # TODO take houses and hotel into account
-      if properties_owned_in_group == properties_in_group
+      if @buildings > 0
+        rent[@buildings]
+      elsif properties_owned_in_group == properties_in_group
         rent[0] * 2
       else
         rent[0]

@@ -75,6 +75,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     action: chance
 8:
     name: Vermont Avenue
+    rent: [6, 30, 90, 270, 400, 550]
     group: street2
 9:
     name: Connecticut Avenue
