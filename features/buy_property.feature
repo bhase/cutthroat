@@ -11,7 +11,7 @@ Feature: Buy Property
     And the player owns 'Virginia Avenue'
 
   Scenario: Landing on self owned property
-    Given 'Pennsylvania Avenue' is owned by player
+    Given a player owns 'Pennsylvania Avenue'
     When the player lands on 'Pennsylvania Avenue'
     Then the balance of this player is unchanged
 

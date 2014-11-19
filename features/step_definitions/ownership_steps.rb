@@ -6,7 +6,7 @@ Then /^(#{LOCATION}) is still unowned$/ do |location|
   location.owner.should be nil
 end
 
-Given /^(#{LOCATION}) is owned by player$/ do |location|
+Given /^a player owns (#{LOCATION})$/ do |location|
   location.set_owner player
 end
 
