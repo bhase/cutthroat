@@ -20,6 +20,7 @@ module Cutthroat
     attr_reader :type
     attr_reader :group
     attr_reader :land_price
+    attr_reader :house_price
     attr_reader :rent
     attr_reader :buildings
 
@@ -34,6 +35,7 @@ module Cutthroat
       @type = attributes["type"].to_sym unless attributes["type"].nil?
       @group = attributes["group"].to_sym unless attributes["group"].nil?
       @land_price = attributes["land_price"]
+      @house_price = attributes["house_price"]
       @rent = attributes["rent"]
       @action = attributes["action"].to_sym unless attributes["action"].nil?
       @buildings = 0
@@ -79,6 +81,10 @@ module Cutthroat
       raise NotMortgaged, "#{self} is not mortgaged" if @is_mortgaged != true
       player.charge(land_price * (MORTGAGE_RATE + MORTGAGE_DUTY) / 100)
       @is_mortgaged = false
+    end
+
+    def buy_house(player)
+      player.charge(house_price)
     end
 
     private

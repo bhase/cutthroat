@@ -110,6 +110,8 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Free Parking
 21:
     name: Kentucky Avenue
+    land_price: 220
+    house_price: 150
 22:
 23:
 24:

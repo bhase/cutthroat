@@ -3,7 +3,7 @@ Feature: Buildings
   Also I can sell buildings to receive some cash.
   Buildings must be evenly distributed in one group.
 
-  @draft
+  @wip
   Scenario: Buy House
     Given a player owns 'Kentucky Avenue'
     When the player decides to buy a house for 'Kentucky Avenue'

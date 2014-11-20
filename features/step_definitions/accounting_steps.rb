@@ -56,3 +56,7 @@ end
 Then /^the balance of this player is decreased by the fee$/ do
   player.balance.should == balance_of[player] - Cutthroat::JAIL_FEE
 end
+
+Then /^the player is charged by the price of a house on (#{LOCATION})$/ do |location|
+  player.balance.should == balance_of[player] - location.house_price
+end

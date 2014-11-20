@@ -131,13 +131,15 @@ module Cutthroat
     # - roll dice (ends pre_hook)
     def pre_hook(player)
       loop do
-        action = player.pre_hook
+        action, *args = player.pre_hook
         case action
         when :roll_dice
           break
         when :pay_jail_fee
           player.charge(Cutthroat::JAIL_FEE)
           player.in_jail = false
+        when :buy_house
+          args[0].buy_house(player)
         end
       end
     end
