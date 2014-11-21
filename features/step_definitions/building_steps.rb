@@ -12,5 +12,5 @@ When /^the player decides to buy a house for (#{LOCATION})$/ do |location|
 end
 
 Then /^on (#{LOCATION}) stands one house$/ do |location|
-  pending # express the regexp above with the code you wish you had
+  location.buildings.should == 1
 end

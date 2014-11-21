@@ -85,6 +85,7 @@ module Cutthroat
 
     def buy_house(player)
       player.charge(house_price)
+      @buildings += 1
     end
 
     private
