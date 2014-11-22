@@ -88,6 +88,11 @@ module Cutthroat
       @buildings += 1
     end
 
+    def sell_house(player)
+      player.receive(house_price / 2)
+      @buildings -= 1
+    end
+
     private
 
     def calculate_rent(player)

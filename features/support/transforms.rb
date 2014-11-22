@@ -15,3 +15,11 @@ NUMBER = Transform /^\d+$/ do |number|
   number.to_i
 end
 
+NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:four))$/ do |numeral|
+  case numeral
+  when "no" || "none"
+    0
+  when "one"
+    1
+  end
+end

@@ -9,7 +9,6 @@ Feature: Buildings
     Then the player is charged by the price of a house on 'Kentucky Avenue'
     And on 'Kentucky Avenue' stands one house
 
-  @draft
   Scenario: Sell House
     Given a player owns one house on 'New York Avenue'
     When the player decides to sell a house from 'New York Avenue'

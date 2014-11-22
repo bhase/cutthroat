@@ -140,6 +140,8 @@ module Cutthroat
           player.in_jail = false
         when :buy_house
           args[0].buy_house(player)
+        when :sell_house
+          args[0].sell_house(player)
         end
       end
     end

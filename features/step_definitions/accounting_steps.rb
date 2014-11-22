@@ -60,3 +60,7 @@ end
 Then /^the player is charged by the price of a house on (#{LOCATION})$/ do |location|
   player.balance.should == balance_of[player] - location.house_price
 end
+
+Then /^the player receives half of the price of a house on (#{LOCATION})$/ do |location|
+  player.balance.should == balance_of[player] + (location.house_price / 2)
+end
