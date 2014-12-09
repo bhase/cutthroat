@@ -138,8 +138,8 @@ module Cutthroat
         when :pay_jail_fee
           player.charge(Cutthroat::JAIL_FEE)
           player.in_jail = false
-        when :buy_house
-          args[0].buy_house(player)
+        when :buy_house, :buy_hotel
+          args[0].buy_building(player)
         when :sell_house
           args[0].sell_house(player)
         end

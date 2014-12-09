@@ -76,6 +76,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 8:
     name: Vermont Avenue
     rent: [6, 30, 90, 270, 400, 550]
+    house_price: 50
     group: street2
 9:
     name: Connecticut Avenue

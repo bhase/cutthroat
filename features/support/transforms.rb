@@ -21,5 +21,7 @@ NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:four))$/ do |numeral|
     0
   when "one"
     1
+  when "four"
+    4
   end
 end

@@ -15,7 +15,6 @@ Feature: Buildings
     Then the player receives half of the price of a house on 'New York Avenue'
     And on 'New York Avenue' stands no house
 
-  @draft
   Scenario: Buy Hotel
     Given a player owns four houses on 'Vermont Avenue'
     When the player decides to buy a hotel for 'Vermont Avenue'

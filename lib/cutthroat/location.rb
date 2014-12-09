@@ -49,6 +49,14 @@ module Cutthroat
       @position
     end
 
+    def houses
+      @buildings % 5
+    end
+
+    def hotels
+      @buildings / 5
+    end
+
     def trigger_action(player)
       if !@action.nil?
         send @action, player
@@ -83,7 +91,7 @@ module Cutthroat
       @is_mortgaged = false
     end
 
-    def buy_house(player)
+    def buy_building(player)
       player.charge(house_price)
       @buildings += 1
     end
