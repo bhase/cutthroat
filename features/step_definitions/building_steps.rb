@@ -7,30 +7,15 @@ Given /^a player owns (#{NUMERAL}) houses? on (#{LOCATION})$/ do |count, locatio
 end
 
 When /^the player decides to buy a house for (#{LOCATION})$/ do |location|
-  balance_of[player] = player.balance
-  game.add_player(player)
-  callouts = double(:buy_property? => false)
-  allow(callouts).to receive(:pre_hook).and_return([:buy_house, location], :roll_dice)
-  player.register_callouts(callouts)
-  game.play_round
+  player_trades_with_bank(:buy_house, location)
 end
 
 When /^the player decides to buy a hotel for (#{LOCATION})$/ do |location|
-  balance_of[player] = player.balance
-  game.add_player(player)
-  callouts = double(:buy_property? => false)
-  allow(callouts).to receive(:pre_hook).and_return([:buy_hotel, location], :roll_dice)
-  player.register_callouts(callouts)
-  game.play_round
+  player_trades_with_bank(:buy_hotel, location)
 end
 
 When /^the player decides to sell a house from (#{LOCATION})$/ do |location|
-  balance_of[player] = player.balance
-  game.add_player(player)
-  callouts = double(:buy_property? => false)
-  allow(callouts).to receive(:pre_hook).and_return([:sell_house, location], :roll_dice)
-  player.register_callouts(callouts)
-  game.play_round
+  player_trades_with_bank(:sell_house, location)
 end
 
 Then /^on (#{LOCATION}) stands (#{NUMERAL}) house$/ do |location, count|
