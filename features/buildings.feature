@@ -21,7 +21,6 @@ Feature: Buildings
     Then the player is charged by the price of a house on 'Vermont Avenue'
     And on 'Vermont Avenue' stands one hotel
 
-  @draft
   Scenario: Sell Hotel
     Given a player owns one hotel on 'Baltic Avenue'
     When the player decides to sell the hotel from 'Baltic Avenue'
@@ -39,6 +38,18 @@ Feature: Buildings
   Scenario: Buy House, Unowned Property
     Given 'Baltic Avenue' is unowned
     When the player decides to buy a house for 'Baltic Avenue'
+    Then he should receive a message 'not your property'
+
+  @draft
+  Scenario: Sell House, Unowned Property
+    Given 'Tennessee Avenue' is unowned
+    When the player decides to sell a house for 'Tennessee Avenue'
+    Then he should receive a message 'not your property'
+
+  @draft
+  Scenario: Sell House, Foreign Property
+    Given 'Kentucky Avenue' is owned by another player
+    When the player decides to sell a house for 'Kentucky Avenue'
     Then he should receive a message 'not your property'
 
   @draft

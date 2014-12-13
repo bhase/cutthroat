@@ -56,6 +56,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     name: Community Chest
 3:
     name: Baltic Avenue
+    house_price: 50
     group: street1
 4:
     name: Income Tax

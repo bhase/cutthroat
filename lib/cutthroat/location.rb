@@ -91,13 +91,13 @@ module Cutthroat
       @is_mortgaged = false
     end
 
-    def buy_building(player)
-      player.charge(house_price)
+    def buy_building
+      @owner.charge(house_price)
       @buildings += 1
     end
 
-    def sell_house(player)
-      player.receive(house_price / 2)
+    def sell_building
+      @owner.receive(house_price / 2)
       @buildings -= 1
     end
 
