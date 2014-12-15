@@ -33,12 +33,14 @@ Feature: Buildings
     But 'Mediterranean Avenue' is unowned
     When the player decides to buy a house for 'Baltic Avenue'
     Then he should receive a message 'must own all properties in group'
+    And on 'Baltic Avenue' stands no house
 
   @draft
   Scenario: Buy House, Unowned Property
     Given 'Baltic Avenue' is unowned
     When the player decides to buy a house for 'Baltic Avenue'
     Then he should receive a message 'not your property'
+    And on 'Baltic Avenue' stands no house
 
   @draft
   Scenario: Sell House, Unowned Property
@@ -61,11 +63,20 @@ Feature: Buildings
       | 'Marvin Gardens'  |    1   |
     When the player decides to buy a house for 'Ventnor Avenue'
     Then he should receive a message 'distribute evenly'
+    And on 'Ventnor Avenue' stand two houses
+
+  @draft
+  Scenario: Buy House, None Left
+    Given a player owns 'Kentucky Avenue'
+    And the bank has a remaining stock of zero houses
+    When the player decides to buy a house for 'Kentucky Avenue'
+    Then he should receive a message 'not possible'
 
   @draft
   Scenario: Sell Hotel, not enough houses
     Given a player owns a hotel on 'Tennessee Avenue'
-    And the bank has only two houses left
+    And the bank has a remaining stock of two houses
     When the player decides to sell the hotel from 'Tennessee Avenue'
     Then he should receive a message 'not possible'
     And on 'Tennessee Avenue' stands one hotel
+    And the balance of the player is unchanged

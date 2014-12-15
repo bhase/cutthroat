@@ -24,6 +24,12 @@ module Cutthroat
       @location = location
     end
 
+    def move
+      sum = last_throw.reduce(:+)
+      move_to(game.find_location((sum + location.to_i) % game.board.locations))
+      location.trigger_action(self)
+    end
+
     def receive(amount)
       @balance += amount
     end

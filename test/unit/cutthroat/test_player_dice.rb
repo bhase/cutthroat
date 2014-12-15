@@ -11,6 +11,7 @@ class TestPlayerDice < Test::Unit::TestCase
   def setup
     @game = Cutthroat::Game.new
     @player = default_player
+    @player.game = @game
     @dice = StubDice.new
     @dice.sequence = [[3, 2]]
     @game.instance_variable_set(:@dice, @dice)

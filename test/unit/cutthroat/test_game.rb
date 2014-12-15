@@ -65,6 +65,7 @@ class TestGame < Test::Unit::TestCase
     callouts.expects(:pre_hook).times(3).returns(:unknown, nil, :roll_dice)
     @game.add_player(Cutthroat::Player.new)
     @game.players[0].register_callouts(callouts)
+    @game.players[0].game = @game
     @game.play_round
   end
 
@@ -73,8 +74,12 @@ class TestGame < Test::Unit::TestCase
   end
 
   def add_two_player(game)
-    game.add_player(default_player("abc"))
-    game.add_player(default_player("def"))
+    p = default_player("abc")
+    p.game = game
+    game.add_player(p)
+    p = default_player("def")
+    p.game = game
+    game.add_player(p)
     game
   end
 
