@@ -1,6 +1,8 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+ignore /\.swp/
+
 guard :bundler do
  watch('Gemfile')
  watch(/^.+\.gemspec/)
