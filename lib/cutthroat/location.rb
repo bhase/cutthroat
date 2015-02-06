@@ -14,6 +14,12 @@ module Cutthroat
   class NotMortgaged < MortgageError
   end
 
+  class PropertyError < CutthroatError
+  end
+
+  class NotOwnerOfAllInGroup < PropertyError
+  end
+
   class Location
     attr_reader :position
     attr_reader :name
@@ -92,6 +98,10 @@ module Cutthroat
     end
 
     def buy_building
+      properties_in_group = board.all_of_group(group)
+      properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
+      raise NotOwnerOfAllInGroup, "You must own all properties in group to buy a house" if
+        properties_in_group != properties_owned_in_group
       @owner.charge(house_price)
       @buildings += 1
     end

@@ -5,6 +5,7 @@ Feature: Buildings
 
   Scenario: Buy House
     Given a player owns 'Kentucky Avenue'
+    And he owns all other properties in the group of 'Kentucky Avenue'
     When the player decides to buy a house for 'Kentucky Avenue'
     Then the player is charged by the price of a house on 'Kentucky Avenue'
     And on 'Kentucky Avenue' stands one house
@@ -17,6 +18,7 @@ Feature: Buildings
 
   Scenario: Buy Hotel
     Given a player owns four houses on 'Vermont Avenue'
+    And he owns all other properties in the group of 'Vermont Avenue'
     When the player decides to buy a hotel for 'Vermont Avenue'
     Then the player is charged by the price of a house on 'Vermont Avenue'
     And on 'Vermont Avenue' stands one hotel
@@ -27,11 +29,10 @@ Feature: Buildings
     Then the player receives half of the price of a house on 'Baltic Avenue'
     And on 'Baltic Avenue' stand four houses
 
-  @draft
   Scenario: Buy House, Not All Streets in Group Owned
     Given a player owns 'Baltic Avenue'
     But 'Mediterranean Avenue' is unowned
-    When the player decides to buy a house for 'Baltic Avenue'
+    When the player tries to buy a house for 'Baltic Avenue'
     Then he should receive a message 'must own all properties in group'
     And on 'Baltic Avenue' stands no house
 

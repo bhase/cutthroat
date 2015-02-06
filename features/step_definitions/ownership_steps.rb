@@ -37,3 +37,7 @@ Given /^(#{PLAYER}) owns all properties in the group of (#{LOCATION})$/ do |name
   balance_of[name] = name.balance
   board.all_of_group(location.group).map {|l| l.set_owner name }
 end
+
+Given /^he owns all other properties in the group of (#{LOCATION})$/ do |location|
+  board.all_of_group(location.group).map {|l| l.set_owner player }
+end

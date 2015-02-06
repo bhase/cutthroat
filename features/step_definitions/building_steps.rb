@@ -35,3 +35,11 @@ end
 Then /^on (#{LOCATION}) stands one hotel$/ do |location|
   location.hotels.should == 1
 end
+
+When /^the player tries to buy a house for (#{LOCATION})$/ do |location|
+  lambda {
+    player_trades_with_bank(:buy_house, location)
+  }.should raise_error(Cutthroat::NotOwnerOfAllInGroup) { |error|
+    save_last_message error.message
+  }
+end
