@@ -39,7 +39,7 @@ end
 When /^the player tries to buy a house for (#{LOCATION})$/ do |location|
   lambda {
     player_trades_with_bank(:buy_house, location)
-  }.should raise_error(Cutthroat::NotOwnerOfAllInGroup) { |error|
+  }.should raise_error(Cutthroat::PropertyError) { |error|
     save_last_message error.message
   }
 end

@@ -2,7 +2,10 @@ require "cutthroat/error"
 
 module Cutthroat
 
-  class MortgageError < CutthroatError
+  class PropertyError < CutthroatError
+  end
+
+  class MortgageError < PropertyError
   end
 
   class AlreadyMortgaged < MortgageError
@@ -12,9 +15,6 @@ module Cutthroat
   end
 
   class NotMortgaged < MortgageError
-  end
-
-  class PropertyError < CutthroatError
   end
 
   class NotOwnerOfAllInGroup < PropertyError
@@ -98,6 +98,7 @@ module Cutthroat
     end
 
     def buy_building
+      raise NotOwner, "#{self} is not your property" if @owner == nil
       properties_in_group = board.all_of_group(group)
       properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
       raise NotOwnerOfAllInGroup, "You must own all properties in group to buy a house" if
