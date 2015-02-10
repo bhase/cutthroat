@@ -43,16 +43,29 @@ Feature: Buildings
     And on 'Baltic Avenue' stands no house
 
   @draft
+  Scenario: Buy House, Foreign Property
+    Given 'Kentucky Avenue' is owned by another player
+    When the player tries to buy a house for 'Kentucky Avenue'
+    Then he should receive a message 'not your property'
+
+  @draft
   Scenario: Sell House, Unowned Property
     Given 'Tennessee Avenue' is unowned
-    When the player decides to sell a house for 'Tennessee Avenue'
+    When the player tries to sell a house for 'Tennessee Avenue'
     Then he should receive a message 'not your property'
 
   @draft
   Scenario: Sell House, Foreign Property
     Given 'Kentucky Avenue' is owned by another player
-    When the player decides to sell a house for 'Kentucky Avenue'
+    When the player tries to sell a house for 'Kentucky Avenue'
     Then he should receive a message 'not your property'
+
+  @draft
+  Scenario: Sell House, no house built
+    Given a player owns 'New York Avenue'
+    But on 'New York Avenue' stands no house
+    When the player tries to sell a house from 'New York Avenue'
+    Then he should receive a message 'no house to sell'
 
   @draft
   Scenario: Distribute Evenly
@@ -61,7 +74,7 @@ Feature: Buildings
       | 'Atlantic Avenue' |    1   |
       | 'Ventnor Avenue'  |    2   |
       | 'Marvin Gardens'  |    1   |
-    When the player decides to buy a house for 'Ventnor Avenue'
+    When the player tries to buy a house for 'Ventnor Avenue'
     Then he should receive a message 'distribute evenly'
     And on 'Ventnor Avenue' stand two houses
 
@@ -69,14 +82,14 @@ Feature: Buildings
   Scenario: Buy House, None Left
     Given a player owns 'Kentucky Avenue'
     And the bank has a remaining stock of zero houses
-    When the player decides to buy a house for 'Kentucky Avenue'
+    When the player tries to buy a house for 'Kentucky Avenue'
     Then he should receive a message 'not possible'
 
   @draft
   Scenario: Sell Hotel, not enough houses
     Given a player owns a hotel on 'Tennessee Avenue'
     And the bank has a remaining stock of two houses
-    When the player decides to sell the hotel from 'Tennessee Avenue'
+    When the player tries to sell the hotel from 'Tennessee Avenue'
     Then he should receive a message 'not possible'
     And on 'Tennessee Avenue' stands one hotel
     And the balance of the player is unchanged
