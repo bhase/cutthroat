@@ -3,6 +3,9 @@ Feature: Buildings
   Also I can sell buildings to receive some cash.
   Buildings must be evenly distributed in one group.
 
+  Background:
+    Given a player added to a game
+
   Scenario: Buy House
     Given a player owns 'Kentucky Avenue'
     And he owns all other properties in the group of 'Kentucky Avenue'

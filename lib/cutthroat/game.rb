@@ -136,6 +136,8 @@ module Cutthroat
           args[0].buy_building
         when :sell_house, :sell_hotel
           args[0].sell_building
+        when :mortgage
+          args[0].mortgage(player)
         end
       end
     end

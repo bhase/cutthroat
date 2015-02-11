@@ -165,7 +165,6 @@ module Cutthroat
     end
 
     def rent_for_property(properties_owned_in_group, properties_in_group)
-      # TODO take houses and hotel into account
       if @buildings > 0
         rent[@buildings]
       elsif properties_owned_in_group == properties_in_group

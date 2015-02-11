@@ -3,6 +3,10 @@ Given /^two player named (#{NAME}) and (#{NAME}) added to a game$/ do |name1, na
   game.players.length.should == 2
 end
 
+Given /^a player added to a game$/ do
+  game.add_player(player)
+end
+
 Given /^a player in a game$/ do
   start_game_with_two_player
 end

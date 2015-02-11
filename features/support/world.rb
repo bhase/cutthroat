@@ -112,12 +112,11 @@ module KnowsGame
     end
   end
 
-  def player_trades_with_bank(trade, location)
-    balance_of[player] = player.balance
-    game.add_player(player)
+  def player_trades_with_bank(trade, location, p = player)
+    balance_of[p] = p.balance
     callouts = double(:buy_property? => false)
     allow(callouts).to receive(:pre_hook).and_return([trade, location], :roll_dice)
-    player.register_callouts(callouts)
+    p.register_callouts(callouts)
     game.play_round
   end
 end

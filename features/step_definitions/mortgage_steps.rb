@@ -1,6 +1,6 @@
 
 When /^(#{PLAYER}) mortgages (#{LOCATION})$/ do |player, location|
-  player.mortgage(location)
+  player_trades_with_bank(:mortgage, location, player)
 end
 
 Then /^(#{LOCATION}) shall be mortgaged$/ do |location|
@@ -13,8 +13,9 @@ Given /^(#{LOCATION}) is (?:already )?mortgaged$/ do |location|
 end
 
 When /^(#{PLAYER}) tries to mortgage (#{LOCATION})$/ do |player, location|
-  balance_of[player] = player.balance
-  lambda { location.mortgage(player) }.should raise_error(Cutthroat::MortgageError) { |error|
+  lambda {
+    player_trades_with_bank(:mortgage, location, player)
+  }.should raise_error(Cutthroat::MortgageError) { |error|
     save_last_message error.message
   }
 end
