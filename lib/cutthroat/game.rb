@@ -138,6 +138,8 @@ module Cutthroat
           args[0].sell_building
         when :mortgage
           args[0].mortgage(player)
+        when :cancel_mortgage
+          args[0].cancel_mortgage(player)
         end
       end
     end
