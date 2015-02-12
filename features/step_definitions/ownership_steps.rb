@@ -41,3 +41,7 @@ end
 Given /^he owns all other properties in the group of (#{LOCATION})$/ do |location|
   board.all_of_group(location.group).map {|l| l.set_owner player }
 end
+
+Given /^(#{LOCATION}) is owned by another player$/ do |location|
+  location.set_owner(new_player("abcde"))
+end

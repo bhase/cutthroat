@@ -29,7 +29,6 @@ Then /^(#{LOCATION}) is no longer mortgaged$/ do |location|
 end
 
 When /^(#{PLAYER}) tries to repay the mortgage for (#{LOCATION})$/ do |player, location|
-  balance_of[player] = player.balance
   lambda {
     player_trades_with_bank(:cancel_mortgage, location, player)
   }.should raise_error(Cutthroat::MortgageError) { |error|

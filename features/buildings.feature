@@ -45,7 +45,6 @@ Feature: Buildings
     Then he should receive a message 'not your property'
     And on 'Baltic Avenue' stands no house
 
-  @draft
   Scenario: Buy House, Foreign Property
     Given 'Kentucky Avenue' is owned by another player
     When the player tries to buy a house for 'Kentucky Avenue'

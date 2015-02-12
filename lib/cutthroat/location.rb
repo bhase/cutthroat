@@ -97,8 +97,8 @@ module Cutthroat
       @is_mortgaged = false
     end
 
-    def buy_building
-      raise NotOwner, "#{self} is not your property" if @owner == nil
+    def buy_building(player)
+      raise NotOwner, "#{self} is not your property" if @owner != player
       properties_in_group = board.all_of_group(group)
       properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
       raise NotOwnerOfAllInGroup, "You must own all properties in group to buy a house" if
