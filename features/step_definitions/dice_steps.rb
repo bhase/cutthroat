@@ -22,15 +22,15 @@ When /^the player rolls the following sequence$/ do |sequence|
     end
     roll_sequence << roll
   end
-  dice.should_receive(:roll).at_most(3).times.and_return(*roll_sequence)
+  expect(dice).to receive(:roll).at_most(3).times.and_return(*roll_sequence)
   game.play_turn(player)
 end
 
 When /^the player rolls double$/ do
-  dice.should_receive(:roll).twice.and_return([3, 3], [1, 3])
+  expect(dice).to receive(:roll).twice.and_return([3, 3], [1, 3])
 end
 
 Then /^the player moves and rolls again$/ do
   game.play_round
-  player.location.should equal game.find_location(board.find_jail.to_i + 10)
+  expect(player.location).to equal game.find_location(board.find_jail.to_i + 10)
 end

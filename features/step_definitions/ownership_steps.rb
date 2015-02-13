@@ -3,7 +3,7 @@ Given /^(#{LOCATION}) is unowned$/ do |location|
 end
 
 Then /^(#{LOCATION}) is still unowned$/ do |location|
-  location.owner.should be nil
+  expect(location.owner).to be_nil
 end
 
 Given /^a player owns (#{LOCATION})$/ do |location|
@@ -17,7 +17,7 @@ When /^the player lands on (#{LOCATION}) and decides to buy$/ do |location|
 end
 
 Then /^the player owns (#{LOCATION})$/ do |location|
-  location.owner.should be player
+  expect(location.owner).to be player
 end
 
 Given /^(#{PLAYER}) owns (#{LOCATION})$/ do |name, location|

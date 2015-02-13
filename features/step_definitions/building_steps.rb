@@ -29,17 +29,17 @@ When /^the player decides to sell the hotel from (#{LOCATION})$/ do |location|
 end
 
 Then /^on (#{LOCATION}) stands? (#{NUMERAL}) houses?$/ do |location, count|
-  location.houses.should == count
+  expect(location.houses).to eq(count)
 end
 
 Then /^on (#{LOCATION}) stands one hotel$/ do |location|
-  location.hotels.should == 1
+  expect(location.hotels).to eq(1)
 end
 
 When /^the player tries to( buy| sell) a house for (#{LOCATION})$/ do |trade, location|
-  lambda {
+  expect {
     player_trades_with_bank("#{trade.strip}_house".to_sym, location)
-  }.should raise_error(Cutthroat::PropertyError) { |error|
+  }.to raise_error(Cutthroat::PropertyError) { |error|
     save_last_message error.message
   }
 end

@@ -1,5 +1,5 @@
 Then /^the player shall end on (#{LOCATION})$/ do |location|
-  player.location.should equal location
+  expect(player.location).to equal(location)
 end
 
 When /^the player lands on (#{LOCATION})$/ do |location|
@@ -15,7 +15,7 @@ end
 
 When /^the player leaves Go$/ do
   balance_of[player] = player.balance
-  dice.should_receive(:roll).and_return([3,2])
+  expect(dice).to receive(:roll).and_return([3,2])
   play_turn_from(board.find_go)
 end
 
@@ -26,7 +26,7 @@ end
 
 When /^the player moves without touching 'Go'$/ do
   balance_of[player] = player.balance
-  dice.should_receive(:roll).and_return([3,2])
+  expect(dice).to receive(:roll).and_return([3,2])
   play_turn_from(board.lookup(17))
 end
 
@@ -37,7 +37,7 @@ end
 
 When /^the player passes 'Go' twice during his turn$/ do
   balance_of[player] = player.balance
-  dice.should_receive(:roll).and_return([3,5])
+  expect(dice).to receive(:roll).and_return([3,5])
   play_turn_from(board.lookup(39)) # land on chance
   # TODO need to prepare chance later
 end

@@ -1,10 +1,10 @@
 Then /^the player shall end in jail$/ do
-  player.location.should equal board.find_jail
-  player.in_jail.should == true
+  expect(player.location).to equal(board.find_jail)
+  expect(player.in_jail).to eq(true)
 end
 
 Then /^the player is in jail\.$/ do
-  player.in_jail.should == true
+  expect(player.in_jail).to eq(true)
 end
 
 Given /^a player in Jail$/ do
@@ -24,13 +24,13 @@ When /^rolls dice to continue his turn$/ do
 end
 
 Then /^the player is no longer in Jail and moves on$/ do
-  player.in_jail.should == false
-  player.location.should_not equal board.find_jail
+  expect(player.in_jail).to eq(false)
+  expect(player.location).not_to equal(board.find_jail)
 end
 
 Then /^the player is still in Jail and does not move$/ do
-  player.location.should equal board.find_jail
-  player.in_jail.should == true
+  expect(player.location).to equal(board.find_jail)
+  expect(player.in_jail).to eq(true)
 end
 
 When /^the player rolls dice to leave jail and does not roll double$/ do
@@ -38,7 +38,7 @@ When /^the player rolls dice to leave jail and does not roll double$/ do
 end
 
 When /^the player rolls dice to leave Jail and rolls double$/ do
-  dice.should_receive(:roll).and_return([3, 3])
+  expect(dice).to receive(:roll).and_return([3, 3])
   game.play_round
 end
 
@@ -49,9 +49,9 @@ When /^the player rolls dice and does not roll double for three turns$/ do
 end
 
 Then /^the player has to pay the Jail fee$/ do
-  player.balance.should == balance_of[player] - Cutthroat::JAIL_FEE
+  expect(player.balance).to eq(balance_of[player] - Cutthroat::JAIL_FEE)
 end
 
 Then /^moves with the eyes of the last throw$/ do
-  player.location.should equal game.find_location(board.find_jail.to_i + player.last_throw.reduce(:+))
+  expect(player.location).to equal(game.find_location(board.find_jail.to_i + player.last_throw.reduce(:+)))
 end

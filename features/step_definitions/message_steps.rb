@@ -1,3 +1,3 @@
 Then /^(?:I|#{PLAYER}) should receive a message '(.+)'$/ do |message|
-  last_error_message.should match(/#{message}/)
+  expect(last_error_message).to match(/#{message}/)
 end

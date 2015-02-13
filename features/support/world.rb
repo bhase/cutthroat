@@ -22,12 +22,12 @@ module KnowsPlayer
   end
 
   def play_turn_and_land_on(location, p = player)
-    dice.should_receive(:roll).and_return([1,2])
+    expect(dice).to receive(:roll).and_return([1,2])
     play_turn_from(board.lookup((location.to_i - 3) % board.locations), p)
   end
 
   def play_turn_and_pass_over(location)
-    dice.should_receive(:roll).and_return([1,2])
+    expect(dice).to receive(:roll).and_return([1,2])
     play_turn_from(board.lookup((location.to_i - 2) % board.locations))
   end
 
@@ -76,7 +76,7 @@ module KnowsGame
   end
 
   def setup_dice_for(eyes)
-    dice.should_receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
+    expect(dice).to receive(:roll).and_return([(eyes/2.0).floor, (eyes/2.0).ceil])
     game.instance_variable_set(:@dice, dice)
   end
 
