@@ -106,6 +106,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
 18:
     name: Tennessee Avenue
     land_price: 180
+    house_price: 100
 19:
     name: New York Avenue
     house_price: 100

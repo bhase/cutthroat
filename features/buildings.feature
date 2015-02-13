@@ -50,7 +50,6 @@ Feature: Buildings
     When the player tries to buy a house for 'Kentucky Avenue'
     Then he should receive a message 'not your property'
 
-  @draft
   Scenario: Sell House, Unowned Property
     Given 'Tennessee Avenue' is unowned
     When the player tries to sell a house for 'Tennessee Avenue'

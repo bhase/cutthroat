@@ -36,9 +36,9 @@ Then /^on (#{LOCATION}) stands one hotel$/ do |location|
   location.hotels.should == 1
 end
 
-When /^the player tries to buy a house for (#{LOCATION})$/ do |location|
+When /^the player tries to( buy| sell) a house for (#{LOCATION})$/ do |trade, location|
   lambda {
-    player_trades_with_bank(:buy_house, location)
+    player_trades_with_bank("#{trade.strip}_house".to_sym, location)
   }.should raise_error(Cutthroat::PropertyError) { |error|
     save_last_message error.message
   }
