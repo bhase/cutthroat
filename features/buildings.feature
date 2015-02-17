@@ -55,7 +55,6 @@ Feature: Buildings
     When the player tries to sell a house for 'Tennessee Avenue'
     Then he should receive a message 'not your property'
 
-  @draft
   Scenario: Sell House, Foreign Property
     Given 'Kentucky Avenue' is owned by another player
     When the player tries to sell a house for 'Kentucky Avenue'

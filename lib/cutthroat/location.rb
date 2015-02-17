@@ -107,8 +107,8 @@ module Cutthroat
       @buildings += 1
     end
 
-    def sell_building
-      raise NotOwner, "#{self} is not your property" if @owner.nil?
+    def sell_building(player)
+      raise NotOwner, "#{self} is not your property" if @owner != player
       @owner.receive(house_price / 2)
       @buildings -= 1
     end
