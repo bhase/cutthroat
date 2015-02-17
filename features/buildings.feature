@@ -60,12 +60,11 @@ Feature: Buildings
     When the player tries to sell a house for 'Kentucky Avenue'
     Then he should receive a message 'not your property'
 
-  @draft
   Scenario: Sell House, no house built
     Given a player owns 'New York Avenue'
     But on 'New York Avenue' stands no house
-    When the player tries to sell a house from 'New York Avenue'
-    Then he should receive a message 'no house to sell'
+    When the player tries to sell a house for 'New York Avenue'
+    Then he should receive a message 'no building to sell'
 
   @draft
   Scenario: Distribute Evenly

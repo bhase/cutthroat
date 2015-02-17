@@ -20,6 +20,9 @@ module Cutthroat
   class NotOwnerOfAllInGroup < PropertyError
   end
 
+  class NoBuilding < PropertyError
+  end
+
   class Location
     attr_reader :position
     attr_reader :name
@@ -109,6 +112,7 @@ module Cutthroat
 
     def sell_building(player)
       raise NotOwner, "#{self} is not your property" if @owner != player
+      raise NoBuilding, "#{self} has no building to sell" if @buildings < 1
       @owner.receive(house_price / 2)
       @buildings -= 1
     end

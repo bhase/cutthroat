@@ -58,10 +58,6 @@ module Cutthroat
     # - houses and hotels get half price
     # - properties get mortgage value if not mortgaged
 
-    def mortgage(location)
-      location.mortgage(self)
-    end
-
     def arrest_at(location)
       move_to(location)
       @in_jail = true
