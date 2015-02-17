@@ -127,15 +127,24 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     rent: 25
     group: railroad
 26:
+    name: Atlantic Avenue
+    land_price: 260
+    house_price: 150
+    group: street6
 27:
     name: Ventnor Avenue
     land_price: 260
+    house_price: 150
     rent: [22, 110, 330, 800, 975, 1150]
     group: street6
 28:
     name: Water Works
     group: utility
 29:
+    name: Marvin Gardens
+    land_price: 280
+    house_price: 150
+    group: street6
 30:
     name: Go To Jail
     action: put_in_jail
