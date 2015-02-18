@@ -43,3 +43,13 @@ When /^the player tries to( buy| sell) a house for (#{LOCATION})$/ do |trade, lo
     save_last_message error.message
   }
 end
+
+Given /^a player owns the following set of houses:$/ do |properties|
+  # properties is a Cucumber::Ast::Table
+  properties.map_column!('Houses') {|h| h.to_i }
+  properties.map_column!('Street') {|s| board.lookup(s) }
+  properties.rows.each do |p|
+    p[0].set_owner(player)
+    p[0].instance_variable_set('@buildings', p[1])
+  end
+end

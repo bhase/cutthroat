@@ -21,7 +21,7 @@ Feature: Buildings
 
   Scenario: Buy Hotel
     Given a player owns four houses on 'Vermont Avenue'
-    And he owns all other properties in the group of 'Vermont Avenue'
+    And he owns all other properties in the group of 'Vermont Avenue' with four houses
     When the player decides to buy a hotel for 'Vermont Avenue'
     Then the player is charged by the price of a house on 'Vermont Avenue'
     And on 'Vermont Avenue' stands one hotel
@@ -66,15 +66,14 @@ Feature: Buildings
     When the player tries to sell a house for 'New York Avenue'
     Then he should receive a message 'no building to sell'
 
-  @draft
   Scenario: Distribute Evenly
     Given a player owns the following set of houses:
-      | Street            | Houses |
-      | 'Atlantic Avenue' |    1   |
-      | 'Ventnor Avenue'  |    2   |
-      | 'Marvin Gardens'  |    1   |
+      | Street          | Houses |
+      | Atlantic Avenue |    1   |
+      | Ventnor Avenue  |    2   |
+      | Marvin Gardens  |    1   |
     When the player tries to buy a house for 'Ventnor Avenue'
-    Then he should receive a message 'distribute evenly'
+    Then he should receive a message 'buildings must be evenly distributed'
     And on 'Ventnor Avenue' stand two houses
 
   @draft
@@ -82,6 +81,13 @@ Feature: Buildings
     Given a player owns 'Kentucky Avenue'
     And the bank has a remaining stock of zero houses
     When the player tries to buy a house for 'Kentucky Avenue'
+    Then he should receive a message 'not possible'
+
+  @draft
+  Scenario: Buy Hotel, None Left
+    Given a player owns 'States Avenue'
+    And the bank has a remaining stock of zero hotels
+    When the player tries to buy a hotel for 'States Avenue'
     Then he should receive a message 'not possible'
 
   @draft

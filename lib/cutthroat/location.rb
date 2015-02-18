@@ -23,6 +23,9 @@ module Cutthroat
   class NoBuilding < PropertyError
   end
 
+  class DistributionError < PropertyError
+  end
+
   class Location
     attr_reader :position
     attr_reader :name
@@ -106,6 +109,8 @@ module Cutthroat
       properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
       raise NotOwnerOfAllInGroup, "You must own all properties in group to buy a house" if
         properties_in_group != properties_owned_in_group
+      raise DistributionError, "buildings must be evenly distributed" if
+        properties_in_group.any? {|p| (self.buildings + 1 - p.buildings).abs > 1}
       @owner.charge(house_price)
       @buildings += 1
     end
