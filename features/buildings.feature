@@ -76,12 +76,12 @@ Feature: Buildings
     Then he should receive a message 'buildings must be evenly distributed'
     And on 'Ventnor Avenue' stand two houses
 
-  @draft
   Scenario: Buy House, None Left
     Given a player owns 'Kentucky Avenue'
+    And he owns all other properties in the group of 'Kentucky Avenue'
     And the bank has a remaining stock of zero houses
     When the player tries to buy a house for 'Kentucky Avenue'
-    Then he should receive a message 'not possible'
+    Then he should receive a message 'no house in stock'
 
   @draft
   Scenario: Buy Hotel, None Left

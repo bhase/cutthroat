@@ -36,11 +36,14 @@ module Cutthroat
     attr_reader :board
     attr_reader :dice
 
+    attr_reader :remaining_houses
+
     def initialize(dice = Cutthroat::Dice.new)
       @players = []
       @active = false
       @dice = dice
       @board = Cutthroat::Board.new
+      @remaining_houses = 32
     end
 
     def add_player(player)
@@ -132,7 +135,10 @@ module Cutthroat
         when :pay_jail_fee
           player.charge(Cutthroat::JAIL_FEE)
           player.in_jail = false
-        when :buy_house, :buy_hotel
+        when :buy_house
+          raise OutOfStockError, "no house in stock left" if @remaining_houses < 1
+          args[0].buy_building(player)
+        when :buy_hotel
           args[0].buy_building(player)
         when :sell_house, :sell_hotel
           args[0].sell_building(player)

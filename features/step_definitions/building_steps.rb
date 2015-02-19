@@ -53,3 +53,7 @@ Given /^a player owns the following set of houses:$/ do |properties|
     p[0].instance_variable_set('@buildings', p[1])
   end
 end
+
+Given /^the bank has a remaining stock of zero houses$/ do
+  game.instance_variable_set('@remaining_houses', 0)
+end
