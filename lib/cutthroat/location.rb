@@ -2,30 +2,6 @@ require "cutthroat/error"
 
 module Cutthroat
 
-  class PropertyError < CutthroatError
-  end
-
-  class MortgageError < PropertyError
-  end
-
-  class AlreadyMortgaged < MortgageError
-  end
-
-  class NotOwner < MortgageError
-  end
-
-  class NotMortgaged < MortgageError
-  end
-
-  class NotOwnerOfAllInGroup < PropertyError
-  end
-
-  class NoBuilding < PropertyError
-  end
-
-  class DistributionError < PropertyError
-  end
-
   class Location
     attr_reader :position
     attr_reader :name
