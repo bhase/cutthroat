@@ -83,12 +83,11 @@ Feature: Buildings
     When the player tries to buy a house for 'Kentucky Avenue'
     Then he should receive a message 'no house in stock'
 
-  @draft
   Scenario: Buy Hotel, None Left
     Given a player owns 'States Avenue'
     And the bank has a remaining stock of zero hotels
     When the player tries to buy a hotel for 'States Avenue'
-    Then he should receive a message 'not possible'
+    Then he should receive a message 'no hotel in stock'
 
   @draft
   Scenario: Sell Hotel, not enough houses

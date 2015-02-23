@@ -36,9 +36,9 @@ Then /^on (#{LOCATION}) stands one hotel$/ do |location|
   expect(location.hotels).to eq(1)
 end
 
-When /^the player tries to( buy| sell) a house for (#{LOCATION})$/ do |trade, location|
+When /^the player tries to( buy| sell) a( house| hotel) for (#{LOCATION})$/ do |trade, building, location|
   expect {
-    player_trades_with_bank("#{trade.strip}_house".to_sym, location)
+    player_trades_with_bank("#{trade.strip}_#{building.strip}".to_sym, location)
   }.to raise_error(Cutthroat::PropertyError) { |error|
     save_last_message error.message
   }
@@ -54,6 +54,7 @@ Given /^a player owns the following set of houses:$/ do |properties|
   end
 end
 
-Given /^the bank has a remaining stock of zero houses$/ do
-  game.instance_variable_set('@remaining_houses', 0)
+Given /^the bank has a remaining stock of zero( houses| hotels)$/ do |building|
+  b = "@remaining_#{building.strip}"
+  game.instance_variable_set(b, 0)
 end

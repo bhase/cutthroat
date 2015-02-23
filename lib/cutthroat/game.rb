@@ -37,6 +37,7 @@ module Cutthroat
     attr_reader :dice
 
     attr_reader :remaining_houses
+    attr_reader :remaining_hotels
 
     def initialize(dice = Cutthroat::Dice.new)
       @players = []
@@ -44,6 +45,7 @@ module Cutthroat
       @dice = dice
       @board = Cutthroat::Board.new
       @remaining_houses = 32
+      @remaining_hotels = 12
     end
 
     def add_player(player)
@@ -139,6 +141,7 @@ module Cutthroat
           raise OutOfStockError, "no house in stock left" if @remaining_houses < 1
           args[0].buy_building(player)
         when :buy_hotel
+          raise OutOfStockError, "no hotel in stock left" if @remaining_hotels < 1
           args[0].buy_building(player)
         when :sell_house, :sell_hotel
           args[0].sell_building(player)
