@@ -38,10 +38,16 @@ Given /^(#{PLAYER}) owns all properties in the group of (#{LOCATION})$/ do |name
   board.all_of_group(location.group).map {|l| l.set_owner name }
 end
 
-Given /^he owns all other properties in the group of (#{LOCATION})(?: with (#{NUMERAL}) houses)?$/ do |location, count|
+Given /^he owns all other properties in the group of (#{LOCATION}) with (#{NUMERAL}) houses$/ do |location, count|
   board.all_of_group(location.group).map {|l|
     l.set_owner player
     l.instance_variable_set('@buildings', count.to_i)
+  }
+end
+
+Given /^a player owns all properties in the group of (#{LOCATION})$/ do |location|
+  board.all_of_group(location.group).map {|l|
+    l.set_owner player
   }
 end
 

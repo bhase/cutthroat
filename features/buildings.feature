@@ -7,8 +7,7 @@ Feature: Buildings
     Given a player added to a game
 
   Scenario: Buy House
-    Given a player owns 'Kentucky Avenue'
-    And he owns all other properties in the group of 'Kentucky Avenue'
+    Given a player owns all properties in the group of 'Kentucky Avenue'
     When the player decides to buy a house for 'Kentucky Avenue'
     Then the player is charged by the price of a house on 'Kentucky Avenue'
     And on 'Kentucky Avenue' stands one house
@@ -77,8 +76,7 @@ Feature: Buildings
     And on 'Ventnor Avenue' stand two houses
 
   Scenario: Buy House, None Left
-    Given a player owns 'Kentucky Avenue'
-    And he owns all other properties in the group of 'Kentucky Avenue'
+    Given a player owns all properties in the group of 'Kentucky Avenue'
     And the bank has a remaining stock of zero houses
     When the player tries to buy a house for 'Kentucky Avenue'
     Then he should receive a message 'no house in stock'
