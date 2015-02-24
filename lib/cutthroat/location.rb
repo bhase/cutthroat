@@ -92,8 +92,11 @@ module Cutthroat
     end
 
     def sell_building(player)
+      properties_in_group = board.all_of_group(group)
       raise NotOwner, "#{self} is not your property" if @owner != player
       raise NoBuilding, "#{self} has no building to sell" if @buildings < 1
+      raise DistributionError, "buildings must be evenly distributed" if
+        properties_in_group.any? {|p| (self.buildings - 1 - p.buildings).abs > 1}
       @owner.receive(house_price / 2)
       @buildings -= 1
     end

@@ -27,6 +27,7 @@ Feature: Buildings
 
   Scenario: Sell Hotel
     Given a player owns one hotel on 'Baltic Avenue'
+    And he owns all other properties in the group of 'Baltic Avenue' with four houses
     When the player decides to sell the hotel from 'Baltic Avenue'
     Then the player receives half of the price of a house on 'Baltic Avenue'
     And on 'Baltic Avenue' stand four houses
@@ -65,7 +66,7 @@ Feature: Buildings
     When the player tries to sell a house for 'New York Avenue'
     Then he should receive a message 'no building to sell'
 
-  Scenario: Distribute Evenly
+  Scenario: Distribute Evenly When Buying
     Given a player owns the following set of houses:
       | Street          | Houses |
       | Atlantic Avenue |    1   |
@@ -74,6 +75,16 @@ Feature: Buildings
     When the player tries to buy a house for 'Ventnor Avenue'
     Then he should receive a message 'buildings must be evenly distributed'
     And on 'Ventnor Avenue' stand two houses
+
+  Scenario: Distribute Evenly When Selling
+    Given a player owns the following set of houses:
+      | Street          | Houses |
+      | Atlantic Avenue |    1   |
+      | Ventnor Avenue  |    2   |
+      | Marvin Gardens  |    1   |
+    When the player tries to sell a house for 'Atlantic Avenue'
+    Then he should receive a message 'buildings must be evenly distributed'
+    And on 'Atlantic Avenue' stands one house
 
   Scenario: Buy House, None Left
     Given a player owns all properties in the group of 'Kentucky Avenue'
