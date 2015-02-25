@@ -44,8 +44,8 @@ module Cutthroat
       @active = false
       @dice = dice
       @board = Cutthroat::Board.new
-      @remaining_houses = 32
-      @remaining_hotels = 12
+      @remaining_houses = Cutthroat::AVAILABLE_HOUSES
+      @remaining_hotels = Cutthroat::AVAILABLE_HOTELS
     end
 
     def add_player(player)

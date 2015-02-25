@@ -13,4 +13,6 @@ module Cutthroat
   MORTGAGE_RATE = 50 # percent of land price
   MORTGAGE_DUTY = 10 # additional to rate
   JAIL_FEE = 50
+  AVAILABLE_HOUSES = 32
+  AVAILABLE_HOTELS = 12
 end
