@@ -3,6 +3,8 @@ require "cutthroat/error"
 module Cutthroat
 
   class Location
+
+    # values taken out of board description
     attr_reader :position
     attr_reader :name
     attr_reader :type
@@ -10,14 +12,12 @@ module Cutthroat
     attr_reader :land_price
     attr_reader :house_price
     attr_reader :rent
-    attr_reader :buildings
 
     attr_reader :owner
     attr_reader :is_mortgaged
+    attr_reader :buildings
 
-    attr_accessor :board
-
-    def initialize(pos = 0, attributes = {} )
+    def initialize(pos = 0, attributes = {}, board = nil)
       @position = pos
       @name = attributes["name"]
       @type = attributes["type"].to_sym unless attributes["type"].nil?
@@ -27,6 +27,7 @@ module Cutthroat
       @rent = attributes["rent"]
       @action = attributes["action"].to_sym unless attributes["action"].nil?
       @buildings = 0
+      @board = board
     end
 
     def to_s
@@ -81,8 +82,8 @@ module Cutthroat
 
     def buy_building(player)
       raise NotOwner, "#{self} is not your property" if @owner != player
-      properties_in_group = board.all_of_group(group)
-      properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
+      properties_in_group = @board.all_of_group(group)
+      properties_owned_in_group =  @board.all_owned_by(self.owner) & properties_in_group
       raise NotOwnerOfAllInGroup, "You must own all properties in group to buy a house" if
         properties_in_group != properties_owned_in_group
       raise DistributionError, "buildings must be evenly distributed" if
@@ -92,7 +93,7 @@ module Cutthroat
     end
 
     def sell_building(player)
-      properties_in_group = board.all_of_group(group)
+      properties_in_group = @board.all_of_group(group)
       raise NotOwner, "#{self} is not your property" if @owner != player
       raise NoBuilding, "#{self} has no building to sell" if @buildings < 1
       raise DistributionError, "buildings must be evenly distributed" if
@@ -104,8 +105,8 @@ module Cutthroat
     private
 
     def calculate_rent(player)
-      properties_in_group = board.all_of_group(group)
-      properties_owned_in_group =  board.all_owned_by(self.owner) & properties_in_group
+      properties_in_group = @board.all_of_group(group)
+      properties_owned_in_group =  @board.all_owned_by(self.owner) & properties_in_group
       case group
       when :utility
         rent_for_utility(player.last_throw.inject(:+), properties_in_group)
@@ -117,7 +118,7 @@ module Cutthroat
     end
 
     def put_in_jail(player)
-      player.arrest_at(board.find_jail)
+      player.arrest_at(@board.find_jail)
     end
 
     def income_tax(player)
@@ -131,7 +132,7 @@ module Cutthroat
 
     def chance(player)
       # TODO implement chance cards
-      location = board.find_go
+      location = @board.find_go
       player.move_to(location)
       location.trigger_action(player)
     end

@@ -7,12 +7,11 @@ module Cutthroat
       @locations = []
       input.each {|pos, value|
         if (value.nil?)
-          @locations[pos] = Location.new(pos)
+          @locations[pos] = Location.new(pos, {}, self)
         else
-          @locations[pos] = Location.new(pos, value)
+          @locations[pos] = Location.new(pos, value, self)
         end
       }
-      @locations.each { |l| l.board = self }
     end
 
     def locations
