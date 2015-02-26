@@ -18,7 +18,8 @@ When /^the player rolls the following sequence$/ do |sequence|
     roll = eval(s[:cast])
     sum += roll.inject(:+)
     if s[:played] == "no"
-      fail_if_pos_reached(player.location.to_i + sum)
+      l = board.lookup(player.location.to_i + sum)
+      expect(l).not_to receive(:trigger_action)
     end
     roll_sequence << roll
   end

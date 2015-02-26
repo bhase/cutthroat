@@ -98,20 +98,6 @@ module KnowsGame
     game.players.find{ |p| p.name == name }
   end
 
-  def fail_if_pos_reached(n)
-    location = board.lookup n
-    location.instance_variable_set(:@action, "explode")
-    add_explode_method_to(location)
-  end
-
-  def add_explode_method_to(location)
-    class << location
-      def explode(player)
-        fail "ERROR: #{player.name} should not have come here!"
-      end
-    end
-  end
-
   def player_trades_with_bank(trade, location, p = player)
     balance_of[p] = p.balance
     callouts = double(:buy_property? => false)

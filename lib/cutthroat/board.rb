@@ -6,11 +6,7 @@ module Cutthroat
       input = YAML.parse(DEFAULT_BOARD).to_ruby
       @locations = []
       input.each {|pos, value|
-        if (value.nil?)
-          @locations[pos] = Location.new(pos, {}, self)
-        else
-          @locations[pos] = Location.new(pos, value, self)
-        end
+        @locations[pos] = Location.new(pos, value, self)
       }
     end
 
@@ -62,7 +58,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: street1
 4:
     name: Income Tax
-    action: income_tax
+    type: income_tax
 5:
     name: Reading Railroad
     rent: 25
@@ -76,7 +72,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: street2
 7:
     name: Chance
-    action: chance
+    type: chance
 8:
     name: Vermont Avenue
     rent: [6, 30, 90, 270, 400, 550]
@@ -186,7 +182,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: street6
 30:
     name: Go To Jail
-    action: put_in_jail
+    type: put_in_jail
 31:
     name: Pacific Avenue
     rent: [26, 130, 390, 900, 1100, 1275]
@@ -220,7 +216,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     group: street8
 38:
     name: Luxury Tax
-    action: luxury_tax
+    type: luxury_tax
 39:
     name: Boardwalk
     rent: [50, 200, 600, 1400, 1700, 2000]

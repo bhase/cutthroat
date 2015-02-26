@@ -25,7 +25,6 @@ module Cutthroat
       @land_price = attributes["land_price"]
       @house_price = attributes["house_price"]
       @rent = attributes["rent"]
-      @action = attributes["action"].to_sym unless attributes["action"].nil?
       @buildings = 0
       @board = board
     end
@@ -47,8 +46,15 @@ module Cutthroat
     end
 
     def trigger_action(player)
-      if !@action.nil?
-        send @action, player
+      case @type
+      when :income_tax
+        income_tax(player)
+      when :luxury_tax
+        luxury_tax(player)
+      when :chance
+        chance(player)
+      when :put_in_jail
+        put_in_jail(player)
       end
 
       if player.touched_go and not player.in_jail

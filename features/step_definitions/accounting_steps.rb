@@ -32,7 +32,7 @@ Then /^(#{PLAYER}) pays (#{NUMBER})x current dice rent to (#{PLAYER})$/ do |char
 end
 
 Then /^(#{PLAYER}) pays (twice )?the stated rent to (#{PLAYER})$/ do |charged_player, twice, advantaged_player|
-  rent = charged_player.location.rent[charged_player.location.buildings]
+  rent = charged_player.location.rent[charged_player.location.instance_variable_get('@buildings')]
   rent *= 2 unless twice.nil?
 
   expect(charged_player.balance).to eq(balance_of[charged_player] - rent)
