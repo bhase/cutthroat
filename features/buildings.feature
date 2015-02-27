@@ -98,11 +98,11 @@ Feature: Buildings
     When the player tries to buy a hotel for 'States Avenue'
     Then he should receive a message 'no hotel in stock'
 
-  @draft
   Scenario: Sell Hotel, not enough houses
-    Given a player owns a hotel on 'Tennessee Avenue'
+    Given a player owns one hotel on 'Tennessee Avenue'
+    And he owns all other properties in the group of 'Tennessee Avenue' with four houses
     And the bank has a remaining stock of two houses
-    When the player tries to sell the hotel from 'Tennessee Avenue'
-    Then he should receive a message 'not possible'
+    When the player tries to sell a hotel for 'Tennessee Avenue'
+    Then he should receive a message 'not enough houses'
     And on 'Tennessee Avenue' stands one hotel
-    And the balance of the player is unchanged
+    And the balance of this player is unchanged

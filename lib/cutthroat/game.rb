@@ -143,7 +143,10 @@ module Cutthroat
         when :buy_hotel
           raise OutOfStockError, "no hotel in stock left" if @remaining_hotels < 1
           args[0].buy_building(player)
-        when :sell_house, :sell_hotel
+        when :sell_house
+          args[0].sell_building(player)
+        when :sell_hotel
+          raise OutOfStockError, "not enough houses in stock left" if @remaining_houses < 4
           args[0].sell_building(player)
         when :mortgage
           args[0].mortgage(player)

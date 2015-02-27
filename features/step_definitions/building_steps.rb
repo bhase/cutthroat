@@ -54,7 +54,7 @@ Given /^a player owns the following set of houses:$/ do |properties|
   end
 end
 
-Given /^the bank has a remaining stock of zero( houses| hotels)$/ do |building|
+Given /^the bank has a remaining stock of (#{NUMERAL})( houses| hotels)$/ do |count, building|
   b = "@remaining_#{building.strip}"
-  game.instance_variable_set(b, 0)
+  game.instance_variable_set(b, count.to_i)
 end

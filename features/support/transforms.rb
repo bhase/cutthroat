@@ -15,9 +15,9 @@ NUMBER = Transform /^\d+$/ do |number|
   number.to_i
 end
 
-NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:two)|(?:four))$/ do |numeral|
+NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:two)|(?:four)|(?:zero))$/ do |numeral|
   case numeral
-  when "no" || "none"
+  when "no" || "none" || "zero"
     0
   when "one"
     1
