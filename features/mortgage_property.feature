@@ -28,3 +28,18 @@ Feature: Mortgage Property
     When Albert tries to mortgage 'States Avenue'
     Then Albert should receive a message 'not your property'
     And the balance of Albert is unchanged
+
+  @draft
+  Scenario: Try to Mortgage Property with Buildings
+    Given Fred owns 'Vermont Avenue' with one house
+    When Fred tries to morgage 'Vermont Avenue'
+    Then Fred should receive a message 'cannot mortgage with buildings'
+    And the balance of Fred is unchanged
+
+  @draft
+  Scenario: Try to Mortgage Property with Buildings in Group
+    Given Albert owns 'Atlantic Avenue'
+    And Albert owns all other properties in the group of 'Atlantic Avenue' with two houses
+    When Albert tries to morgage 'Atlantic Avenue'
+    Then Albert should receive a message 'cannot mortgage with buildings'
+    And the balance of Albert is unchanged
