@@ -29,10 +29,9 @@ Feature: Mortgage Property
     Then Albert should receive a message 'not your property'
     And the balance of Albert is unchanged
 
-  @draft
   Scenario: Try to Mortgage Property with Buildings
     Given Fred owns 'Vermont Avenue' with one house
-    When Fred tries to morgage 'Vermont Avenue'
+    When Fred tries to mortgage 'Vermont Avenue'
     Then Fred should receive a message 'cannot mortgage with buildings'
     And the balance of Fred is unchanged
 

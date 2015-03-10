@@ -19,6 +19,9 @@ module Cutthroat
   class NotMortgaged < MortgageError
   end
 
+  class BuildingError < MortgageError
+  end
+
   class NotOwnerOfAllInGroup < PropertyError
   end
 

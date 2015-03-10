@@ -20,9 +20,12 @@ Then /^the player owns (#{LOCATION})$/ do |location|
   expect(location.owner).to be player
 end
 
-Given /^(#{PLAYER}) owns (#{LOCATION})$/ do |name, location|
+Given /^(#{PLAYER}) owns (#{LOCATION})(?: with (#{NUMERAL}) houses?)?$/ do |name, location, count|
   balance_of[name] = name.balance
   location.set_owner name
+  if count
+    location.instance_variable_set('@buildings', count.to_i)
+  end
 end
 
 Given /^(#{PLAYER}) owns these properties$/ do |name, properties|

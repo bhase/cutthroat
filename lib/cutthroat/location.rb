@@ -75,6 +75,7 @@ module Cutthroat
     def mortgage(player)
       raise AlreadyMortgaged, "#{self} is already mortgaged" if @is_mortgaged == true
       raise NotOwner, "#{self} is not your property" if @owner != player
+      raise BuildingError, "cannot mortgage with buildings" if @buildings > 0
       player.receive(land_price * MORTGAGE_RATE / 100)
       @is_mortgaged = true
     end
