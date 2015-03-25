@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Cutthroat::VERSION
   gem.authors       = ["Benjamin Hase"]
   gem.email         = ["benjamin.hase@web.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{This gem is the implementation of Monopoly's basic rule set. For details see README.}
+  gem.summary       = %q{Library which implements the basic rule set of Monopoly}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
