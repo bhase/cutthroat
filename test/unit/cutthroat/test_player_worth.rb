@@ -33,4 +33,11 @@ class TestPlayerWorth < Test::Unit::TestCase
     assert_equal(Cutthroat::SEED_CAPITAL + location.land_price, @player.total_worth)
   end
 
+  def test_player_owns_building
+    location = @game.find_location('Mediterranean Avenue')
+    location.instance_variable_set('@owner', @player)
+    location.instance_variable_set('@buildings', 3)
+    assert_equal(Cutthroat::SEED_CAPITAL + location.land_price + 3 * location.house_price, @player.total_worth)
+  end
+
 end

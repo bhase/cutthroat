@@ -43,13 +43,9 @@ module Cutthroat
     end
 
     def total_worth
-      # TODO currently only balance is taken into account
-      # total worth consists of
-      # - printed prices of owned properties
-      # - buy prices of houses and hotels
-      # - cash
       locations = @game.find_locations_owned_by(self)
-      @balance + locations.inject(0){|sum, l| sum + l.land_price }
+      net = @balance + locations.inject(0){|sum, l| sum + l.land_price }
+      net += locations.inject(0){|sum, l| sum + (l.buildings * l.house_price) }
     end
 
     # TODO worth
