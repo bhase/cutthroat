@@ -6,31 +6,31 @@ Feature: Pay rent
     Given two player named "Albert" and "Fred" added to a game
 
   Scenario: Landing on Railroad when one is owned
-    Given Albert owns 'B&O RR'
-    When Fred lands on 'B&O RR'
+    Given Albert owns 'B&O Railroad'
+    When Fred lands on 'B&O Railroad'
     Then Fred pays $25 rent to Albert
 
   Scenario: Landing on Railroad when two are owned
-    Given Albert owns 'B&O RR'
+    Given Albert owns 'B&O Railroad'
     And Albert owns 'Reading Railroad'
-    When Fred lands on 'B&O RR'
+    When Fred lands on 'B&O Railroad'
     Then Fred pays $50 rent to Albert
 
   Scenario: Landing on Railroad when three are owned
     Given Albert owns these properties
-      | B&O RR                |
+      | B&O Railroad          |
       | Reading Railroad      |
       | Pennsylvania Railroad |
-    When Fred lands on 'B&O RR'
+    When Fred lands on 'B&O Railroad'
     Then Fred pays $100 rent to Albert
 
   Scenario: Landing on Railroad when all four are owned
     Given Albert owns these properties
-      | B&O RR                |
+      | B&O Railroad          |
       | Reading Railroad      |
       | Pennsylvania Railroad |
       | Short Line            |
-    When Fred lands on 'B&O RR'
+    When Fred lands on 'B&O Railroad'
     Then Fred pays $200 rent to Albert
 
   Scenario: Landing on Utility

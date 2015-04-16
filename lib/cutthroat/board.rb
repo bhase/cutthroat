@@ -156,7 +156,7 @@ Cutthroat::DEFAULT_BOARD = <<ENDOFBOARD
     house_price: 150
     group: street5
 25:
-    name: B&O RR
+    name: B&O Railroad
     rent: 25
     group: railroad
 26:

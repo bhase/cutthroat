@@ -16,7 +16,7 @@ Feature: Buy Property
     Then the balance of this player is unchanged
 
   Scenario: Passing unowned property
-    Given 'B&O RR' is unowned
-    When the player passes over 'B&O RR'
+    Given 'B&O Railroad' is unowned
+    When the player passes over 'B&O Railroad'
     Then the balance of this player is unchanged
-    And 'B&O RR' is still unowned
+    And 'B&O Railroad' is still unowned
