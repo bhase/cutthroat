@@ -1,6 +1,6 @@
 
 require 'test/unit'
-require 'mocha/setup'
+require 'mocha/test_unit'
 require 'cutthroat'
 require 'test_helper'
 

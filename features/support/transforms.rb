@@ -1,21 +1,32 @@
+ParameterType(
+  name: 'building',
+  regexp: /(house(?:s)?|hotel(?:s)?)/,
+  transformer: -> (name) { name },
+)
 
-LOCATION = Transform /^'([^']+)'$/ do |number|
-  board.lookup(number)
-end
+ParameterType(
+  name: 'trade',
+  regexp: /buy|sell/,
+  transformer: -> (trade) { trade },
+)
 
-NAME = Transform /^"(\w+)"$/ do |name|
-  name
-end
+ParameterType(
+  name: 'player',
+  regexp: /\w+/,
+  transformer: -> (player) { find_player_by_name(player) },
+  use_for_snippets: false
+)
 
-PLAYER = Transform /^\w+$/ do |name|
-  find_player_by_name(name)
-end
+ParameterType(
+  name: 'location',
+  regexp: /'([^']*)'/,
+  transformer: -> (location) { board.lookup(location) },
+)
 
-NUMBER = Transform /^\d+$/ do |number|
-  number.to_i
-end
-
-NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:two)|(?:four)|(?:zero))$/ do |numeral|
+ParameterType(
+  name: 'numeral',
+  regexp: /((?:one)|(?:no)|(?:none)|(?:two)|(?:four)|(?:zero))/,
+  transformer: -> (numeral) {
   case numeral
   when "no" || "none" || "zero"
     0
@@ -26,4 +37,5 @@ NUMERAL = Transform /^((?:one)|(?:no)|(?:none)|(?:two)|(?:four)|(?:zero))$/ do |
   when "four"
     4
   end
-end
+  },
+)

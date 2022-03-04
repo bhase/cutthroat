@@ -39,6 +39,6 @@ Feature: Mortgage Property
   Scenario: Try to Mortgage Property with Buildings in Group
     Given Albert owns 'Atlantic Avenue'
     And Albert owns all other properties in the group of 'Atlantic Avenue' with two houses
-    When Albert tries to morgage 'Atlantic Avenue'
+    When Albert tries to mortgage 'Atlantic Avenue'
     Then Albert should receive a message 'cannot mortgage with buildings'
     And the balance of Albert is unchanged

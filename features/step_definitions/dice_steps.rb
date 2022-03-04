@@ -1,15 +1,15 @@
-When /^the player rolls (#{NUMBER})$/ do |eyes|
+When('the player rolls {int}') do |eyes|
   setup_dice_for(eyes)
   game.play_turn(player)
 end
 
-When /^the player rolls enough to land on (#{LOCATION})$/ do |location|
+When('the player rolls enough to land on {location}') do |location|
   goal = location.to_i - player.location.to_i
   setup_dice_for(goal)
   game.play_turn(player)
 end
 
-When /^the player rolls the following sequence$/ do |sequence|
+When 'the player rolls the following sequence' do |sequence|
   # sequence is a Cucumber::Ast::Table
   roll_sequence = []
   sum = 0
@@ -27,11 +27,11 @@ When /^the player rolls the following sequence$/ do |sequence|
   game.play_turn(player)
 end
 
-When /^the player rolls double$/ do
+When 'the player rolls double' do
   expect(dice).to receive(:roll).twice.and_return([3, 3], [1, 3])
 end
 
-Then /^the player moves and rolls again$/ do
+Then 'the player moves and rolls again' do
   game.play_round
   expect(player.location).to equal game.find_location(board.find_jail.to_i + 10)
 end

@@ -95,7 +95,7 @@ module KnowsGame
   end
 
   def find_player_by_name(name)
-    game.players.find{ |p| p.name == name }
+    game.players.find{ |p| p.name == name } || player
   end
 
   def player_trades_with_bank(trade, location, p = player)

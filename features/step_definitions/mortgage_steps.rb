@@ -1,36 +1,36 @@
 
-When /^(#{PLAYER}) mortgages (#{LOCATION})$/ do |player, location|
-  player_trades_with_bank(:mortgage, location, player)
+When('{player} mortgages {location}') do |name, location|
+  player_trades_with_bank(:mortgage, location, name)
 end
 
-Then /^(#{LOCATION}) shall be mortgaged$/ do |location|
+Then('{location} shall be mortgaged') do |location|
   expect(location.is_mortgaged).to eq true
 end
 
-Given /^(#{LOCATION}) is (?:already )?mortgaged$/ do |location|
+Given('{location} is (already) mortgaged') do |location|
   location.mortgage(location.owner)
   expect(location.is_mortgaged).to eq true
 end
 
-When /^(#{PLAYER}) tries to mortgage (#{LOCATION})$/ do |player, location|
+When('{player} tries to mortgage {location}') do |name, location|
   expect {
-    player_trades_with_bank(:mortgage, location, player)
+    player_trades_with_bank(:mortgage, location, name)
   }.to raise_error(Cutthroat::MortgageError) { |error|
     save_last_message error.message
   }
 end
 
-When /^(#{PLAYER}) repays the mortgage for (#{LOCATION})$/ do |player, location|
-  player_trades_with_bank(:cancel_mortgage, location, player)
+When('{player} repays the mortgage for {location}') do |name, location|
+  player_trades_with_bank(:cancel_mortgage, location, name)
 end
 
-Then /^(#{LOCATION}) is no longer mortgaged$/ do |location|
+Then('{location} is no longer mortgaged') do |location|
   expect(location.is_mortgaged).to eq false
 end
 
-When /^(#{PLAYER}) tries to repay the mortgage for (#{LOCATION})$/ do |player, location|
+When('{player} tries to repay the mortgage for {location}') do |name, location|
   expect {
-    player_trades_with_bank(:cancel_mortgage, location, player)
+    player_trades_with_bank(:cancel_mortgage, location, name)
   }.to raise_error(Cutthroat::MortgageError) { |error|
     save_last_message error.message
   }
